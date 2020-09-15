@@ -5,8 +5,17 @@ import ImagePicker from 'react-native-image-picker';
 
 import { api } from '../services/ApiConfig';
 
+import firestore from '@react-native-firebase/firestore';
+
 const { width, height }=Dimensions.get('window');
 
+const users=firestore().collection('users').get().then(querySnapshot => {
+    console.log('Total users: ', querySnapshot.size);
+
+    querySnapshot.forEach(documentSnapshot => {
+      console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
+    });
+  });
 
 export default class Profile extends React.Component {
     constructor(props){
@@ -87,7 +96,7 @@ export default class Profile extends React.Component {
 
     render(){
         let image=this.state.avatarPic?icon={name: 'user', type: 'font-awesome'}:source={uri:this.state.avatarPic}
-
+        
         return(
             <View style={styles.container}>
 
