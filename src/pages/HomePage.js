@@ -4,6 +4,11 @@ import { Button, ListItem } from 'react-native-elements';
 import {Agenda} from 'react-native-calendars';
 import moment from 'moment';
 
+// test environment
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import firebase from '@react-native-firebase/app';
+import auth from '@react-native-firebase/auth';
+
 const { width, height } = Dimensions.get('window')
 
 import EmptyDailyPlanner from '../components/EmptyDailyPlanner';
@@ -53,16 +58,23 @@ export default class HomePage extends React.Component {
 
         let selectedDate;
 
+        const signOut = () => {
+            firebase.auth().signOut()
+        }
+
         console.log('this is the selected date : ',currDate)
         return(
             <View style = {styles.container}>
             
-                <ImageBackground 
+                {/* <ImageBackground 
                     source = {require('../assets/homeCoffee.jpg')} 
                     style = {{width: width, height: 200,}}
                 >
-                    {/* <Text style = {styles.imageText}>{this.state.name}</Text> */}
-                </ImageBackground>
+                    <Text style = {styles.imageText}>{this.state.name}</Text>
+                </ImageBackground> */}
+                <TouchableOpacity onPress={signOut}>
+                    <Text>Sign Out</Text>
+                </TouchableOpacity>
 
                 <View style = {styles.dateContainer}>
                     <Agenda 

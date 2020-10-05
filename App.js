@@ -1,45 +1,36 @@
-import React from 'react';
-import { createStackNavigator } from 'react-navigation-stack';
-import { createSwitchNavigator, createAppContainer } from 'react-navigation';
+import 'react-native-gesture-handler';
+// import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+// import { createStackNavigator } from 'react-navigation-stack';
+import { NavigationContainer, createSwitchNavigator } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-
-import Splash from './src/pages/Splash';
-import FacebookLogin from './src/pages/FacebookLogin';
-import Registration from './src/pages/Registration';
 import HomePage from './src/pages/HomePage';
-import Signin from './src/pages/Signin';
-import Profile from './src/pages/Profile';
-import ClientList from './src/pages/ClientList';
+import HomeScreen from './src/screens/HomeScreen';
+import AuthScreen from './src/screens/AuthScreen';
+import LoadingScreen from './src/screens/LoadingScreen';
 
 
-const SplashStack = createSwitchNavigator (
-  {
-    Splash,
-    // FacebookLogin,
-    Registration,
-    // Signin
-  },
-  {
-    initialRouteName: 'Splash',
-  }
-)
+const AppStack = createStackNavigator({
+  // Screens & Tabs to be added
+  
+  Login: AuthScreen,
+  Landing: HomePage,
 
-SplashStack.navigationOptions = {
-  headerShown: false,
-};
+});
 
-const MainNavigator = createStackNavigator (
+// Auth Screen
+const AuthStack = AuthScreen;
+
+// App Container
+const App = createSwitchNavigator(
   {
-    SplashStack,
-    HomePage,
-    Profile,
-    ClientList,
-  },
-  {
-    initialRouteName: "SplashStack"
-  }
+    // Loading: LoadingScreen,
+    // Auth: AuthStack,
+    App: AppStack,
+  }, 
+  // {
+  //   initialRouteName: "Loading"
+  // }
 );
 
-const App = createAppContainer(MainNavigator);
-
-export default App
+export default NavigationContainer(App)

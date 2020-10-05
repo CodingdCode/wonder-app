@@ -3,6 +3,20 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 target 'whichdayz' do
   # Pods for whichdayz
+  # add the Firebase pod for Google Analytics
+  
+  # pod 'Firebase/Analytics'
+  # pod 'Firebase/Core'
+  # pod 'Firebase/Firestore'
+  # pod 'Firebase/Auth'	
+
+# GOOGLE SIGN-IN SDK
+# BASED ON https://github.com/react-native-community/google-signin/blob/master/docs/ios-guide.md#install-google-sign-in-sdk
+  pod 'GoogleSignIn', '~> 5.0.2'
+
+
+# add pods for any other desired Firebase products
+# https://firebase.google.com/docs/ios/setup#available-pods
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -31,13 +45,9 @@ target 'whichdayz' do
   pod 'Yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
 
   pod 'DoubleConversion', :podspec => './../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
-  # pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-
-  pod 'Firebase/Auth'
-  pod 'Firebase/Firestore'
 
   target 'whichdayzTests' do
     inherit! :search_paths
@@ -47,12 +57,12 @@ target 'whichdayz' do
   use_native_modules!
 end
 
-target 'whichdayz-tvOS' do
-  # Pods for wonderFront-tvOS
+# target 'whichdayz-tvOS' do
+#   # Pods for wonderFront-tvOS
 
-  target 'whichdayz-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+#   target 'whichdayz-tvOSTests' do
+#     inherit! :search_paths
+#     # Pods for testing
+#   end
 
-end
+# end
