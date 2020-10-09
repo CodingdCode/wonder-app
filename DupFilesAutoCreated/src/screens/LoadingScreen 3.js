@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { StyleSheet, Text, ActivityIndicator } from 'react-native'
-import Center from '../components/Center'
+import Center from '../../../src/components/Center'
 import firebase from '@react-native-firebase/app'
 
 export default function LoadingScreen({navigation}) {

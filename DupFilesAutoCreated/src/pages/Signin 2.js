@@ -4,7 +4,7 @@ import { Button, Input } from 'react-native-elements';
 
 // IMPORT PATHS
 // import EmptyDailyAgenda from '../components/EmptyDailyAgenda';
-import SignInScreenForm from '../components/SignInScreenForm';
+import SignInScreenForm from '../../../src/components/SignInScreenForm';
 
 const { width, height } = Dimensions.get('window')
 

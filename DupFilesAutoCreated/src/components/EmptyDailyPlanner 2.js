@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {TextInput,Dimensions} from 'react-native';
 import {TouchableOpacity,ScrollView} from 'react-native-gesture-handler';
 
-import itemsArr from '../components/Empty24HrCreation';
+import itemsArr from '../../../src/components/Empty24HrCreation';
 
 
 const {width}=Dimensions.get('window')

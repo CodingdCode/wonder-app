@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import AuthForm from '../pages/AuthForm'
-import { login, signUp, updateAuth } from '../services/ApiConfig'
+import AuthForm from '../../../src/pages/AuthForm'
+import { login, signUp, updateAuth } from '../../../src/services/ApiConfig'
 
 class AuthScreen extends Component {
 

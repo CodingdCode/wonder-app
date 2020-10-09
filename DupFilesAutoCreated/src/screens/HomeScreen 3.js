@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import Center from '../components/Center'
+import Center from '../../../src/components/Center'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import firebase from '@react-native-firebase/app'
 

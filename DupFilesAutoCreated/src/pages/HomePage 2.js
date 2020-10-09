@@ -6,8 +6,8 @@ import moment from 'moment';
 
 const { width, height } = Dimensions.get('window')
 
-import EmptyDailyPlanner from '../components/EmptyDailyPlanner';
-import ClientList from './ClientList';
+import EmptyDailyPlanner from '../../../src/components/EmptyDailyPlanner';
+import ClientList from '../../../src/pages/ClientList';
 
 export default class HomePage extends React.Component {
     constructor(props){

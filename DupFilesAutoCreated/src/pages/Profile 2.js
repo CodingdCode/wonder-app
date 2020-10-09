@@ -3,7 +3,7 @@ import { StyleSheet, Dimensions, Image, View, Text } from 'react-native';
 import { Button, Input, Avatar, Overlay } from 'react-native-elements';
 import ImagePicker from 'react-native-image-picker';
 
-import { api } from '../services/ApiConfig';
+import { api } from '../../../src/services/ApiConfig';
 
 import firestore from '@react-native-firebase/firestore';
 

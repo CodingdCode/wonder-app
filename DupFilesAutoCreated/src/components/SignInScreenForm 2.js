@@ -4,7 +4,7 @@ import {View, StyleSheet} from 'react-native';
 import {Input} from 'react-native-elements';
 
 // IMPORT PATHS
-import Empty24HrCreation from '../components/Empty24HrCreation';
+import Empty24HrCreation from '../../../src/components/Empty24HrCreation';
 
 export default class SignInScreenForm extends Component{
     render(){

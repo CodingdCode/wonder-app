@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { api } from '../services/ApiConfig'
+import { api } from '../../../src/services/ApiConfig'
 import { StyleSheet, Text, View, KeyboardAvoidingView, StatusBar, AsyncStorage } from 'react-native';
 import { Button, Input } from 'react-native-elements';
 
 // IMPORT PATHS
-import Empty24HrCreation from '../components/Empty24HrCreation';
+import Empty24HrCreation from '../../../src/components/Empty24HrCreation';
 
 export default class Registration extends Component {
     state = {
