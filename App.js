@@ -1,3 +1,4 @@
+import React from 'react';
 import 'react-native-gesture-handler';
 // import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 // import { createStackNavigator } from 'react-navigation-stack';
@@ -10,27 +11,42 @@ import AuthScreen from './src/screens/AuthScreen';
 import LoadingScreen from './src/screens/LoadingScreen';
 
 
-const AppStack = createStackNavigator({
-  // Screens & Tabs to be added
-  
-  Login: AuthScreen,
-  Landing: HomePage,
+const Stack = createStackNavigator();
 
-});
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Loading" component={LoadingScreen} />
+        <Stack.Screen name="Auth" component={AuthScreen} />
+        <Stack.Screen name="App" component={HomePage} />
+      </Stack.Navigator>  
+    </NavigationContainer>  
+    );
+}
+
+
+// const AppStack = createStackNavigator({
+//   // Screens & Tabs to be added
+  
+//   Login: AuthScreen,
+//   Landing: HomePage,
+
+// });
 
 // Auth Screen
 const AuthStack = AuthScreen;
 
 // App Container
-const App = createSwitchNavigator(
-  {
-    // Loading: LoadingScreen,
-    // Auth: AuthStack,
-    App: AppStack,
-  }, 
-  // {
-  //   initialRouteName: "Loading"
-  // }
-);
+// const App = createSwitchNavigator(
+//   {
+//     // Loading: LoadingScreen,
+//     // Auth: AuthStack,
+//     App: AppStack,
+//   }, 
+//   // {
+//   //   initialRouteName: "Loading"
+//   // }
+// );
 
-export default NavigationContainer(App)
+// export default NavigationContainer(MyStack);

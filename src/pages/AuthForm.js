@@ -13,6 +13,8 @@ import {
     GoogleSigninButton
   } from '@react-native-community/google-signin';
 
+  import auth from '@react-native-firebase/auth';
+
   
 const AuthForm = (props) => {
       
@@ -44,6 +46,8 @@ const AuthForm = (props) => {
         
             // Create a Google credential with the token
             const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+            console.log('this is what returns from Google how will you package this into db and and transfer to next screen using http listeners:   ',googleCredential)
         
             // Sign-in the user with the credential
             return auth().signInWithCredential(googleCredential);
