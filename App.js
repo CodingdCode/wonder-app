@@ -1,4 +1,5 @@
 import React from 'react';
+import {Button} from 'react-native';
 import 'react-native-gesture-handler';
 // import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 // import { createStackNavigator } from 'react-navigation-stack';
@@ -13,15 +14,30 @@ import LoadingScreen from './src/screens/LoadingScreen';
 
 const Stack = createStackNavigator();
 
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Loading" component={LoadingScreen} />
-        <Stack.Screen name="Auth" component={AuthScreen} />
-        <Stack.Screen name="App" component={HomePage} />
-        <Stack.Screen name="ToggleScreen" component={HomeScreen} />
-      </Stack.Navigator>  
+      // const settingsStack:{
+        // screen:{name:"", component:{},
+        // screen:{name:"", component:{}},
+        
+        // const editStack:{
+          // screen:{name:"", component:{},
+          // screen:{name:"", component:{}},
+          
+  // const options={
+  //   headerRight: () => (
+  //     <Button onPress={() => alert('This is a button!')} title="Info" color="#fff"/> ),
+  //   headerLeft: () => (
+  //     <Button onPress={() => alert('This is a button!')} title="Info" color="#fff"/> )
+  // };
+              
+  export default function App() {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Loading" component={LoadingScreen}/>
+          <Stack.Screen name="Auth" component={AuthScreen}/>
+          <Stack.Screen name="App" component={HomePage}/>
+          <Stack.Screen name="ToggleScreen" component={HomeScreen}/>
+      </Stack.Navigator>
     </NavigationContainer>  
     );
 }
@@ -36,7 +52,7 @@ export default function App() {
 // });
 
 // Auth Screen
-const AuthStack = AuthScreen;
+// const AuthStack = AuthScreen;
 
 // App Container
 // const App = createSwitchNavigator(

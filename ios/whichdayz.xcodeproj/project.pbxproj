@@ -18,10 +18,10 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* wonderFrontTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* wonderFrontTests.m */; };
+		8361C3B9253408FC00C29E68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8361C3B8253408FC00C29E68 /* GoogleService-Info.plist */; };
+		8361C3BA253408FC00C29E68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8361C3B8253408FC00C29E68 /* GoogleService-Info.plist */; };
 		83C0B3172523996E00BA7748 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		83C0B3182523997600BA7748 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
-		83C0B31A25239A3D00BA7748 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83C0B31925239A3D00BA7748 /* GoogleService-Info.plist */; };
-		83C0B31C25239A9D00BA7748 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83C0B31925239A3D00BA7748 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +58,8 @@
 		2D02E4901E0B4A5D006451C7 /* whichdayz-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "whichdayz-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FA67DA724FD3A8200C90E30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "/Users/chris/Documents/Projects/wonder-app/ios/../../../Downloads/GoogleService-Info.plist"; sourceTree = "<absolute>"; };
 		6DF9BC32E0AC602698969A8D /* Pods-whichdayzTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whichdayzTests.release.xcconfig"; path = "Target Support Files/Pods-whichdayzTests/Pods-whichdayzTests.release.xcconfig"; sourceTree = "<group>"; };
+		8361C3B8253408FC00C29E68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8364D296252E4C76001F1AAB /* libRNScreens.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNScreens.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		83C0B31925239A3D00BA7748 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9DB5AA91BD911AB79CDE54FD /* libPods-whichdayzTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-whichdayzTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B96F9DB8D0945A1E5F83D77D /* Pods-whichdayzTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whichdayzTests.debug.xcconfig"; path = "Target Support Files/Pods-whichdayzTests/Pods-whichdayzTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -156,7 +156,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				83C0B31925239A3D00BA7748 /* GoogleService-Info.plist */,
+				8361C3B8253408FC00C29E68 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* wonderFront */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* wonderFrontTests */,
@@ -328,8 +328,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				83C0B3172523996E00BA7748 /* Images.xcassets in Resources */,
-				83C0B31C25239A9D00BA7748 /* GoogleService-Info.plist in Resources */,
 				83C0B3182523997600BA7748 /* LaunchScreen.xib in Resources */,
+				8361C3BA253408FC00C29E68 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,8 +338,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				83C0B31A25239A3D00BA7748 /* GoogleService-Info.plist in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				8361C3B9253408FC00C29E68 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,7 +655,7 @@
 				DEVELOPMENT_TEAM = 63A77M3Z94;
 				INFOPLIST_FILE = wonderFront/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1.5;
+				MARKETING_VERSION = 1.1.6;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -676,7 +676,7 @@
 				DEVELOPMENT_TEAM = 63A77M3Z94;
 				INFOPLIST_FILE = wonderFront/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1.5;
+				MARKETING_VERSION = 1.1.6;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
