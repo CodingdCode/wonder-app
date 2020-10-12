@@ -75,6 +75,10 @@ export default class HomePage extends React.Component {
                 <TouchableOpacity onPress={signOut}>
                     <Text>Sign Out</Text>
                 </TouchableOpacity>
+                
+                <TouchableOpacity onPress={this.props.navigation.navigate("ToggleScreen")}>
+                    <Text>Next</Text>
+                </TouchableOpacity>
 
                 <View style = {styles.dateContainer}>
                     <Agenda 

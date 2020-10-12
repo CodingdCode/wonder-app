@@ -20,6 +20,7 @@ export default function App() {
         <Stack.Screen name="Loading" component={LoadingScreen} />
         <Stack.Screen name="Auth" component={AuthScreen} />
         <Stack.Screen name="App" component={HomePage} />
+        <Stack.Screen name="ToggleScreen" component={HomeScreen} />
       </Stack.Navigator>  
     </NavigationContainer>  
     );
