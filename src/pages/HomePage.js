@@ -25,28 +25,28 @@ export default class HomePage extends React.Component {
         }
     }
 
-    static navigationOptions = {
-        title: 'My Schedule',
-        headerStyle: {
-          backgroundColor: '#30EA8A',
-        },
-        headerRight: ()=>{(
-            <Button
-                onPress={() => alert('This is a button!')}
-                title = {null}
-                color="#fff"
-                icon = {{
-                    type: 'font-awesome',
-                    name: 'plus',
-                }}
-                buttonStyle = {{
-                    backgroundColor: 'transparent',
-                    marginRight: 14.5,
-                }}
-            />
-        )},
-        headerLeft:()=>{null},
-    }
+    // static navigationOptions = {
+    //     title: 'My Schedule',
+    //     headerStyle: {
+    //       backgroundColor: '#30EA8A',
+    //     },
+    //     headerRight: ()=>{(
+    //         <Button
+    //             onPress={() => alert('This is a button!')}
+    //             title = {null}
+    //             color="#fff"
+    //             icon = {{
+    //                 type: 'font-awesome',
+    //                 name: 'plus',
+    //             }}
+    //             buttonStyle = {{
+    //                 backgroundColor: 'transparent',
+    //                 marginRight: 14.5,
+    //             }}
+    //         />
+    //     )},
+    //     headerLeft:()=>{null},
+    // }
 
     render() {
         let currDate= this.state.date;
@@ -66,19 +66,19 @@ export default class HomePage extends React.Component {
         return(
             <View style = {styles.container}>
             
-                {/* <ImageBackground 
+                <ImageBackground 
                     source = {require('../assets/homeCoffee.jpg')} 
                     style = {{width: width, height: 200,}}
                 >
                     <Text style = {styles.imageText}>{this.state.name}</Text>
-                </ImageBackground> */}
-                <TouchableOpacity onPress={signOut}>
+                </ImageBackground>
+                {/* <TouchableOpacity onPress={signOut}>
                     <Text>Sign Out</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                 
-                <TouchableOpacity onPress={this.props.navigation.navigate("ToggleScreen")}>
+                {/* <TouchableOpacity onPress={this.props.navigation.navigate("ToggleScreen")}>
                     <Text>Next</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
                 <View style = {styles.dateContainer}>
                     <Agenda 

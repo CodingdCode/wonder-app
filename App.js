@@ -1,69 +1,61 @@
 import React from 'react';
 import {Button} from 'react-native';
 import 'react-native-gesture-handler';
-// import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-// import { createStackNavigator } from 'react-navigation-stack';
-import { NavigationContainer, createSwitchNavigator } from '@react-navigation/native';
+import firebase from '@react-native-firebase/app';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import HomePage from './src/pages/HomePage';
-import HomeScreen from './src/screens/HomeScreen';
 import AuthScreen from './src/screens/AuthScreen';
+import HomeScreen from './src/screens/HomeScreen';
 import LoadingScreen from './src/screens/LoadingScreen';
 
+const signOut = () => {
+  firebase.auth().signOut()
+};
+const RootStack= createStackNavigator();
+const authStack= createStackNavigator();
+const functionalStack= createStackNavigator();
 
-const Stack = createStackNavigator();
+  const authStackScreens=()=>(
+      <authStack.Navigator>
+        <authStack.Screen name="Loading" component={LoadingScreen} />
+        <authStack.Screen name="Auth" component={AuthScreen} />
+      </authStack.Navigator>
+  );
 
-      // const settingsStack:{
-        // screen:{name:"", component:{},
-        // screen:{name:"", component:{}},
-        
-        // const editStack:{
-          // screen:{name:"", component:{},
-          // screen:{name:"", component:{}},
-          
-  // const options={
-  //   headerRight: () => (
-  //     <Button onPress={() => alert('This is a button!')} title="Info" color="#fff"/> ),
-  //   headerLeft: () => (
-  //     <Button onPress={() => alert('This is a button!')} title="Info" color="#fff"/> )
-  // };
-              
-  export default function App() {
-    return (
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Loading" component={LoadingScreen}/>
-          <Stack.Screen name="Auth" component={AuthScreen}/>
-          <Stack.Screen name="App" component={HomePage}/>
-          <Stack.Screen name="ToggleScreen" component={HomeScreen}/>
+  const functionalStackScreens=()=>(
+      <functionalStack.Navigator>
+        <functionalStack.Screen name="Home" component={HomePage}/>
+        {/* <functionalStack.Screen name="ToggleScreen" component={HomeScreen}/> */}
+      </functionalStack.Navigator>
+  );
+    
+  const settingsStackScreens=()=>(
+      <Stack.Navigator>
+        <Stack.Screen name="PlaceHolder" component={functionalStack}/>
+        <Stack.Screen name="PlaceHolder" component={functionalStack}/>
       </Stack.Navigator>
-    </NavigationContainer>  
-    );
-}
-
-
-// const AppStack = createStackNavigator({
-//   // Screens & Tabs to be added
+  );
   
-//   Login: AuthScreen,
-//   Landing: HomePage,
-
-// });
-
-// Auth Screen
-// const AuthStack = AuthScreen;
-
-// App Container
-// const App = createSwitchNavigator(
-//   {
-//     // Loading: LoadingScreen,
-//     // Auth: AuthStack,
-//     App: AppStack,
-//   }, 
-//   // {
-//   //   initialRouteName: "Loading"
-//   // }
-// );
+  const editStackScreens=()=>(
+      <Stack.Navigator>
+        <Stack.Screen name="PlaceHolder" component={functionalStack}/>
+        <Stack.Screen name="PlaceHolder" component={functionalStack}/>
+      </Stack.Navigator>
+  );
+          
+  const options={};
+              
+export default function App() {
+  return (
+  <NavigationContainer>
+    <RootStack.Navigator>
+      <RootStack.Screen name="Auth" component={authStackScreens}/>
+      <RootStack.Screen name="App" component={functionalStackScreens} options={{headerRight:()=>(<Button title="Sign Out" onPress={signOut}/>)}}/>
+    </RootStack.Navigator>
+  </NavigationContainer>  
+  );
+}
 
 // export default NavigationContainer(MyStack);

@@ -13,7 +13,7 @@ import {
     GoogleSigninButton
   } from '@react-native-community/google-signin';
 
-  import auth from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 
   
 const AuthForm = (props) => {
@@ -100,7 +100,7 @@ const AuthForm = (props) => {
                     style={{ width: 192, height: 48 }}
                     size={GoogleSigninButton.Size.Wide}
                     color={GoogleSigninButton.Color.Dark} 
-                    onPress={()=> onGoogleButtonPress().then(() => console.log('button pressed no issue'))}
+                    onPress={()=> onGoogleButtonPress()}
                     // disabled={this.state.isSigninInProgress} 
                 />
             </View>
