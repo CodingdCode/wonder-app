@@ -35,28 +35,28 @@ export default class Profile extends React.Component {
         }
     }
     
-    static navigationOptions={
-        title: 'Create Profile',
-        headerStyle: {
-            backgroundColor: '#30EA8A',
-        },
-        headerRight: ()=>{(
-                <Button
-                    onPress={() => alert('This is a button!')}
-                    title="Save"
-                    color="#fff"
-                    icon = {{
-                        type: 'font-awesome',
-                        name: 'plus',
-                    }}
-                    buttonStyle = {{
-                        backgroundColor: 'transparent',
-                        marginRight: 14.5,
-                    }}
-                />
-            )},
-        headerLeft:()=>{null},
-    }
+    // static navigationOptions={
+    //     title: 'Create Profile',
+    //     headerStyle: {
+    //         backgroundColor: '#30EA8A',
+    //     },
+    //     headerRight: ()=>{(
+    //             <Button
+    //                 onPress={() => alert('This is a button!')}
+    //                 title="Save"
+    //                 color="#fff"
+    //                 icon = {{
+    //                     type: 'font-awesome',
+    //                     name: 'plus',
+    //                 }}
+    //                 buttonStyle = {{
+    //                     backgroundColor: 'transparent',
+    //                     marginRight: 14.5,
+    //                 }}
+    //             />
+    //         )},
+    //     headerLeft:()=>{null},
+    // }
 
     _handleReq=()=>{
         ImagePicker.showImagePicker({},(response) => {

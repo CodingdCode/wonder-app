@@ -34,24 +34,24 @@ export default function HomeScreen() {
         renderItem = ({item,index}) => {
             return (
                 <>
-        <View style={{
-            backgroundColor:'floralwhite',
-            borderRadius: 5,
-            height: 250,
-            padding: 50,
-            marginLeft: 25,
-            marginRight: 25,
-            marginTop: 25
-            }}>
-                <Text>{item.name}</Text>
-            </View>
-            </>
+                    <View style={{
+                        backgroundColor:'floralwhite',
+                        borderRadius: 5,
+                        height: 250,
+                        padding: 50,
+                        marginLeft: 25,
+                        marginRight: 25,
+                        marginTop: 25
+                        }}>
+                        <Text>{item.name}</Text>
+                    </View>
+                </>
             )
         }
 
-        renderHome = () => {
-            return (
-            <Center>
+    renderHome = () => {
+        return (
+        <Center>
             <Switch
             style={styles.switchStyle}
             trackColor={{ false: "#767577", true: "#81b0ff" }}
@@ -60,9 +60,10 @@ export default function HomeScreen() {
             onValueChange={toggleSwitch}
             value={isEnabled}
             />
-            {isEnabled ?
-            <>
+        {isEnabled ?
+        <>
             <Text style={styles.title}>Services</Text>
+            
             <Carousel
                 layout={'stack'}
                 loop={true}
@@ -74,9 +75,9 @@ export default function HomeScreen() {
                 lockScrollWhileSnapping={true}
                 onSnapToItem={index => setActiveIndex({activeIndex: index})}
             />
-            </>
-            :
-            <View style={styles.UserCard}>
+        </>
+        :
+        <View style={styles.UserCard}>
             <Text style={styles.switchStyle}>Current User Email: {email}</Text>
             <Text style={styles.switchStyle}>Current Display Name: {displayName}</Text>
             <Button
@@ -84,22 +85,22 @@ export default function HomeScreen() {
             onPress={signOut}
             title={'Sign Out'}
             />
-            </View>
-            }
-        </Center>
-            )
+        </View>
         }
+    </Center>
+        )
+    }
 
-        renderView = () => {
+    renderView = () => {
 
-            if (isLoading) {
-              return <Spinner />
-            } else {
-              return renderHome()
-            }
-          }
+        if (isLoading) {
+            return <Spinner />
+        } else {
+            return renderHome()
+        }
+    }
     
-        return (
+    return (
             renderView()
         )
     }

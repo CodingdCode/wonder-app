@@ -13,6 +13,7 @@ import LoadingScreen from './src/screens/LoadingScreen';
 const signOut = () => {
   firebase.auth().signOut()
 };
+
 const RootStack= createStackNavigator();
 const authStack= createStackNavigator();
 const functionalStack= createStackNavigator();
@@ -25,7 +26,7 @@ const functionalStack= createStackNavigator();
   );
 
   const functionalStackScreens=()=>(
-      <functionalStack.Navigator>
+      <functionalStack.Navigator screenOptions={{}}>
         <functionalStack.Screen name="Home" component={HomePage}/>
         {/* <functionalStack.Screen name="ToggleScreen" component={HomeScreen}/> */}
       </functionalStack.Navigator>
@@ -50,9 +51,30 @@ const functionalStack= createStackNavigator();
 export default function App() {
   return (
   <NavigationContainer>
-    <RootStack.Navigator>
-      <RootStack.Screen name="Auth" component={authStackScreens}/>
-      <RootStack.Screen name="App" component={functionalStackScreens} options={{headerRight:()=>(<Button title="Sign Out" onPress={signOut}/>)}}/>
+    <RootStack.Navigator screenOptions={
+      {
+        headerStyle:{
+          backgroundColor:"#30EA8A"
+        }
+      }}>
+      <RootStack.Screen name="Authentication" component={authStackScreens} options={
+        {
+          headerTitle:'',
+        }}/>
+      <RootStack.Screen name="App" component={functionalStackScreens} options={
+        {
+          headerRight:()=>(
+            <Button
+            onPress={signOut}
+            title="Sign Out"
+            />),
+          headerLeft:()=>(
+            <Button
+              onPress={()=>alert("Don't click this area I'm trying to do away with it")}
+              title=""
+            />)
+        }
+      }/>
     </RootStack.Navigator>
   </NavigationContainer>  
   );
