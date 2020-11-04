@@ -5,9 +5,12 @@
       location = "container:whichdayz.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Pods/Pods.xcodeproj">
+      location = "absolute:Pods/Pods.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:whichdayz.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
