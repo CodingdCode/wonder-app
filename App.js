@@ -19,7 +19,7 @@ const authStack= createStackNavigator();
 const functionalStack= createStackNavigator();
 
   const authStackScreens=()=>(
-      <authStack.Navigator>
+      <authStack.Navigator >
         <authStack.Screen name="Loading" component={LoadingScreen} />
         <authStack.Screen name="Auth" component={AuthScreen} />
       </authStack.Navigator>

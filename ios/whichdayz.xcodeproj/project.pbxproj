@@ -50,6 +50,8 @@
 		00E356EE1AD99517003FC87E /* whichdayzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = whichdayzTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* wonderFrontTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = wonderFrontTests.m; sourceTree = "<group>"; };
+		09519F6013E0BB8DC370DD74 /* libPods-whichdayz-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-whichdayz-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		106A816C5213DAC336B12C17 /* Pods-whichdayz-whichdayzTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whichdayz-whichdayzTests.release.xcconfig"; path = "Target Support Files/Pods-whichdayz-whichdayzTests/Pods-whichdayz-whichdayzTests.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* WhichDayz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhichDayz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = wonderFront/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = wonderFront/AppDelegate.m; sourceTree = "<group>"; };

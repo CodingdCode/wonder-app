@@ -33,6 +33,8 @@
   
   if ([FIRApp defaultApp] == nil) {
     [FIRApp configure];
+    
+    FIRFirestore *defaultFirestore = [FIRFirestore firestore];
   }
     
   return YES;
