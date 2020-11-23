@@ -4,6 +4,9 @@ import { Button, ListItem } from 'react-native-elements';
 import {Agenda} from 'react-native-calendars';
 import moment from 'moment';
 
+
+import AllDb from '../screens/dbView';
+
 // test environment
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import firebase from '@react-native-firebase/app';
@@ -90,7 +93,7 @@ export default class HomePage extends React.Component {
                         }}
                         pastScrollRange={3}
                         futureScrollRange={3}
-                        onDayPress={(day)=>{selectedDate=day}}                      
+                        onDayPress={(day)=>{selectedDate=day; return <View><AllDb /></View>}}                      
                         items={
                             {...itemsObj, ...pair}
                         }

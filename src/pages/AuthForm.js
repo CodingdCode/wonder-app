@@ -51,7 +51,9 @@ const AuthForm = (props) => {
         
             // Sign-in the user with the credential
             return auth().signInWithCredential(googleCredential);
-        };
+        }
+
+	onGoogleButtonPress().catch(err=>{console.log(err)});
 
 
     return (

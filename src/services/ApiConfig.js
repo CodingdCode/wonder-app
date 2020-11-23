@@ -24,6 +24,8 @@ export const signUp = async ({ email, password, fullName }) => {
     // return await firebase.auth().signOut();
 }
 
+	signUp().catch(err=>{console.log(err)});
+
 export const signUpUser = async ({ email, password, firstName, lastName }) => {
     const userCred = await firebase
         .auth()
@@ -33,7 +35,9 @@ export const signUpUser = async ({ email, password, firstName, lastName }) => {
     });
     await userCred.user.sendEmailVerification();
     return await firebase.auth().signOut();
-};
+}
+
+	signUpUser().catch(err=>{console.log(err)});
 
 export const signOut = (onSignedOut) => {
     firebase.auth().signOut()
