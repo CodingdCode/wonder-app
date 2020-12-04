@@ -21,7 +21,11 @@ const functionalStack= createStackNavigator();
   const authStackScreens=()=>(
       <authStack.Navigator >
         <authStack.Screen name="Loading" component={LoadingScreen} />
-        <authStack.Screen name="Auth" component={AuthScreen} />
+        <authStack.Screen name="Auth" component={AuthScreen} options={
+          {
+            headerTitle:'',
+          }
+        }/>
       </authStack.Navigator>
   );
 
@@ -61,7 +65,7 @@ export default function App() {
         {
           headerTitle:'',
         }}/>
-      <RootStack.Screen name="App" component={functionalStackScreens} options={
+      <RootStack.Screen name="App" component={HomePage} options={
         {
           headerRight:()=>(
             <Button

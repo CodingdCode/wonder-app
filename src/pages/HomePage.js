@@ -5,7 +5,7 @@ import {Agenda} from 'react-native-calendars';
 import moment from 'moment';
 
 
-import AllDb from '../screens/dbView';
+import crud from '../services/dbQueries/CRUD';
 
 // test environment
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -16,42 +16,22 @@ const { width, height } = Dimensions.get('window')
 
 import EmptyDailyPlanner from '../components/EmptyDailyPlanner';
 import ClientList from './ClientList';
+// import dbView from '../screens/dbView';
 
 export default class HomePage extends React.Component {
     constructor(props){
         super(props);
 
         this.state={
-            // name:this.props.navigation.state.params.name,
+            name:this.props.route.params.client.email,
             date:moment().format('YYYY-MM-DD'),
             //itemsArr: //this.props.navigation.state.params.itemsArr
         }
+
     }
-
-    // static navigationOptions = {
-    //     title: 'My Schedule',
-    //     headerStyle: {
-    //       backgroundColor: '#30EA8A',
-    //     },
-    //     headerRight: ()=>{(
-    //         <Button
-    //             onPress={() => alert('This is a button!')}
-    //             title = {null}
-    //             color="#fff"
-    //             icon = {{
-    //                 type: 'font-awesome',
-    //                 name: 'plus',
-    //             }}
-    //             buttonStyle = {{
-    //                 backgroundColor: 'transparent',
-    //                 marginRight: 14.5,
-    //             }}
-    //         />
-    //     )},
-    //     headerLeft:()=>{null},
-    // }
-
+    
     render() {
+        
         let currDate= this.state.date;
         let itemsArr=this.state.itemsArr;
         var pair = {
@@ -65,7 +45,7 @@ export default class HomePage extends React.Component {
             firebase.auth().signOut()
         }
 
-        console.log('this is the selected date : ',currDate)
+        console.log('this is the selected date : ',selectedDate);
         return(
             <View style = {styles.container}>
             
@@ -93,7 +73,7 @@ export default class HomePage extends React.Component {
                         }}
                         pastScrollRange={3}
                         futureScrollRange={3}
-                        onDayPress={(day)=>{selectedDate=day; return <View><AllDb /></View>}}                      
+                        onDayPress={(day)=>{selectedDate=day,console.log(' <dbView />')}} 
                         items={
                             {...itemsObj, ...pair}
                         }
@@ -101,7 +81,7 @@ export default class HomePage extends React.Component {
                             // I dont like that ITEM written above is the entire arr(this.state.itermArr)
                             // hence why below we are iterating through state
                             // this prop assumes only to render one item per day....IS THIS THE BEST WAY???
-                            console.log(selectedDate);
+                           // console.log(selectedDate);
                             return (
                                 <View style={{alignItems:'center',backgroundColor:'white'}}>
                                     <View>

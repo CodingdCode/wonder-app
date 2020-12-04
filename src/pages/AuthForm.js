@@ -15,6 +15,10 @@ import {
 
 import auth from '@react-native-firebase/auth';
 
+import crud from '../services/dbQueries/CRUD';
+import DbView from '../screens/dbView';
+
+
   
 const AuthForm = (props) => {
       
@@ -40,20 +44,19 @@ const AuthForm = (props) => {
         });
 
         onGoogleButtonPress=async ()=>{
-            console.log('inside google button function');
             // Get the users ID token
             const { idToken } = await GoogleSignin.signIn();
-        
+
+            const currentUser = await GoogleSignin.getCurrentUser();
+
             // Create a Google credential with the token
             const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-            console.log('this is what returns from Google how will you package this into db and and transfer to next screen using http listeners:   ',googleCredential)
         
             // Sign-in the user with the credential
-            return auth().signInWithCredential(googleCredential);
+            return (
+                auth().signInWithCredential(googleCredential)
+            );
         }
-
-	onGoogleButtonPress().catch(err=>{console.log(err)});
 
 
     return (

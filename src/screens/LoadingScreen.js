@@ -9,7 +9,8 @@ export default function LoadingScreen({navigation}) {
     useEffect(() => {
 
         firebase.auth().onAuthStateChanged(user => {
-                navigation.navigate(user ? 'Auth' : 'Auth')
+
+            navigation.navigate(user ? 'Auth' : 'Auth')
         })
     }, []);
 
@@ -24,4 +25,4 @@ export default function LoadingScreen({navigation}) {
 
 const styles = StyleSheet.create({
 
-})
+});

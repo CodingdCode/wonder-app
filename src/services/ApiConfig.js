@@ -24,7 +24,7 @@ export const signUp = async ({ email, password, fullName }) => {
     // return await firebase.auth().signOut();
 }
 
-	signUp().catch(err=>{console.log(err)});
+	// signUp().catch(err=>{console.log(err)});
 
 export const signUpUser = async ({ email, password, firstName, lastName }) => {
     const userCred = await firebase
@@ -37,7 +37,7 @@ export const signUpUser = async ({ email, password, firstName, lastName }) => {
     return await firebase.auth().signOut();
 }
 
-	signUpUser().catch(err=>{console.log(err)});
+	// signUpUser().catch(err=>{console.log(err)});
 
 export const signOut = (onSignedOut) => {
     firebase.auth().signOut()
@@ -56,38 +56,3 @@ export function subscribeToAuthChanges() {
         return user
     })
 }
-
-
-// export const signInUser = async ({ email, password }) =>
-// 	firebase.auth().signInWithEmailAndPassword(email, password);
-// export const sendEmailVerification = async () =>
-// 	firebase.auth().currentUser.sendEmailVerification();
-// export const sendPasswordReset = async (email) =>
-// 	firebase.auth().sendPasswordResetEmail(firebase.auth().currentUser ?  firebase.auth().currentUser.email : email);
-// export const getAuthUser = () => firebase.auth().currentUser;
-// export const signOut = () => firebase.auth().signOut();
-// export const verifyActionCode = ({ actionCode, mode }) =>
-// 	mode == 'resetPassword'
-// 		? firebase.auth().verifyPasswordResetCode(actionCode)
-// 		: firebase.auth().applyActionCode(actionCode);
-// export const confirmPasswordReset = async ({ actionCode, newPassword }) =>
-// 	firebase.auth().confirmPasswordReset(actionCode, newPassword);
-// export const setAuthPersistence = async () => {
-// 	try {
-// 		firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
-// 	} catch (error) {
-// 		firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-// 		console.log(error);
-// 	}
-// };
-// export const updateEmail = (email) => firebase.auth().currentUser.updateEmail(email);
-// export const updatePassword = (password) => firebase.auth().currentUser.updatePassword(password);
-// export const reAuth = (password) => {
-// 	const user = firebase.auth().currentUser;
-// 	const credential = firebase.auth.EmailAuthProvider.credential(
-// 		user.email,
-// 		password
-// 	);
-// 	return user.reauthenticateWithCredential(credential);
-// };
-// export const deleteAccount = () => firebase.auth().currentUser.delete();

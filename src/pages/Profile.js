@@ -9,13 +9,6 @@ import firestore from '@react-native-firebase/firestore';
 
 const { width, height }=Dimensions.get('window');
 
-const users=firestore().collection('users').get().then(querySnapshot => {
-    console.log('Total users: ', querySnapshot.size);
-
-    querySnapshot.forEach(documentSnapshot => {
-      console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
-    });
-  });
 
 export default class Profile extends React.Component {
     constructor(props){
@@ -34,29 +27,6 @@ export default class Profile extends React.Component {
             errMsg:''
         }
     }
-    
-    // static navigationOptions={
-    //     title: 'Create Profile',
-    //     headerStyle: {
-    //         backgroundColor: '#30EA8A',
-    //     },
-    //     headerRight: ()=>{(
-    //             <Button
-    //                 onPress={() => alert('This is a button!')}
-    //                 title="Save"
-    //                 color="#fff"
-    //                 icon = {{
-    //                     type: 'font-awesome',
-    //                     name: 'plus',
-    //                 }}
-    //                 buttonStyle = {{
-    //                     backgroundColor: 'transparent',
-    //                     marginRight: 14.5,
-    //                 }}
-    //             />
-    //         )},
-    //     headerLeft:()=>{null},
-    // }
 
     _handleReq=()=>{
         ImagePicker.showImagePicker({},(response) => {

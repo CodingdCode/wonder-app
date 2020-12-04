@@ -1,23 +1,25 @@
-import React, {Component} from 'react';
-
+import React from 'react';
+import { View, ScrollView } from 'react-native';
+import { ListItem } from 'react-native-elements';
 
 import firestore from '@react-native-firebase/firestore';
 
+// const { width, height } = Dimensions.get('window')
+let AllDb=(()=>{
+    return(
+        <View>
+            {/* <ScrollView>
+                {
+                    x.map((l, i) => (
+                        <ListItem
+                        key={i}
+                        bottomDivider
+                    />
+                    ))
+                }
+            </ScrollView> */}
+        </View>
+    )
+});
 
-class AllDb extends Component {
-
-
-    users=firestore().collection('users').get().then(querySnapshot => {
-        console.log('Total users: ', querySnapshot.size);
-    
-        querySnapshot.forEach(documentSnapshot => {
-          console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
-        });
-      });
-
-    render(){
-        return console.log('users');
-    }
-}
-
-export default AllDb;
+// export default AllDb;
