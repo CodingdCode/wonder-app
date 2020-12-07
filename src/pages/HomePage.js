@@ -23,7 +23,7 @@ export default class HomePage extends React.Component {
         super(props);
 
         this.state={
-            name:this.props.route.params.client.email,
+            // name:this.props.route.params.client.email,
             date:moment().format('YYYY-MM-DD'),
             //itemsArr: //this.props.navigation.state.params.itemsArr
         }
@@ -45,7 +45,6 @@ export default class HomePage extends React.Component {
             firebase.auth().signOut()
         }
 
-        console.log('this is the selected date : ',selectedDate);
         return(
             <View style = {styles.container}>
             
@@ -55,13 +54,6 @@ export default class HomePage extends React.Component {
                 >
                     <Text style = {styles.imageText}>{this.state.name}</Text>
                 </ImageBackground>
-                {/* <TouchableOpacity onPress={signOut}>
-                    <Text>Sign Out</Text>
-                </TouchableOpacity> */}
-                
-                {/* <TouchableOpacity onPress={this.props.navigation.navigate("ToggleScreen")}>
-                    <Text>Next</Text>
-                </TouchableOpacity> */}
 
                 <View style = {styles.dateContainer}>
                     <Agenda 
@@ -73,7 +65,7 @@ export default class HomePage extends React.Component {
                         }}
                         pastScrollRange={3}
                         futureScrollRange={3}
-                        onDayPress={(day)=>{selectedDate=day,console.log(' <dbView />')}} 
+                        onDayPress={(day)=>{selectedDate=day}} 
                         items={
                             {...itemsObj, ...pair}
                         }
@@ -89,10 +81,6 @@ export default class HomePage extends React.Component {
                                         <Text style={{fontSize:20}}>{moment(day.dayString).format('MMM')}</Text>
                                     </View>
                                     <View>
-                                        {/* <ClientList
-                                            d={day}
-                                            db={this.props.navigation.state.params.db}
-                                        /> */}
                                         <EmptyDailyPlanner />
                                     </View>
                                 </View>

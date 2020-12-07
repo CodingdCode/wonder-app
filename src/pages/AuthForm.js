@@ -14,6 +14,7 @@ import {
   } from '@react-native-community/google-signin';
 
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 import crud from '../services/dbQueries/CRUD';
 import DbView from '../screens/dbView';
@@ -48,16 +49,19 @@ const AuthForm = (props) => {
             const { idToken } = await GoogleSignin.signIn();
 
             const currentUser = await GoogleSignin.getCurrentUser();
-
+            console.log(currentUser);
             // Create a Google credential with the token
             const googleCredential = auth.GoogleAuthProvider.credential(idToken);
         
             // Sign-in the user with the credential
-            return (
-                auth().signInWithCredential(googleCredential)
-            );
+            auth()
+            .signInWithCredential(googleCredential)
+            .catch(err=>{console.log(err)})
+            firestore().collection('users').add({
+                email: `${currentUser.user.email}`
+            })
+            return console.log('True')
         }
-
 
     return (
             <View style={styles.container}>

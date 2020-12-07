@@ -15,7 +15,7 @@ class AuthScreen extends Component {
     onAuthStateChanged = (user) => {
       if (user !== null) {
         // console.log(user);
-        this.props.navigation.navigate("App", {client:user});
+        this.props.navigation.navigate("App")//, {client:user});
       }
     }
   

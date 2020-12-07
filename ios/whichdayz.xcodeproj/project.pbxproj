@@ -801,7 +801,7 @@
 				DEVELOPMENT_TEAM = 63A77M3Z94;
 				INFOPLIST_FILE = wonderFront/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1.8;
+				MARKETING_VERSION = 1.1.9;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -826,7 +826,7 @@
 				DEVELOPMENT_TEAM = 63A77M3Z94;
 				INFOPLIST_FILE = wonderFront/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1.8;
+				MARKETING_VERSION = 1.1.9;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
