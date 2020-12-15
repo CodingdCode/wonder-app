@@ -76,7 +76,7 @@ const  App = () => {
             />)
         }
       }/>
-      <RootStack.Screen name="Index" component={IndexScreen} options={{}}/>
+      <RootStack.Screen name="Index" component={IndexScreen} options={{headerShown: false}}/>
     </RootStack.Navigator>
   </NavigationContainer>  
   );
