@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import HomePage from './src/pages/HomePage';
-import AuthScreen from './src/screens/AuthScreen';
+import SignupScreen from './src/screens/SignupScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import LoadingScreen from './src/screens/LoadingScreen';
 import IndexScreen from "./src/screens/IndexScreen";
@@ -58,7 +58,7 @@ const  App = () => {
   <NavigationContainer>
     <RootStack.Navigator initialRouteName="Index">
       <RootStack.Screen name="Index" component={IndexScreen} options={{headerShown: false}}/>
-      <RootStack.Screen name="Authentication" component={AuthScreen} options={
+      <RootStack.Screen name="signup" component={SignupScreen} options={
         {
           headerTitle:'',
           headerShown: false

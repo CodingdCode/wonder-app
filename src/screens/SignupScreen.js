@@ -11,7 +11,7 @@ import {
   } from '@react-native-community/google-signin';
 // import AuthForm from '../pages/AuthForm'
 import { login, signUp, updateAuth } from '../services/ApiConfig'
-const AuthScreen = props => {
+const SignupScreen = props => {
 
 const { navigation } = props
 
@@ -42,14 +42,26 @@ const { navigation } = props
         // />
         <View style={styles.container}>
                 
-                <Text h2 style={styles.header}>Welcome SIGUP!</Text>
+                <Text h2 style={styles.header}>Welcome SIGNUP!</Text>
                 {/* {props.authMode === 'signup' ? fullNameInput : null} */}
                 
                 <TextInput
                     style={styles.formInput}
                     // onChangeText={text => props.setFieldValue('email', text)}
-                    placeholder='Email'
+                    placeholder='First name'
                     // autoCapitalize={false}
+                />
+                <TextInput
+                    style={styles.formInput}
+                    // onChangeText={text => props.setFieldValue('email', text)}
+                    placeholder='Last name'
+                    // autoCapitalize={false}
+                />
+                <TextInput
+                    style={styles.formInput}
+                    // onChangeText={text => props.setFieldValue('email', text)}
+                    placeholder='Email'
+                    autoCapitalize={false}
                 />
 
                 {/* <Text style={styles.validationText}> {props.errors.email}</Text> */}
@@ -58,14 +70,21 @@ const { navigation } = props
                     // secureTextEntry={secureText}
                     // onChangeText={text => props.setFieldValue('password', text)}
                     placeholder='Password'
-                    // autoCapitalize={false}
+                    autoCapitalize={false}
+                />
+                <TextInput
+                    style={styles.formInput}
+                    // secureTextEntry={secureText}
+                    // onChangeText={text => props.setFieldValue('password', text)}
+                    placeholder='Confirm Password'
+                    autoCapitalize={false}
                 />
 
-                <Button 
+                {/* <Button 
                     // onPress={() => setsecureText(!secureText)} 
                     title="toggle"
                     buttonStyle={styles.loginButton}
-                />
+                /> */}
                 {/* <Text style={styles.validationText}> {props.errors.password}</Text> */}
                 <Button
                     // onPress={() => props.handleSubmit()}
@@ -94,7 +113,7 @@ const { navigation } = props
                 <Button
                     color='black'
                     onPress={() => navigation.pop()}
-                    title="<- GO BACK"
+                    title="<- BACK"
                     // title={props.authMode === 'login' ? 'Create an Account' : 'Already a member?'} 
                 />
             </View>
@@ -145,4 +164,4 @@ const { navigation } = props
         }
 });
   
-  export default AuthScreen;
+  export default SignupScreen;
