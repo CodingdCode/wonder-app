@@ -1,9 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import {View, Text, StyleSheet, TouchableOpacity, TextInput, Button} from "react-native";
 import { PRIMARY_COLOR } from "../styles/constants"
 
 const IndexScreen  = (props) => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errors, setErrors] = useState(null);
+
     const {navigation} = props
+
+    const handleLogin = () => {
+        setEmail("");
+        setPassword("");
+        alert("HANDLE LOGIN HERE");
+    }
+
     return <View style={styles.container}>
         <Text style={styles.textStyle}>Welcome Barista!</Text>
         <Text>We know only certain baristas can make your 
@@ -12,7 +23,8 @@ const IndexScreen  = (props) => {
 
                 <TextInput
                     style={styles.formInput}
-                    // onChangeText={text => props.setFieldValue('email', text)}
+                    value={email}
+                    onChangeText={newValue => setEmail(newValue)}
                     placeholder='Email'
                     autoCapitalize={false}
                 />
@@ -21,13 +33,14 @@ const IndexScreen  = (props) => {
                 <TextInput
                     style={styles.formInput}
                     secureTextEntry
-                    // onChangeText={text => props.setFieldValue('password', text)}
+                    value={password}
+                    onChangeText={newValue => setPassword(newValue)}
                     placeholder='Password'
                     autoCapitalize={false}
                 />
 
 
-        <TouchableOpacity><Text>Login</Text></TouchableOpacity>
+        <TouchableOpacity onPress={handleLogin}><Text>Login</Text></TouchableOpacity>
         <TouchableOpacity onPress={() => {navigation.navigate("signup")}}><Text>Sign up</Text></TouchableOpacity>
     </View>
 }

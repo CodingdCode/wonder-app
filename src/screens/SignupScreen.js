@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import {
     StyleSheet,
     View, 
@@ -12,8 +12,20 @@ import {
 // import AuthForm from '../pages/AuthForm'
 import { login, signUp, updateAuth } from '../services/ApiConfig'
 const SignupScreen = props => {
+    const [newAccountInfo, setNewAccountInfo] = useState({});
+    const [errors, setErrors] = useState(null);
 
-const { navigation } = props
+    const handleSubmit = () => {
+        alert("HANDLE SUBMIT HERE");
+        console.log(newAccountInfo)
+        setNewAccountInfo({});
+    }
+
+    const handleTextChange = (name, value) => {
+        setNewAccountInfo(prevState => ({...prevState, [name]: value}))
+    }
+
+const { navigation } = props;
 
   
     // componentDidMount() {
@@ -42,24 +54,27 @@ const { navigation } = props
         // />
         <View style={styles.container}>
                 
-                <Text h2 style={styles.header}>Welcome SIGNUP!</Text>
+                <Text h2 style={styles.header}>SIGNUP</Text>
                 {/* {props.authMode === 'signup' ? fullNameInput : null} */}
                 
                 <TextInput
                     style={styles.formInput}
-                    // onChangeText={text => props.setFieldValue('email', text)}
+                    value={newAccountInfo.firstName || ""}
+                    onChangeText={(newValue) => handleTextChange("firstName", newValue)}
                     placeholder='First name'
                     // autoCapitalize={false}
                 />
                 <TextInput
                     style={styles.formInput}
-                    // onChangeText={text => props.setFieldValue('email', text)}
+                    value={newAccountInfo.lastName || ""}
+                    onChangeText={(newValue) => handleTextChange("lastName", newValue)}
                     placeholder='Last name'
                     // autoCapitalize={false}
                 />
                 <TextInput
                     style={styles.formInput}
-                    // onChangeText={text => props.setFieldValue('email', text)}
+                    value={newAccountInfo.email || ""}
+                    onChangeText={(newValue) => handleTextChange("email", newValue)}
                     placeholder='Email'
                     autoCapitalize={false}
                 />
@@ -67,15 +82,17 @@ const { navigation } = props
                 {/* <Text style={styles.validationText}> {props.errors.email}</Text> */}
                 <TextInput
                     style={styles.formInput}
-                    // secureTextEntry={secureText}
-                    // onChangeText={text => props.setFieldValue('password', text)}
+                    secureTextEntry
+                    value={newAccountInfo.password || ""}
+                    onChangeText={(newValue) => handleTextChange("password", newValue)}
                     placeholder='Password'
                     autoCapitalize={false}
                 />
                 <TextInput
                     style={styles.formInput}
-                    // secureTextEntry={secureText}
-                    // onChangeText={text => props.setFieldValue('password', text)}
+                    secureTextEntry
+                    value={newAccountInfo.confirmPassword || ""}
+                    onChangeText={(newValue) => handleTextChange("confirmPassword", newValue)}
                     placeholder='Confirm Password'
                     autoCapitalize={false}
                 />
@@ -87,19 +104,12 @@ const { navigation } = props
                 /> */}
                 {/* <Text style={styles.validationText}> {props.errors.password}</Text> */}
                 <Button
-                    // onPress={() => props.handleSubmit()}
+                    onPress={handleSubmit}
                     buttonStyle={styles.loginButton}
                     title='Create Account'
                     // title={props.authMode === 'login' ? 'Login' : 'Create Account'} 
                 />
-                    
-                <Button
-                    color='black'
-                    buttonStyle={styles.switchButton}
-                    // onPress={() => props.switchAuthMode()}
-                    title="CREATE"
-                    // title={props.authMode === 'login' ? 'Create an Account' : 'Already a member?'} 
-                />
+                
 
                 <GoogleSigninButton
                     style={{ width: 192, height: 48 }}
@@ -123,7 +133,9 @@ const { navigation } = props
   
   const styles = StyleSheet.create({
     header: {
-        marginBottom: 60
+        marginBottom: 20,
+        fontSize: 40,
+        fontWeight:"bold"
         },
     container: {
         flex: 1,
