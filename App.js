@@ -9,6 +9,7 @@ import HomePage from './src/pages/HomePage';
 import AuthScreen from './src/screens/AuthScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import LoadingScreen from './src/screens/LoadingScreen';
+import IndexScreen from "./src/screens/IndexScreen";
 
 const signOut = () => {
   firebase.auth().signOut()
@@ -18,7 +19,7 @@ const RootStack= createStackNavigator();
 const authStack= createStackNavigator();
 const functionalStack= createStackNavigator();
 
-  const authStackScreens=()=>(
+  const authStackScreens = ()=>
       <authStack.Navigator >
         <authStack.Screen name="Loading" component={LoadingScreen} />
         <authStack.Screen name="Auth" component={AuthScreen} options={
@@ -26,41 +27,37 @@ const functionalStack= createStackNavigator();
             headerTitle:'',
           }
         }/>
+        <authStack.Screen name="Index" component={IndexScreen} />
       </authStack.Navigator>
-  );
+  ;
 
-  const functionalStackScreens=()=>(
-      <functionalStack.Navigator screenOptions={{}}>
-        <functionalStack.Screen name="Home" component={HomePage}/>
-        {/* <functionalStack.Screen name="ToggleScreen" component={HomeScreen}/> */}
-      </functionalStack.Navigator>
-  );
+  // const functionalStackScreens=()=>(
+  //     <functionalStack.Navigator screenOptions={{}}>
+  //       <functionalStack.Screen name="Home" component={HomePage}/>
+  //       {/* <functionalStack.Screen name="ToggleScreen" component={HomeScreen}/> */}
+  //     </functionalStack.Navigator>
+  // );
     
-  const settingsStackScreens=()=>(
-      <Stack.Navigator>
-        <Stack.Screen name="PlaceHolder" component={functionalStack}/>
-        <Stack.Screen name="PlaceHolder" component={functionalStack}/>
-      </Stack.Navigator>
-  );
+  // const settingsStackScreens=()=>(
+  //     <Stack.Navigator>
+  //       <Stack.Screen name="PlaceHolder" component={functionalStack}/>
+  //       <Stack.Screen name="PlaceHolder" component={functionalStack}/>
+  //     </Stack.Navigator>
+  // );
   
-  const editStackScreens=()=>(
-      <Stack.Navigator>
-        <Stack.Screen name="PlaceHolder" component={functionalStack}/>
-        <Stack.Screen name="PlaceHolder" component={functionalStack}/>
-      </Stack.Navigator>
-  );
+  // const editStackScreens=()=>(
+  //     <Stack.Navigator>
+  //       <Stack.Screen name="PlaceHolder" component={functionalStack}/>
+  //       <Stack.Screen name="PlaceHolder" component={functionalStack}/>
+  //     </Stack.Navigator>
+  // );
           
   const options={};
               
-export default function App() {
+const  App = () => {
   return (
   <NavigationContainer>
-    <RootStack.Navigator screenOptions={
-      {
-        headerStyle:{
-          backgroundColor:"#30EA8A"
-        }
-      }}>
+    <RootStack.Navigator initialRouteName="Index">
       <RootStack.Screen name="Authentication" component={authStackScreens} options={
         {
           headerTitle:'',
@@ -79,9 +76,10 @@ export default function App() {
             />)
         }
       }/>
+      <RootStack.Screen name="Index" component={IndexScreen} options={{}}/>
     </RootStack.Navigator>
   </NavigationContainer>  
   );
 }
 
-// export default NavigationContainer(MyStack);
+export default App;
