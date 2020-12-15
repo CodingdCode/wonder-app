@@ -1,6 +1,10 @@
 import React, {useState} from "react";
 import {View, Text, StyleSheet, TouchableOpacity, TextInput, Button} from "react-native";
 import { PRIMARY_COLOR } from "../styles/constants"
+import {
+    GoogleSignin,
+    GoogleSigninButton
+  } from '@react-native-community/google-signin';
 
 const IndexScreen  = (props) => {
     const [email, setEmail] = useState("");
@@ -41,6 +45,13 @@ const IndexScreen  = (props) => {
 
 
         <TouchableOpacity onPress={handleLogin}><Text>Login</Text></TouchableOpacity>
+                        <GoogleSigninButton
+                    style={{ width: 192, height: 48 }}
+                    size={GoogleSigninButton.Size.Wide}
+                    color={GoogleSigninButton.Color.Dark} 
+                    onPress={()=> onGoogleButtonPress()}
+                    // disabled={this.state.isSigninInProgress} 
+                />
         <TouchableOpacity onPress={() => {navigation.navigate("signup")}}><Text>Sign up</Text></TouchableOpacity>
     </View>
 }
