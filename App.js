@@ -19,17 +19,16 @@ const RootStack= createStackNavigator();
 const authStack= createStackNavigator();
 const functionalStack= createStackNavigator();
 
-  const authStackScreens = ()=>
-      <authStack.Navigator >
-        <authStack.Screen name="Loading" component={LoadingScreen} />
-        <authStack.Screen name="Auth" component={AuthScreen} options={
-          {
-            headerTitle:'',
-          }
-        }/>
-        <authStack.Screen name="Index" component={IndexScreen} />
-      </authStack.Navigator>
-  ;
+  // const authStackScreens = ()=>
+  //     <authStack.Navigator >
+  //       {/* <authStack.Screen name="Loading" component={LoadingScreen} /> */}
+  //       <authStack.Screen name="Auth" component={AuthScreen} options={
+  //         {
+  //           headerTitle:'',
+  //         }
+  //       }/>
+  //     </authStack.Navigator>
+  // ;
 
   // const functionalStackScreens=()=>(
   //     <functionalStack.Navigator screenOptions={{}}>
@@ -58,9 +57,11 @@ const  App = () => {
   return (
   <NavigationContainer>
     <RootStack.Navigator initialRouteName="Index">
-      <RootStack.Screen name="Authentication" component={authStackScreens} options={
+      <RootStack.Screen name="Index" component={IndexScreen} options={{headerShown: false}}/>
+      <RootStack.Screen name="Authentication" component={AuthScreen} options={
         {
           headerTitle:'',
+          headerShown: false
         }}/>
       <RootStack.Screen name="App" component={HomePage} options={
         {
@@ -76,7 +77,6 @@ const  App = () => {
             />)
         }
       }/>
-      <RootStack.Screen name="Index" component={IndexScreen} options={{headerShown: false}}/>
     </RootStack.Navigator>
   </NavigationContainer>  
   );

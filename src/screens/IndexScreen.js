@@ -2,14 +2,15 @@ import React from "react";
 import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import { PRIMARY_COLOR } from "../styles/constants"
 
-const IndexScreen  = () => {
+const IndexScreen  = (props) => {
+    const {navigation} = props
     return <View style={styles.container}>
         <Text style={styles.textStyle}>Welcome Barista!</Text>
         <Text>We know only certain baristas can make your 
             perfect cup of coffee, so sign up, 
             follow your favorites, and know when to go!</Text>
         <TouchableOpacity><Text>Login</Text></TouchableOpacity>
-        <TouchableOpacity><Text>Sign up</Text></TouchableOpacity>
+        <TouchableOpacity onPress={() => {navigation.navigate("Authentication")}}><Text>Sign up</Text></TouchableOpacity>
     </View>
 }
 
