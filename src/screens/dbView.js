@@ -5,10 +5,10 @@ import { ListItem } from 'react-native-elements';
 import firestore from '@react-native-firebase/firestore';
 
 // const { width, height } = Dimensions.get('window')
-let AllDb=(()=>{
-    return(
-        <View>
-            {/* <ScrollView>
+let AllDb = () => {
+  return (
+    <View>
+      {/* <ScrollView>
                 {
                     x.map((l, i) => (
                         <ListItem
@@ -18,8 +18,8 @@ let AllDb=(()=>{
                     ))
                 }
             </ScrollView> */}
-        </View>
-    )
-});
+    </View>
+  );
+};
 
 // export default AllDb;

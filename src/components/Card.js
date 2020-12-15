@@ -1,9 +1,9 @@
-import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 
 export const Card = ({ children, style }) => (
   <View style={[styles.card, style]}>{children}</View>
-)
+);
 
 const styles = StyleSheet.create({
   card: {
@@ -15,9 +15,9 @@ const styles = StyleSheet.create({
     shadowOffset: {
       width: 0,
       height: 3,
-    }, 
-    shadowOpacity: 0.29, 
+    },
+    shadowOpacity: 0.29,
     shadowRadius: 4.65,
-    elevation: 7
-  }
-})
+    elevation: 7,
+  },
+});

@@ -1,5 +1,5 @@
-import React from 'react'
-import { ActivityIndicator, StyleSheet } from 'react-native'
+import React from 'react';
+import { ActivityIndicator, StyleSheet } from 'react-native';
 
 export const Spinner = ({ size }) => (
   <ActivityIndicator
@@ -7,12 +7,12 @@ export const Spinner = ({ size }) => (
     size={'large' || size}
     color={'#26a69a'}
   />
-)
+);
 
 const styles = StyleSheet.create({
   spinner: {
     alignSelf: 'center',
     position: 'absolute',
-    top: '40%'
-  }
-})
+    top: '40%',
+  },
+});
