@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button} from 'react-native';
 import 'react-native-gesture-handler';
+import Provider from "./src/redux/provider";
 import firebase from '@react-native-firebase/app';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -55,6 +56,7 @@ const functionalStack= createStackNavigator();
               
 const  App = () => {
   return (
+    <Provider>
   <NavigationContainer>
     <RootStack.Navigator initialRouteName="Index">
       <RootStack.Screen name="Index" component={IndexScreen} options={{headerShown: false}}/>
@@ -79,6 +81,7 @@ const  App = () => {
       }/>
     </RootStack.Navigator>
   </NavigationContainer>  
+  </Provider>
   );
 }
 

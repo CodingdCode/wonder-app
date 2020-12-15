@@ -6,12 +6,18 @@ import {
     GoogleSigninButton
   } from '@react-native-community/google-signin';
 
+  import { connect } from "react-redux";
+
 const IndexScreen  = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState(null);
 
     const {navigation} = props
+
+    
+    console.log("FROM REDUX (IndexScreen, Line 19) ->", props.word)
+
 
     const handleLogin = () => {
         setEmail("");
@@ -110,4 +116,7 @@ const IndexScreen  = (props) => {
         }
 });
 
-export default IndexScreen;
+const mapStateToProps = (state) => {
+  return { word: state.word };
+};
+export default connect(mapStateToProps)(IndexScreen);
