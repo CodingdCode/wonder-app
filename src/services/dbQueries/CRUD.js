@@ -1,16 +1,43 @@
 import React from 'react';
 import firestore from '@react-native-firebase/firestore';
+import {ListItem} from 'react-native-elements';
+import {FlatList, Text, View} from 'react-native';
 
-const usersDb=firestore().collection('users').get();
-const emailDb=[];
 
-usersDb.then(querySnapshot => {
-    querySnapshot.forEach(documentSnapshot => {
+getList=()=>{
+    const usersDb=firestore().collection('users').get();
+    usersDb.then(querySnapshot => {
+        const emailDb=[];
         
-        emailDb.push(documentSnapshot.data().email);
-    });
-});
+        querySnapshot.forEach(documentSnapshot => {
+            emailDb.push(documentSnapshot.data());
+        });
+        
+        return orderedList(emailDb);
+    })
+    .catch(err=>console.log(err));
+};
 
+
+
+orderedList=(arr)=>{
+    return (
+        <View>
+            {
+                arr.map((item, i) => (
+                    <ListItem key={i} bottomDivider>
+                        <ListItem.Content>
+                            <ListItem.Title>{item.email}</ListItem.Title>
+                        </ListItem.Content>
+                        <ListItem.Chevron />
+                    </ListItem>
+                ))
+            }
+        </View>
+    )
+};
+
+// CRUD operations starts below
 let create=(d)=>{
     
     activeUsers.add(d).then(documentReference => {
@@ -34,12 +61,9 @@ let readOne=(d)=>{
 
 let readAll=(d)=>{
 
-    if(emailDb.indexOf(d)===-1){
-        alert("ATTENTION, your account was not located. In order to interact, you'd have to create one");
-        return emailDb;
-    }else{
-        return emailDb;
-    }
+    return(
+        getList()
+    )
 };
 
 let update=(d,obj)=>{

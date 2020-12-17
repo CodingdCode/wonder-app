@@ -15,14 +15,26 @@ export const signUp = async ({ email, password, fullName }) => {
     console.log('sign up great success', email,fullName);
     const userCred = await firebase
         .auth()
-        .createUserWithEmailAndPassword(email, password)
+            .createUserWithEmailAndPassword(email, password)
         firestore()
             .collection('users')
-            .add({
-                email:`${email}`
+            .get()
+            .then(querySnapshot=>{
+                querySnapshot.forEach(documentSnapshot => {
+                    const db=documentSnapshot.data();
+                    if(db.email===email){
+                        return console.log('true');
+                    }else{
+                        firestore()
+                            .collection('users')
+                            .add({
+                                email:`${email}`
+                            })
+                            .then(()=>{console.log('User added!')})
+                            .catch(err=>{console.log(err)})
+                    }
+                })
             })
-        .then(()=>{console.log('User added!')})
-        .catch(err=>{console.log(err)});
 
     // return userCred;
 };

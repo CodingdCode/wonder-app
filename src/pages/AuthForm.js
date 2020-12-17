@@ -49,7 +49,7 @@ const AuthForm = (props) => {
             const { idToken } = await GoogleSignin.signIn();
 
             const currentUser = await GoogleSignin.getCurrentUser();
-            console.log(currentUser);
+
             // Create a Google credential with the token
             const googleCredential = auth.GoogleAuthProvider.credential(idToken);
         
@@ -57,9 +57,25 @@ const AuthForm = (props) => {
             auth()
             .signInWithCredential(googleCredential)
             .catch(err=>{console.log(err)})
-            firestore().collection('users').add({
-                email: `${currentUser.user.email}`
-            })
+            firestore()
+                .collection('users')
+                .get()
+                .then(querySnapshot=>{
+                    querySnapshot.forEach(documentSnapshot => {
+                        const db=documentSnapshot.data();
+
+                        // if(`${db.email}`===`${currentUser.user.email}`){
+                        //     return console.log('true');
+                        // }else{
+                        //     firestore()
+                        //     .collection('users')
+                        //     .add({
+                        //         email: `${currentUser.user.email}`
+                        //     })
+                        //     return console.log('User added!')
+                        // }
+                    })
+                })
             return console.log('True')
         }
 

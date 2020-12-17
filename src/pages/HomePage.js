@@ -65,7 +65,11 @@ export default class HomePage extends React.Component {
                         }}
                         pastScrollRange={3}
                         futureScrollRange={3}
-                        onDayPress={(day)=>{selectedDate=day}} 
+                        onDayPress={(day)=>{console.log(day)}}//=> {return(
+                        //     <View>
+                        //         {crud.readAll}
+                        //     </View>
+                        // )}} 
                         items={
                             {...itemsObj, ...pair}
                         }
@@ -76,13 +80,14 @@ export default class HomePage extends React.Component {
                            // console.log(selectedDate);
                             return (
                                 <View style={{alignItems:'center',backgroundColor:'white'}}>
-                                    <View>
+                                    {/* <View>
                                         <Text style={{fontSize:41}}>{moment(day.dateString).format('Do')}</Text>
                                         <Text style={{fontSize:20}}>{moment(day.dayString).format('MMM')}</Text>
                                     </View>
                                     <View>
                                         <EmptyDailyPlanner />
-                                    </View>
+                                    </View> */}
+                                    <View>{crud.readAll()}</View>
                                 </View>
                             );
                         }}
@@ -90,12 +95,13 @@ export default class HomePage extends React.Component {
                             return(
                                 <View>
                                     <View style={{alignItems:'center',backgroundColor:'white'}}>
-                                        <Text style={{fontSize:41}}>{moment(selectedDate.dateString).format('Do')}</Text>
-                                        <Text style={{fontSize:20}}>{moment(selectedDate.dateString).format('MMM')}</Text>
+                                        {/* <Text style={{fontSize:41}}>{moment(selectedDate.dateString).format('Do')}</Text>
+                                        <Text style={{fontSize:20}}>{moment(selectedDate.dateString).format('MMM')}</Text> */}
+                                        <View>{crud.readAll()}</View>
                                     </View>
-                                    <View>
+                                    {/* <View>
                                         <EmptyDailyPlanner />
-                                    </View>
+                                    </View> */}
                                 </View>
                             )
                         }}
