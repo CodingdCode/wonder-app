@@ -1,9 +1,9 @@
 import { LOGIN_USER } from '../types';
-import { signUpUser, login, signOut } from '../../services/ApiConfig';
+import { signUp, login, signOut } from '../../services/ApiConfig';
 
 export const registerUser = (navigation, data) => async (dispatch) => {
   try {
-    await signUpUser(data);
+    await signUp(data);
     navigation.navigate('Index');
   } catch (err) {
     console.log({ err });

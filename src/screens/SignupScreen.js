@@ -14,6 +14,11 @@ const SignupScreen = (props) => {
   const [errors, setErrors] = useState(null);
 
   const handleSubmit = () => {
+    const newUser = {
+      email: newAccountInfo.email,
+      password: newAccountInfo.password,
+      fullName: `${newAccountInfo.firstName} ${newAccountInfo.lastName}`,
+    };
     dispatch(registerUser(navigation, newAccountInfo));
     setNewAccountInfo({});
   };
