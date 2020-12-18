@@ -47,11 +47,14 @@ export const signUpUser = async ({ email, password, firstName, lastName }) => {
   return await firebase.auth().signOut();
 };
 
-export const signOut = (onSignedOut) => {
-  firebase
-    .auth()
-    .signOut()
-    .then(() => console.log('Signed Out Success'));
+export const signOut = async () => {
+  try {
+    await firebase.auth().signOut();
+    return true;
+  } catch (err) {
+    alert(err);
+    console.log(err);
+  }
 };
 
 export function updateAuth(authStateChanged) {

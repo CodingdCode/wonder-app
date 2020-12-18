@@ -1,142 +1,165 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Switch, Image } from 'react-native';
-import Center from '../components/Center';
+import React, { Component } from 'react';
+import {
+  View,
+  StyleSheet,
+  Text,
+  ImageBackground,
+  Dimensions,
+} from 'react-native';
+import { connect } from 'react-redux';
+import { Button, ListItem } from 'react-native-elements';
+import { Agenda } from 'react-native-calendars';
+import moment from 'moment';
+
+import crud from '../services/dbQueries/CRUD';
+
+// test environment
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import firebase from '@react-native-firebase/app';
-import { servicesArray } from '../assets/data';
-import Carousel from 'react-native-snap-carousel';
-import { Button } from '../components/Button';
-import { Spinner } from '../components/Spinner';
+import auth from '@react-native-firebase/auth';
 
-export default function HomeScreen() {
-  const [email, setEmail] = useState('');
-  const [isEnabled, setIsEnabled] = useState(false);
-  const [displayName, setdisplayName] = useState('');
-  const [index, setActiveIndex] = useState(0);
-  const [isLoading, setFinished] = useState(true);
+const { width, height } = Dimensions.get('window');
 
-  useEffect(() => {
-    console.log('this is the user', firebase.auth().currentUser);
-    const user = firebase.auth().currentUser;
-    const email = user.email;
-    const displayName = user.displayName;
-    setEmail(email);
-    setdisplayName(displayName);
-    setFinished(false);
-  }, [email, displayName]);
+import EmptyDailyPlanner from '../components/EmptyDailyPlanner';
+import ClientList from '../pages/ClientList';
+// import dbView from '../screens/dbView';
 
-  const signOut = () => {
-    firebase.auth().signOut();
-  };
+class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
 
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
-  // var baristaPic = require('../assets/coffee.png')
-  renderItem = ({ item, index }) => {
+    this.state = {
+      // name:this.props.route.params.client.email,
+      date: moment().format('YYYY-MM-DD'),
+      //itemsArr: //this.props.navigation.state.params.itemsArr
+    };
+  }
+
+  render() {
+    let { navigation, dispatch } = this.props;
+    let currDate = this.state.date;
+    let itemsArr = this.state.itemsArr;
+    var pair = {
+      [currDate]: [itemsArr],
+    };
+    let itemsObj = { [currDate]: [] };
+
+    let selectedDate;
+
     return (
-      <>
-        <View
-          style={{
-            backgroundColor: 'floralwhite',
-            borderRadius: 5,
-            height: 250,
-            padding: 50,
-            marginLeft: 25,
-            marginRight: 25,
-            marginTop: 25,
-          }}>
-          <Text>{item.name}</Text>
+      <View style={styles.container}>
+        <ImageBackground
+          source={require('../assets/homeCoffee.jpg')}
+          style={{ width: width, height: 200 }}>
+          <Text style={styles.imageText}>{this.state.name}</Text>
+        </ImageBackground>
+
+        <View style={styles.dateContainer}>
+          <Agenda
+            selected={currDate}
+            loadItemsForMonth={(month) => {
+              // This prop gets triggered during scrolling potential to drive up
+              // API cost
+              // console.log('API CALL PROBABLY SHOULD HAPPEN HERE TO COLLECT ALL DATA')
+            }}
+            pastScrollRange={3}
+            futureScrollRange={3}
+            onDayPress={(day) => {
+              selectedDate = day;
+            }}
+            items={{ ...itemsObj, ...pair }}
+            renderDay={(day, item) => {
+              // I dont like that ITEM written above is the entire arr(this.state.itermArr)
+              // hence why below we are iterating through state
+              // this prop assumes only to render one item per day....IS THIS THE BEST WAY???
+              // console.log(selectedDate);
+              return (
+                <View
+                  style={{ alignItems: 'center', backgroundColor: 'white' }}>
+                  <View>
+                    <Text style={{ fontSize: 41 }}>
+                      {moment(day.dateString).format('Do')}
+                    </Text>
+                    <Text style={{ fontSize: 20 }}>
+                      {moment(day.dayString).format('MMM')}
+                    </Text>
+                  </View>
+                  <View>
+                    <EmptyDailyPlanner />
+                  </View>
+                </View>
+              );
+            }}
+            renderEmptyData={() => {
+              return (
+                <View>
+                  <View
+                    style={{ alignItems: 'center', backgroundColor: 'white' }}>
+                    <Text style={{ fontSize: 41 }}>
+                      {moment(selectedDate.dateString).format('Do')}
+                    </Text>
+                    <Text style={{ fontSize: 20 }}>
+                      {moment(selectedDate.dateString).format('MMM')}
+                    </Text>
+                  </View>
+                  <View>
+                    <EmptyDailyPlanner />
+                  </View>
+                </View>
+              );
+            }}
+            theme={{
+              agendaDayTextColor: 'black',
+              agendaDayNumColor: 'green',
+              agendaTodayColor: 'red',
+              agendaKnobColor: 'blue',
+            }}
+            style={{}}
+          />
         </View>
-      </>
+      </View>
     );
-  };
-
-  renderHome = () => {
-    return (
-      <Center>
-        <Switch
-          style={styles.switchStyle}
-          trackColor={{ false: '#767577', true: '#81b0ff' }}
-          thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
-          ios_backgroundColor="#3e3e3e"
-          onValueChange={toggleSwitch}
-          value={isEnabled}
-        />
-        {isEnabled ? (
-          <>
-            <Text style={styles.title}>Services</Text>
-
-            <Carousel
-              layout={'stack'}
-              loop={true}
-              layoutCardOffset={18}
-              data={servicesArray}
-              sliderWidth={300}
-              itemWidth={300}
-              renderItem={renderItem}
-              lockScrollWhileSnapping={true}
-              onSnapToItem={(index) => setActiveIndex({ activeIndex: index })}
-            />
-          </>
-        ) : (
-          <View style={styles.UserCard}>
-            <Text style={styles.switchStyle}>Current User Email: {email}</Text>
-            <Text style={styles.switchStyle}>
-              Current Display Name: {displayName}
-            </Text>
-            <Button
-              style={styles.switchStyle}
-              onPress={signOut}
-              title={'Sign Out'}
-            />
-          </View>
-        )}
-      </Center>
-    );
-  };
-
-  renderView = () => {
-    if (isLoading) {
-      return <Spinner />;
-    } else {
-      return renderHome();
-    }
-  };
-
-  return renderView();
+  }
 }
+
 const styles = StyleSheet.create({
-  carouselImage: {
-    width: 50,
-    height: 50,
-  },
-  switchStyle: {
-    marginTop: 20,
-  },
-  title: {
-    fontSize: 40,
-    marginTop: 20,
-  },
-  UserCard: {
+  container: {
     flex: 1,
-    marginTop: 10,
-    backgroundColor: 'floralwhite',
-    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    alignSelf: 'stretch',
+  },
+  imageText: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: 'white',
+  },
+  dateSelector: {
+    width: '100%',
+    height: '5%',
+    backgroundColor: 'orange',
+  },
+  dateContainer: {
+    flex: 3,
+    backgroundColor: 'gray',
+    justifyContent: 'center',
+    width: '100%',
+  },
+  dateHeader: {
+    fontSize: 27,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginVertical: 4,
+  },
+  dateFooter: {
+    fontSize: 20,
+    textAlign: 'center',
+    marginVertical: 6,
   },
 });
 
-// LayoutAnimation.easeInEaseOut()
-// // console.log(displayName);
-// return (
-//     <Center>
-//         <Text>{email}</Text>
-//         <Text>{displayName}</Text>
-//         <TouchableOpacity onPress={signOut}>
-//             <Text>Sign Out</Text>
-//         </TouchableOpacity>
-//     </Center>
-// )
+const mapStateToProps = (state) => {
+  return { userInfo: state.userInfo };
+};
 
-// const styles = StyleSheet.create({})
+export default connect(mapStateToProps)(HomeScreen);

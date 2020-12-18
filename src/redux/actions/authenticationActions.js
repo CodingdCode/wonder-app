@@ -1,5 +1,5 @@
 import { LOGIN_USER } from '../types';
-import { signUpUser, login } from '../../services/ApiConfig';
+import { signUpUser, login, signOut } from '../../services/ApiConfig';
 
 export const registerUser = (navigation, data) => async (dispatch) => {
   try {
@@ -15,6 +15,15 @@ export const loginUser = (navigation, data) => async (dispatch) => {
     const userInfo = await login(data);
     dispatch({ type: LOGIN_USER, payload: userInfo });
     navigation.navigate('App');
+  } catch (err) {
+    console.log({ err });
+  }
+};
+
+export const signOutUser = (navigation) => async (dispatch) => {
+  try {
+    await signOut();
+    navigation.navigate('Index');
   } catch (err) {
     console.log({ err });
   }
