@@ -7,27 +7,30 @@ import {
   TextInput,
   Button,
 } from 'react-native';
+import { loginUser } from '../redux/actions/authenticationActions';
+import { connect } from 'react-redux';
 import { PRIMARY_COLOR } from '../styles/constants';
 import {
   GoogleSignin,
   GoogleSigninButton,
 } from '@react-native-community/google-signin';
 
-import { connect } from 'react-redux';
-
 const IndexScreen = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState(null);
 
-  const { navigation } = props;
+  const { navigation, dispatch } = props;
 
-  console.log('FROM REDUX (IndexScreen, Line 19) ->', props.word);
-
-  const handleLogin = () => {
-    setEmail('');
-    setPassword('');
-    alert('HANDLE LOGIN HERE');
+  const handleLogin = async () => {
+    try {
+      await dispatch(loginUser(navigation, { email, password }));
+      setEmail('');
+      setPassword('');
+    } catch (err) {
+      alert('ERROR');
+      console.log(err);
+    }
   };
 
   return (
@@ -43,7 +46,7 @@ const IndexScreen = (props) => {
         value={email}
         onChangeText={(newValue) => setEmail(newValue)}
         placeholder="Email"
-        autoCapitalize={false}
+        autoCapitalize={'none'}
       />
 
       {/* <Text style={styles.validationText}> {props.errors.email}</Text> */}
@@ -53,7 +56,7 @@ const IndexScreen = (props) => {
         value={password}
         onChangeText={(newValue) => setPassword(newValue)}
         placeholder="Password"
-        autoCapitalize={false}
+        autoCapitalize={'none'}
       />
 
       <TouchableOpacity onPress={handleLogin}>

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, Text, Button } from 'react-native';
+import { registerUser } from '../redux/actions/authenticationActions';
+import { connect } from 'react-redux';
 import {
   GoogleSignin,
   GoogleSigninButton,
@@ -7,20 +9,18 @@ import {
 // import AuthForm from '../pages/AuthForm'
 import { login, signUp, updateAuth } from '../services/ApiConfig';
 const SignupScreen = (props) => {
+  const { navigation, dispatch } = props;
   const [newAccountInfo, setNewAccountInfo] = useState({});
   const [errors, setErrors] = useState(null);
 
   const handleSubmit = () => {
-    alert('HANDLE SUBMIT HERE');
-    console.log(newAccountInfo);
+    dispatch(registerUser(navigation, newAccountInfo));
     setNewAccountInfo({});
   };
 
   const handleTextChange = (name, value) => {
     setNewAccountInfo((prevState) => ({ ...prevState, [name]: value }));
   };
-
-  const { navigation } = props;
 
   // componentDidMount() {
   //   updateAuth(this.onAuthStateChanged)
@@ -162,4 +162,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignupScreen;
+export default connect()(SignupScreen);

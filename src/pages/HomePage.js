@@ -6,6 +6,7 @@ import {
   ImageBackground,
   Dimensions,
 } from 'react-native';
+import { connect } from 'react-redux';
 import { Button, ListItem } from 'react-native-elements';
 import { Agenda } from 'react-native-calendars';
 import moment from 'moment';
@@ -23,7 +24,7 @@ import EmptyDailyPlanner from '../components/EmptyDailyPlanner';
 import ClientList from './ClientList';
 // import dbView from '../screens/dbView';
 
-export default class HomePage extends React.Component {
+class HomePage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -32,6 +33,10 @@ export default class HomePage extends React.Component {
       date: moment().format('YYYY-MM-DD'),
       //itemsArr: //this.props.navigation.state.params.itemsArr
     };
+  }
+
+  componentDidMount() {
+    console.log(this.props.userInfo);
   }
 
   render() {
@@ -159,3 +164,9 @@ const styles = StyleSheet.create({
     marginVertical: 6,
   },
 });
+
+const mapStateToProps = (state) => {
+  return { userInfo: state.userInfo };
+};
+
+export default connect(mapStateToProps)(HomePage);

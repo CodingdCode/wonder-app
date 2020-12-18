@@ -3,15 +3,17 @@ import '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import { NavigationEvents } from 'react-navigation';
 
-export const login = ({ email, password }) => {
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .then((value) => console.log(value))
-    .then(() => console.log('Sign In Success!'))
-    .catch((err) => {
-      alert("Are you a member? Something doesn't seem to add up");
-    });
+export const login = async ({ email, password }) => {
+  try {
+    const userInfo = await firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then((userData) => userData);
+    return userInfo;
+  } catch (err) {
+    alert("Are you a member? Something doesn't seem to add up");
+    return err;
+  }
 };
 
 export const signUp = async ({ email, password, fullName }) => {
