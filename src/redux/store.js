@@ -7,7 +7,7 @@ const middleware = [thunk];
 const composeEnhancer = compose;
 
 const reducers = combineReducers({
-  userInfo: authenticationReducers,
+  authenticatedUser: authenticationReducers,
 });
 
 const Store = createStore(
