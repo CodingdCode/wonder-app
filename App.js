@@ -5,12 +5,19 @@ import Provider from './src/redux/provider';
 import firebase from '@react-native-firebase/app';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import HomePage from './src/pages/HomePage';
 import SignupScreen from './src/screens/SignupScreen';
-import HomeScreen from './src/screens/HomeScreen';
 import LoadingScreen from './src/screens/LoadingScreen';
 import IndexScreen from './src/screens/IndexScreen';
+
+// tabs
+import HomeScreen from './src/screens/HomeScreen';
+import NotesScreen from './src/screens/NotesScreen';
+import ProfileScreen from './src/screens/ProfileScreen';
+import SearchScreen from './src/screens/SearchScreen';
+
 import { signOutUser } from './src/redux/actions/authenticationActions';
 
 const signOut = () => {
@@ -20,6 +27,7 @@ const signOut = () => {
 const RootStack = createStackNavigator();
 const authStack = createStackNavigator();
 const functionalStack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 // const authStackScreens = ()=>
 //     <authStack.Navigator >
@@ -55,6 +63,17 @@ const functionalStack = createStackNavigator();
 
 const options = {};
 
+const HomeScreenTabs = () => {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Search" component={SearchScreen} />
+      <Tab.Screen name="Notes" component={NotesScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
+    </Tab.Navigator>
+  );
+};
+
 const App = () => {
   return (
     <Provider>
@@ -75,7 +94,7 @@ const App = () => {
           />
           <RootStack.Screen
             name="App"
-            component={HomeScreen}
+            children={HomeScreenTabs}
             options={(props) => ({
               headerRight: () => (
                 <Button
