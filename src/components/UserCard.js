@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const ProfileCard = () => {
+const UserCard = () => {
   return (
     <View style={styles.debuggerBorder}>
       <Text>Profile Card</Text>
@@ -16,4 +16,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfileCard;
+export default UserCard;
