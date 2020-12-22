@@ -6,6 +6,7 @@ import firebase from '@react-native-firebase/app';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { PRIMARY_COLOR, COLOR_BLACK } from './src/styles/constants';
 
 import HomePage from './src/pages/HomePage';
 import SignupScreen from './src/screens/SignupScreen';
@@ -72,33 +73,65 @@ const HomeScreenTabs = () => {
     <Tab.Navigator
       tabBarOptions={{
         showLabel: false,
+        activeTintColor: PRIMARY_COLOR,
+        inactiveTintColor: COLOR_BLACK,
       }}>
       <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarIcon: () => <Ionicons name="home-outline" size={30} />,
+          tabBarIcon: ({ focused, color, size }) => {
+            return (
+              <Ionicons
+                focused={focused}
+                color={color}
+                name="home-outline"
+                size={size}
+              />
+            );
+          },
         }}
       />
       <Tab.Screen
         name="Search"
         component={SearchScreen}
         options={{
-          tabBarIcon: () => <Ionicons name="search-outline" size={30} />,
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons
+              focused={focused}
+              color={color}
+              name="search-outline"
+              size={size}
+            />
+          ),
         }}
       />
       <Tab.Screen
         name="Notes"
         component={NotesScreen}
         options={{
-          tabBarIcon: () => <FontAwesome name="sticky-note-o" size={30} />,
+          tabBarIcon: ({ focused, color, size }) => (
+            <FontAwesome
+              focused={focused}
+              color={color}
+              name="sticky-note-o"
+              size={size}
+            />
+          ),
         }}
       />
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}
         options={{
-          tabBarIcon: () => <FontAwesome name="user-o" size={30} />,
+          tabBarIcon: ({ focused, color, size }) => (
+            <FontAwesome
+              focused={focused}
+              color={color}
+              name="user-o"
+              size={size}
+            />
+          ),
         }}
       />
     </Tab.Navigator>
