@@ -70,8 +70,8 @@ const options = {};
 const HomeScreenTabs = () => {
   return (
     <Tab.Navigator
-      options={{
-        tabBarLabel: false,
+      tabBarOptions={{
+        showLabel: false,
       }}>
       <Tab.Screen
         name="Home"
