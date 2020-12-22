@@ -30,7 +30,7 @@ const TEST_DATA = [
     name: 'Ervin Howell',
     username: 'Antonette',
     email: 'Shanna@melissa.tv',
-    isFave: false,
+    isFave: true,
     imageURL:
       'https://www.hhcenter.org/wp-content/uploads/2017/02/person-placeholder.jpg',
     address: {
@@ -56,7 +56,7 @@ const TEST_DATA = [
     name: 'Clementine Bauch',
     username: 'Samantha',
     email: 'Nathan@yesenia.net',
-    isFave: false,
+    isFave: true,
     imageURL:
       'https://www.hhcenter.org/wp-content/uploads/2017/02/person-placeholder.jpg',
     address: {
@@ -160,7 +160,7 @@ const TEST_DATA = [
     name: 'Kurtis Weissnat',
     username: 'Elwyn.Skiles',
     email: 'Telly.Hoeger@billy.biz',
-    isFave: false,
+    isFave: true,
     imageURL:
       'https://www.hhcenter.org/wp-content/uploads/2017/02/person-placeholder.jpg',
     address: {
@@ -212,7 +212,7 @@ const TEST_DATA = [
     name: 'Glenna Reichert',
     username: 'Delphine',
     email: 'Chaim_McDermott@dana.io',
-    isFave: false,
+    isFave: true,
     imageURL:
       'https://www.hhcenter.org/wp-content/uploads/2017/02/person-placeholder.jpg',
     address: {
