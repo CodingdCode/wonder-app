@@ -18,6 +18,10 @@ import NotesScreen from './src/screens/NotesScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import SearchScreen from './src/screens/SearchScreen';
 
+// icons
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 import { signOutUser } from './src/redux/actions/authenticationActions';
 
 const signOut = () => {
@@ -65,11 +69,38 @@ const options = {};
 
 const HomeScreenTabs = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Search" component={SearchScreen} />
-      <Tab.Screen name="Notes" component={NotesScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+    <Tab.Navigator
+      options={{
+        tabBarLabel: false,
+      }}>
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: () => <Ionicons name="home-outline" size={30} />,
+        }}
+      />
+      <Tab.Screen
+        name="Search"
+        component={SearchScreen}
+        options={{
+          tabBarIcon: () => <Ionicons name="search-outline" size={30} />,
+        }}
+      />
+      <Tab.Screen
+        name="Notes"
+        component={NotesScreen}
+        options={{
+          tabBarIcon: () => <FontAwesome name="sticky-note-o" size={30} />,
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          tabBarIcon: () => <FontAwesome name="user-o" size={30} />,
+        }}
+      />
     </Tab.Navigator>
   );
 };
