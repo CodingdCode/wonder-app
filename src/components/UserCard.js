@@ -10,24 +10,30 @@ import {
 const UserCard = (props) => {
   const { name, company, isFave, imageURL } = props.userInfo;
   return (
-    <View style={styles.userCard}>
-      <View
-        style={[styles.profilePictureContainer, styles.parallelogramContainer]}>
-        <ImageBackground
-          source={{ uri: imageURL }}
-          style={styles.profilePicture}
-        />
-      </View>
-      <View style={[styles.userInfoContainer, styles.parallelogramContainer]}>
-        <View style={styles.userInfoContainer}>
-          <Text>{name}</Text>
-          <Text>{company.name}</Text>
-          <TouchableOpacity>
-            <Text>{isFave ? 'FAVED' : 'fave'}</Text>
-          </TouchableOpacity>
+    <TouchableOpacity onPress={() => console.log('CARD WAS PRESSED')}>
+      <View style={styles.userCard}>
+        <View
+          style={[
+            styles.profilePictureContainer,
+            styles.parallelogramContainer,
+          ]}>
+          <ImageBackground
+            source={{ uri: imageURL }}
+            style={styles.profilePicture}
+          />
+        </View>
+        <View style={[styles.userInfoContainer, styles.parallelogramContainer]}>
+          <View style={styles.userInfoContainer}>
+            <Text>{name}</Text>
+            <Text>{company.name}</Text>
+            <TouchableOpacity
+              onPress={() => console.log('FAVE BUTTON WAS PRESSED')}>
+              <Text>{isFave ? 'FAVED' : 'fave'}</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
