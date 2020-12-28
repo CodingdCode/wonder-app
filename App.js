@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-native';
+import { Button, Text } from 'react-native';
 import 'react-native-gesture-handler';
 import Provider from './src/redux/provider';
 import firebase from '@react-native-firebase/app';
@@ -7,6 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { PRIMARY_COLOR, COLOR_BLACK } from './src/styles/constants';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 import HomePage from './src/pages/HomePage';
 import SignupScreen from './src/screens/SignupScreen';
@@ -167,12 +168,31 @@ const App = () => {
                   title="Sign Out"
                 />
               ),
-              headerLeft: () => (
-                <Button
-                  onPress={() =>
-                    alert("Don't click this area I'm trying to do away with it")
-                  }
-                  title=""
+              headerLeft: null,
+              title: (
+                <DropDownPicker
+                  items={[
+                    {
+                      label: 'USA',
+                      value: 'usa',
+                    },
+                    {
+                      label: 'UK',
+                      value: 'uk',
+                    },
+                    {
+                      label: 'France',
+                      value: 'france',
+                    },
+                  ]}
+                  defaultValue="usa"
+                  containerStyle={{ height: 50, width: 100 }}
+                  style={{ backgroundColor: '#fafafa' }}
+                  itemStyle={{
+                    justifyContent: 'center',
+                  }}
+                  dropDownStyle={{ backgroundColor: 'red', zIndex: 1000 }}
+                  onChangeItem={(item) => console.log(item)}
                 />
               ),
             })}
