@@ -12,6 +12,7 @@ import HomePage from './src/pages/HomePage';
 import SignupScreen from './src/screens/SignupScreen';
 import LoadingScreen from './src/screens/LoadingScreen';
 import IndexScreen from './src/screens/IndexScreen';
+import UserProfileScreen from './src/screens/UserProfileScreen';
 
 // tabs
 import HomeScreen from './src/screens/HomeScreen';
@@ -176,6 +177,7 @@ const App = () => {
               ),
             })}
           />
+          <RootStack.Screen name="UserProfile" children={UserProfileScreen} />
         </RootStack.Navigator>
       </NavigationContainer>
     </Provider>

@@ -5,7 +5,7 @@ import UserCard from '../components/UserCard';
 
 const HomeScreen = (props) => {
   const userCardMarkup = props.usersList.map((user) => (
-    <UserCard key={user.email} userInfo={user} />
+    <UserCard key={user.email} userInfo={user} navigation={props.navigation} />
   ));
   return (
     <View style={styles.center}>

@@ -11,7 +11,10 @@ import { PRIMARY_COLOR, SECONDARY_COLOR } from '../styles/constants';
 const UserCard = (props) => {
   const { name, company, isFave, imageURL } = props.userInfo;
   return (
-    <TouchableOpacity onPress={() => console.log('CARD WAS PRESSED')}>
+    <TouchableOpacity
+      onPress={() =>
+        props.navigation.navigate('UserProfile', { userInfo: props.userInfo })
+      }>
       <View style={styles.userCard}>
         <View
           style={[
