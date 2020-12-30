@@ -76,7 +76,7 @@ const SignupScreen = (props) => {
         value={newAccountInfo.email || ''}
         onChangeText={(newValue) => handleTextChange('email', newValue)}
         placeholder="Email"
-        autoCapitalize={false}
+        // autoCapitalize={false}
       />
 
       {/* <Text style={styles.validationText}> {props.errors.email}</Text> */}

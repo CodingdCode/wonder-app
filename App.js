@@ -2,15 +2,12 @@ import React from 'react';
 import { Button, Text, TextInput } from 'react-native';
 import 'react-native-gesture-handler';
 import Provider from './src/redux/provider';
-import firebase from '@react-native-firebase/app';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { PRIMARY_COLOR, COLOR_BLACK } from './src/styles/constants';
 
-import HomePage from './src/pages/HomePage';
 import SignupScreen from './src/screens/SignupScreen';
-import LoadingScreen from './src/screens/LoadingScreen';
 import IndexScreen from './src/screens/IndexScreen';
 import UserProfileScreen from './src/screens/UserProfileScreen';
 
@@ -91,6 +88,7 @@ const notesStackScreens = () => {
     </Stack.Navigator>
   );
 };
+
 const profileStackScreens = () => {
   return (
     <Stack.Navigator>
@@ -191,7 +189,6 @@ const App = () => {
             name="signup"
             component={SignupScreen}
             options={{
-              headerTitle: '',
               headerShown: false,
             }}
           />
