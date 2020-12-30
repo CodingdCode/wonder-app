@@ -32,6 +32,7 @@ const signOut = () => {
 };
 
 const RootStack = createStackNavigator();
+const Stack = createStackNavigator();
 const authStack = createStackNavigator();
 const functionalStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -61,16 +62,99 @@ const Tab = createBottomTabNavigator();
 //     </Stack.Navigator>
 // );
 
-// const editStackScreens=()=>(
-//     <Stack.Navigator>
-//       <Stack.Screen name="PlaceHolder" component={functionalStack}/>
-//       <Stack.Screen name="PlaceHolder" component={functionalStack}/>
-//     </Stack.Navigator>
-// );
+const homeStackScreens = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="App"
+        component={HomeScreen}
+        options={(props) => ({
+          headerRight: () => (
+            <Button
+              onPress={() => signOutUser(props.navigation)()}
+              title="Sign Out"
+            />
+          ),
+          headerLeft: null,
+          headerTitle: () => (
+            <DropDownPicker
+              items={[
+                {
+                  label: 'USA',
+                  value: 'usa',
+                },
+                {
+                  label: 'UK',
+                  value: 'uk',
+                },
+                {
+                  label: 'France',
+                  value: 'france',
+                },
+              ]}
+              defaultValue="usa"
+              containerStyle={{ height: 50, width: 100 }}
+              style={{ backgroundColor: '#fafafa' }}
+              itemStyle={{
+                justifyContent: 'center',
+              }}
+              onChangeItem={(item) => console.log(item)}
+            />
+          ),
+        })}
+      />
+    </Stack.Navigator>
+  );
+};
 
-const options = {};
+const searchStackScreens = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Search"
+        component={SearchScreen}
+        options={(props) => ({
+          headerRight: null,
+          headerLeft: null,
+          headerTitle: <Text>SEARCH</Text>,
+        })}
+      />
+    </Stack.Navigator>
+  );
+};
 
-const HomeScreenTabs = () => {
+const notesStackScreens = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Notes"
+        component={NotesScreen}
+        options={(props) => ({
+          headerRight: null,
+          headerLeft: null,
+          headerTitle: <Text>NOTES</Text>,
+        })}
+      />
+    </Stack.Navigator>
+  );
+};
+const profileStackScreens = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={(props) => ({
+          headerRight: null,
+          headerLeft: null,
+          headerTitle: <Text>PROFILE</Text>,
+        })}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const AppNav = () => {
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -80,7 +164,7 @@ const HomeScreenTabs = () => {
       }}>
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={homeStackScreens}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
             return (
@@ -96,7 +180,7 @@ const HomeScreenTabs = () => {
       />
       <Tab.Screen
         name="Search"
-        component={SearchScreen}
+        component={searchStackScreens}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons
@@ -110,7 +194,7 @@ const HomeScreenTabs = () => {
       />
       <Tab.Screen
         name="Notes"
-        component={NotesScreen}
+        component={notesStackScreens}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <FontAwesome
@@ -124,7 +208,7 @@ const HomeScreenTabs = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={ProfileScreen}
+        component={profileStackScreens}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <FontAwesome
@@ -160,41 +244,8 @@ const App = () => {
           />
           <RootStack.Screen
             name="App"
-            children={HomeScreenTabs}
-            options={(props) => ({
-              headerRight: () => (
-                <Button
-                  onPress={() => signOutUser(props.navigation)()}
-                  title="Sign Out"
-                />
-              ),
-              headerLeft: null,
-              headerTitle: () => (
-                <DropDownPicker
-                  items={[
-                    {
-                      label: 'USA',
-                      value: 'usa',
-                    },
-                    {
-                      label: 'UK',
-                      value: 'uk',
-                    },
-                    {
-                      label: 'France',
-                      value: 'france',
-                    },
-                  ]}
-                  defaultValue="usa"
-                  containerStyle={{ height: 50, width: 100 }}
-                  style={{ backgroundColor: '#fafafa' }}
-                  itemStyle={{
-                    justifyContent: 'center',
-                  }}
-                  onChangeItem={(item) => console.log(item)}
-                />
-              ),
-            })}
+            children={AppNav}
+            options={{ headerShown: false }}
           />
           <RootStack.Screen name="UserProfile" children={UserProfileScreen} />
         </RootStack.Navigator>
