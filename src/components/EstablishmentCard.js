@@ -6,7 +6,7 @@ const EstablishmentCard = (props) => {
     <TouchableOpacity
       onPress={() =>
         props.navigation.navigate('EstablishmentScreen', {
-          establishmentInfo: props.establishmentInfo,
+          name: 'UPDATE ME WITH REAL DATA',
         })
       }>
       <View style={styles.card}>

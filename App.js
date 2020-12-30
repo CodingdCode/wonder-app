@@ -51,13 +51,12 @@ const homeStackScreens = () => {
       <Stack.Screen
         name="UserProfile"
         component={UserProfileScreen}
-        options={(props) => ({
-          headerRight: null,
-          headerTitle: (props) => {
-            console.log(props);
-            return <Text>hello</Text>;
-          },
-        })}
+        options={(props) => {
+          return {
+            headerRight: null,
+            headerTitle: () => <Text>{props.route.params.userInfo.name}</Text>,
+          };
+        }}
       />
     </Stack.Navigator>
   );
@@ -84,9 +83,9 @@ const searchStackScreens = () => {
       <Stack.Screen
         name="EstablishmentScreen"
         component={EstablishmentScreen}
-        options={() => ({
+        options={(props) => ({
           headerRight: null,
-          headerTitle: null,
+          headerTitle: () => <Text>{props.route.params.name}</Text>,
         })}
       />
     </Stack.Navigator>
@@ -217,7 +216,6 @@ const App = () => {
             children={AppNav}
             options={{ headerShown: false }}
           />
-          <RootStack.Screen name="UserProfile" children={UserProfileScreen} />
         </RootStack.Navigator>
       </NavigationContainer>
     </Provider>

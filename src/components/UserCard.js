@@ -12,9 +12,10 @@ const UserCard = (props) => {
   const { name, company, isFave, imageURL } = props.userInfo;
   return (
     <TouchableOpacity
-      onPress={() =>
-        props.navigation.navigate('UserProfile', { userInfo: props.userInfo })
-      }>
+      onPress={() => {
+        props.navigation.navigate('UserProfile', { userInfo: props.userInfo });
+        props.navigation.setParams({ profileName: name });
+      }}>
       <View style={styles.userCard}>
         <View
           style={[
