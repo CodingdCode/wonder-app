@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Text } from 'react-native';
+import { Button, Text, TextInput } from 'react-native';
 import 'react-native-gesture-handler';
 import Provider from './src/redux/provider';
 import firebase from '@react-native-firebase/app';
@@ -33,34 +33,7 @@ const signOut = () => {
 
 const RootStack = createStackNavigator();
 const Stack = createStackNavigator();
-const authStack = createStackNavigator();
-const functionalStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
-// const authStackScreens = ()=>
-//     <authStack.Navigator >
-//       {/* <authStack.Screen name="Loading" component={LoadingScreen} /> */}
-//       <authStack.Screen name="Auth" component={AuthScreen} options={
-//         {
-//           headerTitle:'',
-//         }
-//       }/>
-//     </authStack.Navigator>
-// ;
-
-// const functionalStackScreens=()=>(
-//     <functionalStack.Navigator screenOptions={{}}>
-//       <functionalStack.Screen name="Home" component={HomePage}/>
-//       {/* <functionalStack.Screen name="ToggleScreen" component={HomeScreen}/> */}
-//     </functionalStack.Navigator>
-// );
-
-// const settingsStackScreens=()=>(
-//     <Stack.Navigator>
-//       <Stack.Screen name="PlaceHolder" component={functionalStack}/>
-//       <Stack.Screen name="PlaceHolder" component={functionalStack}/>
-//     </Stack.Navigator>
-// );
 
 const homeStackScreens = () => {
   return (
@@ -116,7 +89,13 @@ const searchStackScreens = () => {
         options={(props) => ({
           headerRight: null,
           headerLeft: null,
-          headerTitle: <Text>SEARCH</Text>,
+          headerTitle: () => (
+            <TextInput
+              style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+              onChangeText={(text) => console.log(text)}
+              placeholder="Search Cofee Shop near me..."
+            />
+          ),
         })}
       />
     </Stack.Navigator>
