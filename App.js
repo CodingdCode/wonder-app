@@ -7,7 +7,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { PRIMARY_COLOR, COLOR_BLACK } from './src/styles/constants';
-import DropDownPicker from 'react-native-dropdown-picker';
 
 import HomePage from './src/pages/HomePage';
 import SignupScreen from './src/screens/SignupScreen';
@@ -27,9 +26,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import { signOutUser } from './src/redux/actions/authenticationActions';
 
-const signOut = () => {
-  firebase.auth().signOut();
-};
+// components
+import DropdownHeaderMenu from './src/components/DropdownHeaderMenu';
 
 const RootStack = createStackNavigator();
 const Stack = createStackNavigator();
@@ -49,31 +47,7 @@ const homeStackScreens = () => {
             />
           ),
           headerLeft: null,
-          headerTitle: () => (
-            <DropDownPicker
-              items={[
-                {
-                  label: 'USA',
-                  value: 'usa',
-                },
-                {
-                  label: 'UK',
-                  value: 'uk',
-                },
-                {
-                  label: 'France',
-                  value: 'france',
-                },
-              ]}
-              defaultValue="usa"
-              containerStyle={{ height: 50, width: 100 }}
-              style={{ backgroundColor: '#fafafa' }}
-              itemStyle={{
-                justifyContent: 'center',
-              }}
-              onChangeItem={(item) => console.log(item)}
-            />
-          ),
+          headerTitle: () => <DropdownHeaderMenu />,
         })}
       />
     </Stack.Navigator>
@@ -222,7 +196,7 @@ const App = () => {
             }}
           />
           <RootStack.Screen
-            name="App"
+            name="Home"
             children={AppNav}
             options={{ headerShown: false }}
           />
