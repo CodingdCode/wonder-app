@@ -169,7 +169,7 @@ const App = () => {
                 />
               ),
               headerLeft: null,
-              title: (
+              headerTitle: () => (
                 <DropDownPicker
                   items={[
                     {
@@ -191,7 +191,6 @@ const App = () => {
                   itemStyle={{
                     justifyContent: 'center',
                   }}
-                  dropDownStyle={{ backgroundColor: 'red', zIndex: 1000 }}
                   onChangeItem={(item) => console.log(item)}
                 />
               ),
