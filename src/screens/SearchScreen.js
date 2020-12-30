@@ -1,10 +1,29 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView, Text } from 'react-native';
+import EstablishmentCard from '../components/EstablishmentCard';
 
-const SearchScreen = () => {
+const SearchScreen = (props) => {
+  // const establishmentCardMarkup = props.usersList.map((user) => (
+  //   <UserCard
+  //     key={user.email}
+  //     userInfo={user}
+  //     navigation={props.navigation}
+  //   />
+  // ));
+
+  const establishmentCardMarkup = [
+    <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
+    <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
+    <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
+    <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
+    <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
+    <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
+    <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
+    <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
+  ];
   return (
     <View style={styles.center}>
-      <Text>SearchScreen</Text>
+      <ScrollView>{establishmentCardMarkup}</ScrollView>
     </View>
   );
 };
@@ -12,8 +31,6 @@ const SearchScreen = () => {
 const styles = StyleSheet.create({
   center: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
 

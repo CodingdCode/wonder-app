@@ -1,15 +1,38 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const EstablishmentCard = () => {
+const EstablishmentCard = (props) => {
   return (
-    <View>
-      <Text>ESTABLISHMENT CARD</Text>
-      <Text>Rating</Text>
-      <Text>Address</Text>
-      <Text>Open Now</Text>
-    </View>
+    <TouchableOpacity
+      onPress={() =>
+        props.navigation.navigate('EstablishmentScreen', {
+          establishmentInfo: props.establishmentInfo,
+        })
+      }>
+      <View style={styles.card}>
+        <Text>ESTABLISHMENT NAME</Text>
+        <Text>Rating</Text>
+        <Text>Address</Text>
+        <Text>isOpen</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
+
+const styles = StyleSheet.create({
+  center: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  card: {
+    borderColor: 'red',
+    borderWidth: 2,
+    marginBottom: 5,
+    backgroundColor: 'rgba(30,30,30,0.4)',
+    flexDirection: 'column',
+    width: '100%',
+  },
+});
 
 export default EstablishmentCard;

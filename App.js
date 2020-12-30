@@ -25,6 +25,7 @@ import { signOutUser } from './src/redux/actions/authenticationActions';
 
 // components
 import DropdownHeaderMenu from './src/components/DropdownHeaderMenu';
+import EstablishmentScreen from './src/screens/EstablishmentScreen';
 
 const RootStack = createStackNavigator();
 const Stack = createStackNavigator();
@@ -47,6 +48,17 @@ const homeStackScreens = () => {
           headerTitle: () => <DropdownHeaderMenu />,
         })}
       />
+      <Stack.Screen
+        name="UserProfile"
+        component={UserProfileScreen}
+        options={(props) => ({
+          headerRight: null,
+          headerTitle: (props) => {
+            console.log(props);
+            return <Text>hello</Text>;
+          },
+        })}
+      />
     </Stack.Navigator>
   );
 };
@@ -67,6 +79,14 @@ const searchStackScreens = () => {
               placeholder="Search Cofee Shop near me..."
             />
           ),
+        })}
+      />
+      <Stack.Screen
+        name="EstablishmentScreen"
+        component={EstablishmentScreen}
+        options={() => ({
+          headerRight: null,
+          headerTitle: null,
         })}
       />
     </Stack.Navigator>

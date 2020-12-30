@@ -1,10 +1,10 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-const EstablishmentScreen = () => {
+const EstablishmentScreen = (props) => {
   return (
     <View style={styles.center}>
-      <Text>Establishment Info here</Text>
+      <Text>SHOW ESTABLISHMENT INFO HERE</Text>
     </View>
   );
 };
