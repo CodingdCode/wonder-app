@@ -120,7 +120,11 @@ const profileStackScreens = () => {
           headerRight: () => (
             <TouchableOpacity
               onPress={() => props.navigation.navigate('ProfileSettings')}>
-              <Text>Settings</Text>
+              <FontAwesome
+                name="gear"
+                size={24}
+                style={{ marginHorizontal: 10 }}
+              />
             </TouchableOpacity>
           ),
           headerLeft: null,
