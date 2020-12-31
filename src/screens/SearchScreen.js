@@ -1,26 +1,29 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView, Text } from 'react-native';
 import EstablishmentCard from '../components/EstablishmentCard';
+import { connect } from 'react-redux';
 
 const SearchScreen = (props) => {
-  // const establishmentCardMarkup = props.usersList.map((user) => (
-  //   <UserCard
-  //     key={user.email}
-  //     userInfo={user}
-  //     navigation={props.navigation}
-  //   />
-  // ));
+  const establishmentCardMarkup = props.establishmentsList.map(
+    (establishment) => (
+      <EstablishmentCard
+        key={establishment.id}
+        data={establishment}
+        navigation={props.navigation}
+      />
+    ),
+  );
 
-  const establishmentCardMarkup = [
-    <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
-    <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
-    <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
-    <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
-    <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
-    <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
-    <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
-    <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
-  ];
+  // const establishmentCardMarkup = [
+  //   <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
+  //   <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
+  //   <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
+  //   <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
+  //   <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
+  //   <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
+  //   <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
+  //   <EstablishmentCard establishmentInfo={''} navigation={props.navigation} />,
+  // ];
   return (
     <View style={styles.center}>
       <ScrollView>{establishmentCardMarkup}</ScrollView>
@@ -34,4 +37,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SearchScreen;
+const mapStateToProps = (state) => {
+  return {
+    establishmentsList: state.establishmentsList,
+  };
+};
+
+export default connect(mapStateToProps)(SearchScreen);

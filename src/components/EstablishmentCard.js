@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const EstablishmentCard = (props) => {
+  const { name, city, isOpen, rating } = props.data;
   return (
     <TouchableOpacity
       onPress={() =>
@@ -10,10 +11,10 @@ const EstablishmentCard = (props) => {
         })
       }>
       <View style={styles.card}>
-        <Text>ESTABLISHMENT NAME</Text>
-        <Text>Rating</Text>
-        <Text>Address</Text>
-        <Text>isOpen</Text>
+        <Text>{name}</Text>
+        <Text>{rating}</Text>
+        <Text>{city}</Text>
+        <Text>{isOpen ? 'OPEN' : 'CLOSED'}</Text>
       </View>
     </TouchableOpacity>
   );
