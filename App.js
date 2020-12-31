@@ -26,6 +26,8 @@ import { signOutUser } from './src/redux/actions/authenticationActions';
 // components
 import DropdownHeaderMenu from './src/components/DropdownHeaderMenu';
 import EstablishmentScreen from './src/screens/EstablishmentScreen';
+import ProfileSettingsScreen from './src/screens/ProfileSettingsScreen';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const RootStack = createStackNavigator();
 const Stack = createStackNavigator();
@@ -115,9 +117,22 @@ const profileStackScreens = () => {
         name="Profile"
         component={ProfileScreen}
         options={(props) => ({
-          headerRight: null,
+          headerRight: () => (
+            <TouchableOpacity
+              onPress={() => props.navigation.navigate('ProfileSettings')}>
+              <Text>Settings</Text>
+            </TouchableOpacity>
+          ),
           headerLeft: null,
           headerTitle: <Text>PROFILE</Text>,
+        })}
+      />
+      <Stack.Screen
+        name="ProfileSettings"
+        component={ProfileSettingsScreen}
+        options={(props) => ({
+          headerRight: null,
+          headerTitle: <Text>PROFILE SETTINGS</Text>,
         })}
       />
     </Stack.Navigator>
