@@ -14,7 +14,6 @@ const UserCard = (props) => {
     <TouchableOpacity
       onPress={() => {
         props.navigation.navigate('UserProfile', { userInfo: props.userInfo });
-        props.navigation.setParams({ profileName: name });
       }}>
       <View style={styles.userCard}>
         <View

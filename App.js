@@ -124,7 +124,6 @@ const profileStackScreens = () => {
             </TouchableOpacity>
           ),
           headerLeft: null,
-          headerTitle: <Text>PROFILE</Text>,
         })}
       />
       <Stack.Screen
@@ -132,14 +131,13 @@ const profileStackScreens = () => {
         component={ProfileSettingsScreen}
         options={(props) => ({
           headerRight: null,
-          headerTitle: <Text>PROFILE SETTINGS</Text>,
         })}
       />
     </Stack.Navigator>
   );
 };
 
-const AppNav = () => {
+const AppTabScreens = () => {
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -228,7 +226,7 @@ const App = () => {
           />
           <RootStack.Screen
             name="Home"
-            children={AppNav}
+            children={AppTabScreens}
             options={{ headerShown: false }}
           />
         </RootStack.Navigator>
