@@ -1,184 +1,26 @@
 import React from 'react';
-import { Button, Text, TextInput } from 'react-native';
 import 'react-native-gesture-handler';
 import Provider from './src/redux/provider';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { COLORS } from './src/styles/theme';
+import {
+  homeStackScreens,
+  profileStackScreens,
+  searchStackScreens,
+  notesStackScreens,
+} from './src/screens/stacks';
 
 import SignupScreen from './src/screens/SignupScreen';
 import IndexScreen from './src/screens/IndexScreen';
-import UserProfileScreen from './src/screens/UserProfileScreen';
-
-// tabs
-import HomeScreen from './src/screens/HomeScreen';
-import NotesScreen from './src/screens/NotesScreen';
-import ProfileScreen from './src/screens/ProfileScreen';
-import SearchScreen from './src/screens/SearchScreen';
 
 // icons
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-import { signOutUser } from './src/redux/actions/authenticationActions';
-
-// components
-import DropdownHeaderMenu from './src/components/DropdownHeaderMenu';
-import EstablishmentScreen from './src/screens/EstablishmentScreen';
-import ProfileSettingsScreen from './src/screens/ProfileSettingsScreen';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-
 const RootStack = createStackNavigator();
-const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
-const homeStackScreens = () => {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerStyle: { backgroundColor: COLORS.primary },
-      }}>
-      <Stack.Screen
-        name="App"
-        component={HomeScreen}
-        options={(props) => ({
-          headerRight: () => (
-            <Button
-              onPress={() => signOutUser(props.navigation)()}
-              title="Sign Out"
-            />
-          ),
-          headerLeft: null,
-          headerTitle: () => <DropdownHeaderMenu />,
-        })}
-      />
-      <Stack.Screen
-        name="UserProfile"
-        component={UserProfileScreen}
-        options={(props) => {
-          return {
-            headerRight: null,
-            headerLeft: () => (
-              <TouchableOpacity onPress={() => props.navigation.goBack()}>
-                <Ionicons
-                  name="arrow-back-outline"
-                  size={24}
-                  style={{ marginLeft: 10 }}
-                />
-              </TouchableOpacity>
-            ),
-            headerTitle: () => <Text>{props.route.params.userInfo.name}</Text>,
-          };
-        }}
-      />
-    </Stack.Navigator>
-  );
-};
-
-const searchStackScreens = () => {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerStyle: { backgroundColor: COLORS.primary },
-      }}>
-      <Stack.Screen
-        name="Search"
-        component={SearchScreen}
-        options={(props) => ({
-          headerRight: null,
-          headerLeft: null,
-          headerTitle: () => (
-            <TextInput
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-              onChangeText={(text) => console.log(text)}
-              placeholder="Search Cofee Shop near me..."
-            />
-          ),
-        })}
-      />
-      <Stack.Screen
-        name="EstablishmentScreen"
-        component={EstablishmentScreen}
-        options={(props) => ({
-          headerRight: null,
-          headerLeft: () => (
-            <TouchableOpacity onPress={() => props.navigation.goBack()}>
-              <Ionicons
-                name="arrow-back-outline"
-                size={24}
-                style={{ marginLeft: 10 }}
-              />
-            </TouchableOpacity>
-          ),
-          headerTitle: () => <Text>{props.route.params.name}</Text>,
-        })}
-      />
-    </Stack.Navigator>
-  );
-};
-
-const notesStackScreens = () => {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerStyle: { backgroundColor: COLORS.primary },
-      }}>
-      <Stack.Screen
-        name="Notes"
-        component={NotesScreen}
-        options={(props) => ({
-          headerRight: null,
-          headerLeft: null,
-          headerTitle: <Text>NOTES</Text>,
-        })}
-      />
-    </Stack.Navigator>
-  );
-};
-
-const profileStackScreens = () => {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerStyle: { backgroundColor: COLORS.primary },
-      }}>
-      <Stack.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={(props) => ({
-          headerRight: () => (
-            <TouchableOpacity
-              onPress={() => props.navigation.navigate('ProfileSettings')}>
-              <FontAwesome
-                name="gear"
-                size={24}
-                style={{ marginHorizontal: 10 }}
-              />
-            </TouchableOpacity>
-          ),
-          headerLeft: null,
-        })}
-      />
-      <Stack.Screen
-        name="ProfileSettings"
-        component={ProfileSettingsScreen}
-        options={(props) => ({
-          headerRight: null,
-          headerLeft: () => (
-            <TouchableOpacity onPress={() => props.navigation.goBack()}>
-              <Ionicons
-                name="arrow-back-outline"
-                size={24}
-                style={{ marginLeft: 10 }}
-              />
-            </TouchableOpacity>
-          ),
-        })}
-      />
-    </Stack.Navigator>
-  );
-};
 
 const AppTabScreens = () => {
   return (
