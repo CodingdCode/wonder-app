@@ -1,11 +1,16 @@
 import React, { useEffect } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
+import { HEADING } from '../styles/theme';
 
 const ProfileScreen = (props) => {
   useEffect(() => {
     props.navigation.setOptions({
-      headerTitle: props.authenticatedUser.userData.user.email,
+      headerTitle: (
+        <Text style={HEADING.heading1}>
+          {props.authenticatedUser.userData.user.email}
+        </Text>
+      ),
     });
   }, []);
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Text, TextInput, TouchableOpacity } from 'react-native';
 import 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
-import { COLORS } from '../../styles/theme';
+import { COLORS, HEADING } from '../../styles/theme';
 
 import UserProfileScreen from '../UserProfileScreen';
 
@@ -60,7 +60,11 @@ export const homeStackScreens = () => {
                 />
               </TouchableOpacity>
             ),
-            headerTitle: () => <Text>{props.route.params.userInfo.name}</Text>,
+            headerTitle: () => (
+              <Text style={HEADING.heading1}>
+                {props.route.params.userInfo.name}
+              </Text>
+            ),
           };
         }}
       />
@@ -103,7 +107,9 @@ export const searchStackScreens = () => {
               />
             </TouchableOpacity>
           ),
-          headerTitle: () => <Text>{props.route.params.name}</Text>,
+          headerTitle: () => (
+            <Text style={HEADING.heading1}>{props.route.params.name}</Text>
+          ),
         })}
       />
     </Stack.Navigator>
@@ -122,7 +128,7 @@ export const notesStackScreens = () => {
         options={(props) => ({
           headerRight: null,
           headerLeft: null,
-          headerTitle: <Text>NOTES</Text>,
+          headerTitle: <Text style={HEADING.heading1}>NOTES</Text>,
         })}
       />
     </Stack.Navigator>

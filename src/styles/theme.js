@@ -4,3 +4,10 @@ export const COLORS = {
   black: '#000000',
   white: '#ffffff',
 };
+
+export const HEADING = {
+  heading1: {
+    fontSize: 20,
+    fontWeight: '900',
+  },
+};
