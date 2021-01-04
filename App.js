@@ -5,7 +5,7 @@ import Provider from './src/redux/provider';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { PRIMARY_COLOR, COLOR_BLACK } from './src/styles/constants';
+import { COLORS } from './src/styles/theme';
 
 import SignupScreen from './src/screens/SignupScreen';
 import IndexScreen from './src/screens/IndexScreen';
@@ -35,7 +35,10 @@ const Tab = createBottomTabNavigator();
 
 const homeStackScreens = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: COLORS.primary },
+      }}>
       <Stack.Screen
         name="App"
         component={HomeScreen}
@@ -56,6 +59,15 @@ const homeStackScreens = () => {
         options={(props) => {
           return {
             headerRight: null,
+            headerLeft: () => (
+              <TouchableOpacity onPress={() => props.navigation.goBack()}>
+                <Ionicons
+                  name="arrow-back-outline"
+                  size={24}
+                  style={{ marginLeft: 10 }}
+                />
+              </TouchableOpacity>
+            ),
             headerTitle: () => <Text>{props.route.params.userInfo.name}</Text>,
           };
         }}
@@ -66,7 +78,10 @@ const homeStackScreens = () => {
 
 const searchStackScreens = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: COLORS.primary },
+      }}>
       <Stack.Screen
         name="Search"
         component={SearchScreen}
@@ -87,6 +102,15 @@ const searchStackScreens = () => {
         component={EstablishmentScreen}
         options={(props) => ({
           headerRight: null,
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => props.navigation.goBack()}>
+              <Ionicons
+                name="arrow-back-outline"
+                size={24}
+                style={{ marginLeft: 10 }}
+              />
+            </TouchableOpacity>
+          ),
           headerTitle: () => <Text>{props.route.params.name}</Text>,
         })}
       />
@@ -96,7 +120,10 @@ const searchStackScreens = () => {
 
 const notesStackScreens = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: COLORS.primary },
+      }}>
       <Stack.Screen
         name="Notes"
         component={NotesScreen}
@@ -112,7 +139,10 @@ const notesStackScreens = () => {
 
 const profileStackScreens = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: COLORS.primary },
+      }}>
       <Stack.Screen
         name="Profile"
         component={ProfileScreen}
@@ -135,6 +165,15 @@ const profileStackScreens = () => {
         component={ProfileSettingsScreen}
         options={(props) => ({
           headerRight: null,
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => props.navigation.goBack()}>
+              <Ionicons
+                name="arrow-back-outline"
+                size={24}
+                style={{ marginLeft: 10 }}
+              />
+            </TouchableOpacity>
+          ),
         })}
       />
     </Stack.Navigator>
@@ -146,8 +185,8 @@ const AppTabScreens = () => {
     <Tab.Navigator
       tabBarOptions={{
         showLabel: false,
-        activeTintColor: PRIMARY_COLOR,
-        inactiveTintColor: COLOR_BLACK,
+        activeTintColor: COLORS.primary,
+        inactiveTintColor: COLORS.black,
       }}>
       <Tab.Screen
         name="Home"

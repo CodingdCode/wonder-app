@@ -6,7 +6,7 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import { PRIMARY_COLOR, SECONDARY_COLOR } from '../styles/constants';
+import { COLORS } from '../styles/theme';
 
 const UserCard = (props) => {
   const { name, company, isFave, imageURL } = props.userInfo;
@@ -33,7 +33,7 @@ const UserCard = (props) => {
             <TouchableOpacity
               onPress={() => console.log('FAVE BUTTON WAS PRESSED')}
               style={[isFave ? styles.fave : styles.notFave, styles.button]}>
-              <Text style={{ color: 'white' }}>
+              <Text style={{ color: COLORS.white }}>
                 {isFave ? 'FAVED' : 'FAVE'}
               </Text>
             </TouchableOpacity>
@@ -82,12 +82,12 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 15,
     borderRadius: 100,
-    borderColor: 'white',
+    borderColor: COLORS.white,
     borderWidth: 2,
     marginVertical: 10,
   },
   fave: {
-    backgroundColor: PRIMARY_COLOR,
+    backgroundColor: COLORS.primary,
   },
   notFave: {
     backgroundColor: 'rgb(184, 184, 184)',

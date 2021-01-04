@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { loginUser } from '../redux/actions/authenticationActions';
 import { connect } from 'react-redux';
-import { PRIMARY_COLOR } from '../styles/constants';
+import { COLORS } from '../styles/theme';
 import {
   GoogleSignin,
   GoogleSigninButton,
@@ -81,7 +81,7 @@ const IndexScreen = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: PRIMARY_COLOR,
+    backgroundColor: COLORS.primary,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: PRIMARY_COLOR,
+    backgroundColor: COLORS.primary,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     width: 300,
     height: 50,
     fontSize: 25,
-    borderColor: '#fff',
+    borderColor: COLORS.white,
     fontWeight: '800',
     borderWidth: 1,
     marginBottom: 16,
@@ -119,17 +119,17 @@ const styles = StyleSheet.create({
   loginButton: {
     width: 200,
     marginBottom: 16,
-    backgroundColor: PRIMARY_COLOR,
+    backgroundColor: COLORS.primary,
     borderWidth: 1,
     borderRadius: 10,
-    borderColor: 'white',
+    borderColor: COLORS.white,
   },
   switchButton: {
     width: 200,
-    backgroundColor: PRIMARY_COLOR,
+    backgroundColor: COLORS.primary,
     borderWidth: 1,
     borderRadius: 10,
-    borderColor: 'white',
+    borderColor: COLORS.white,
   },
 });
 
