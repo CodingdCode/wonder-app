@@ -1,6 +1,10 @@
 import React from 'react';
 import firestore from '@react-native-firebase/firestore';
 
+import {testing} from '../../../../firestoreSeedData/seed';
+
+testing();
+
 const usersDb = firestore().collection('users').get();
 const emailDb = [];
 
@@ -11,9 +15,9 @@ usersDb.then((querySnapshot) => {
 });
 
 let create = (d) => {
-  activeUsers.add(d).then((documentReference) => {
-    console.log(`Added document with name: ${documentReference.id}`);
-  });
+  // usersDb.add(d).then((documentReference) => {
+  //   console.log(`Added document with name: ${documentReference.id}`);
+  // });
 
   return console.log('True');
 };
@@ -53,12 +57,16 @@ let disable = (d) => {
   return console.log('True');
 };
 
-const crud = {
+export const crud = {
   create: create,
   readOne: readOne,
   readAll: readAll,
   update: update,
   delete: disable,
 };
-
-export default crud;
+// module.exports={
+//   create: function create(){
+//     console.log('here');
+//   }
+// };
+// export default crud;
