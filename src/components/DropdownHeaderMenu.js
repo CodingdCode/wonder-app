@@ -1,8 +1,9 @@
-import React from 'react';
-import {} from 'react-native';
+import React, { useState } from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 const DropdownHeaderMenu = () => {
+  const [value, setValues] = useState('all');
+
   return (
     <DropDownPicker
       items={[
@@ -27,13 +28,17 @@ const DropdownHeaderMenu = () => {
           value: 'bartender',
         },
       ]}
-      defaultValue="all"
-      containerStyle={{ height: 50, width: 100 }}
+      defaultValue={value}
+      containerStyle={{ height: 50, width: 200, alignSelf: 'center' }}
       style={{ backgroundColor: '#fafafa' }}
       itemStyle={{
         justifyContent: 'center',
       }}
-      onChangeItem={(item) => console.log(item)}
+      dropDownStyle={{
+        alignSelf: 'center',
+        justifyContent: 'center',
+      }}
+      onChangeItem={(item) => setValues(item.value)}
     />
   );
 };
