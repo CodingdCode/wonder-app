@@ -6,6 +6,9 @@ import { COLORS, HEADING } from '../../styles/theme';
 
 import UserProfileScreen from '../UserProfileScreen';
 
+// components
+import SearchBar from '../../components/SearchBar';
+
 // tabs
 import HomeScreen from '../HomeScreen';
 import NotesScreen from '../NotesScreen';
@@ -85,11 +88,12 @@ export const searchStackScreens = () => {
           headerRight: null,
           headerLeft: null,
           headerTitle: () => (
-            <TextInput
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-              onChangeText={(text) => console.log(text)}
-              placeholder="Search Cofee Shop near me..."
-            />
+            <SearchBar />
+            // <TextInput
+            //   style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+            //   onChangeText={(text) => console.log(text)}
+            //   placeholder="Search Cofee Shop near me..."
+            // />
           ),
         })}
       />
