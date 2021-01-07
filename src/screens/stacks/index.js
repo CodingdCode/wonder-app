@@ -87,14 +87,7 @@ export const searchStackScreens = () => {
         options={(props) => ({
           headerRight: null,
           headerLeft: null,
-          headerTitle: () => (
-            <SearchBar />
-            // <TextInput
-            //   style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-            //   onChangeText={(text) => console.log(text)}
-            //   placeholder="Search Cofee Shop near me..."
-            // />
-          ),
+          headerTitle: () => <SearchBar />,
         })}
       />
       <Stack.Screen
