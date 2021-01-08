@@ -4,12 +4,12 @@ import {
   View,
   StyleSheet,
   ImageBackground,
-  Image,
   Dimensions,
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import { COLORS, HEADING } from '../styles/theme';
+import UserCardWhite from '../components/UserCardWhite';
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
@@ -27,7 +27,43 @@ const ProfileScreen = (props) => {
 
   const { email } = props.authenticatedUser.userData.user;
 
-  const faveMarkup = <Text>USERS FAVE LIST HERE</Text>; //users fave's list go here
+  const fakeFaveList = [
+    {
+      id: 5,
+      name: 'Chelsey Dietrich',
+      username: 'Kamren',
+      email: 'Lucio_Hettinger@annie.ca',
+      isFave: false,
+      imageURL:
+        'https://www.hhcenter.org/wp-content/uploads/2017/02/person-placeholder.jpg',
+      address: {
+        street: 'Skiles Walks',
+        suite: 'Suite 351',
+        city: 'Roscoeview',
+        zipcode: '33263',
+        geo: {
+          lat: '-31.8129',
+          lng: '62.5342',
+        },
+      },
+      phone: '(254)954-1289',
+      website: 'demarco.info',
+      company: {
+        imageUrl:
+          'https://theexoticbean.com/wp-content/uploads/2016/02/rosette_pattern_coffee_art.png',
+        name: 'Keebler LLC',
+        catchPhrase: 'User-centric fault-tolerant solution',
+        bs: 'revolutionize end-to-end systems',
+      },
+    },
+  ];
+
+  const faveMarkup = [
+    <UserCardWhite />,
+    <UserCardWhite />,
+    <UserCardWhite />,
+    <UserCardWhite />,
+  ]; //users fave's list go here
 
   const emptyMarkupText = (
     <View style={styles.textContainer}>
@@ -54,13 +90,7 @@ const ProfileScreen = (props) => {
         </View>
       </View>
       <View style={styles.scrollContainer}>
-        {!true ? (
-          <ScrollView>
-            <Text>USERS FAVE LIST HERE</Text>
-          </ScrollView>
-        ) : (
-          emptyMarkupText
-        )}
+        {true ? <ScrollView>{faveMarkup}</ScrollView> : emptyMarkupText}
       </View>
     </View>
   );
