@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Rating } from 'react-native-elements';
 
 const EstablishmentCard = (props) => {
   const { name, city, isOpen, rating } = props.data;
@@ -12,6 +13,17 @@ const EstablishmentCard = (props) => {
       }>
       <View style={styles.card}>
         <Text>{name}</Text>
+        <TouchableOpacity>
+          <Rating
+            type="custom"
+            readonly
+            fractions={1}
+            startingValue={rating}
+            ratingBackgroundColor="transparent"
+            tintColor="red"
+          />
+        </TouchableOpacity>
+
         <Text>{rating}</Text>
         <Text>{city}</Text>
         <Text>{isOpen ? 'OPEN' : 'CLOSED'}</Text>
