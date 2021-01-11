@@ -5,8 +5,11 @@ import {
   StyleSheet,
   ImageBackground,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 import { COLORS } from '../styles/theme';
+
+const screenWidth = Dimensions.get('window').width;
 
 const UserCard = (props) => {
   const { name, company, isFave, imageURL } = props.userInfo;
@@ -16,16 +19,12 @@ const UserCard = (props) => {
         props.navigation.navigate('UserProfile', { userInfo: props.userInfo });
       }}>
       <View style={styles.userCard}>
-        <View
-          style={[
-            styles.profilePictureContainer,
-            styles.parallelogramContainer,
-          ]}>
+        <View style={styles.parallelogramContainer}>
           <ImageBackground
             source={{ uri: imageURL }}
-            style={styles.profilePicture}
-          />
+            style={styles.profilePicture}></ImageBackground>
         </View>
+
         <View style={[styles.userInfoContainer, styles.parallelogramContainer]}>
           <View style={styles.userInfoContainer}>
             <Text>{name}</Text>
@@ -47,28 +46,27 @@ const UserCard = (props) => {
 const styles = StyleSheet.create({
   userCard: {
     borderColor: 'red',
-    borderWidth: 2,
+    borderWidth: 5,
     marginBottom: 5,
     backgroundColor: 'rgba(30,30,30,0.4)',
     flexDirection: 'row',
+    width: screenWidth,
+    marginVertical: 3,
   },
   parallelogramContainer: {
     transform: [{ skewX: '-10deg' }],
     left: -20,
-  },
-  profilePictureContainer: {
-    overflow: 'hidden',
-    backgroundColor: 'red',
     height: 150,
     width: 160,
+    overflow: 'hidden',
   },
   profilePicture: {
-    // transform: [{ skewX: '10deg' }],
-    // flex: 1,
-    // width: '100%',
-    // justifyContent: 'flex-end',
     flex: 1,
+    transform: [{ skewX: '10deg' }],
+    justifyContent: 'flex-end',
     resizeMode: 'cover', // or 'stretch'
+
+    aspectRatio: 1.2,
   },
   userInfoContainer: {
     borderColor: 'red',
