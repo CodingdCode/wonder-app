@@ -11,6 +11,7 @@ import {
 import { COLORS, HEADING } from '../styles/theme';
 
 const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 
 const UserCard = (props) => {
   const { name, company, isFave, imageURL } = props.userInfo;
@@ -66,8 +67,9 @@ const styles = StyleSheet.create({
   parallelogramContainer: {
     transform: [{ skewX: '-10deg' }],
     left: -20,
-    height: 150,
-    width: 160,
+    minHeight: 155,
+    height: '100%',
+    width: 150,
     overflow: 'hidden',
   },
   profilePicture: {
