@@ -6,8 +6,9 @@ import {
   ImageBackground,
   TouchableOpacity,
   Dimensions,
+  Image,
 } from 'react-native';
-import { COLORS } from '../styles/theme';
+import { COLORS, HEADING } from '../styles/theme';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -19,16 +20,28 @@ const UserCard = (props) => {
         props.navigation.navigate('UserProfile', { userInfo: props.userInfo });
       }}>
       <View style={styles.userCard}>
-        <View style={styles.parallelogramContainer}>
-          <ImageBackground
-            source={{ uri: imageURL }}
-            style={styles.profilePicture}></ImageBackground>
-        </View>
-
-        <View style={[styles.userInfoContainer, styles.parallelogramContainer]}>
+        <ImageBackground
+          style={{ width: screenWidth, flexDirection: 'row' }}
+          imageStyle={{
+            resizeMode: 'cover',
+            opacity: 0.6,
+          }}
+          source={{
+            uri:
+              'https://buffer.com/resources/content/images/wp-content/uploads/2018/03/nafinia-putra-59655-unsplash.jpg',
+          }}>
+          <View style={styles.parallelogramContainer}>
+            <ImageBackground
+              source={{ uri: imageURL }}
+              style={styles.profilePicture}></ImageBackground>
+          </View>
           <View style={styles.userInfoContainer}>
-            <Text>{name}</Text>
-            <Text>{company.name}</Text>
+            <Text style={[HEADING.heading1, styles.name, styles.textWhite]}>
+              {name}
+            </Text>
+            <Text style={[styles.location, styles.textWhite]}>
+              {company.name}
+            </Text>
             <TouchableOpacity
               onPress={() => console.log('FAVE BUTTON WAS PRESSED')}
               style={[isFave ? styles.fave : styles.notFave, styles.button]}>
@@ -37,7 +50,7 @@ const UserCard = (props) => {
               </Text>
             </TouchableOpacity>
           </View>
-        </View>
+        </ImageBackground>
       </View>
     </TouchableOpacity>
   );
@@ -45,10 +58,7 @@ const UserCard = (props) => {
 
 const styles = StyleSheet.create({
   userCard: {
-    borderColor: 'red',
-    borderWidth: 5,
-    marginBottom: 5,
-    backgroundColor: 'rgba(30,30,30,0.4)',
+    backgroundColor: 'rgba(0,0,0,1)',
     flexDirection: 'row',
     width: screenWidth,
     marginVertical: 3,
@@ -65,15 +75,14 @@ const styles = StyleSheet.create({
     transform: [{ skewX: '10deg' }],
     justifyContent: 'flex-end',
     resizeMode: 'cover', // or 'stretch'
-
     aspectRatio: 1.2,
   },
   userInfoContainer: {
-    borderColor: 'red',
-    borderWidth: 2,
-    // transform: [{ skewX: '10deg' }],
+    overflow: 'hidden',
     flex: 1,
+    width: screenWidth,
     justifyContent: 'flex-start',
+    padding: 5,
   },
   button: {
     alignSelf: 'flex-start',
@@ -82,13 +91,23 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     borderColor: COLORS.white,
     borderWidth: 2,
-    marginVertical: 10,
+    marginVertical: 5,
+  },
+  name: {
+    letterSpacing: 1,
+    marginBottom: 4,
+  },
+  location: {
+    fontSize: 18,
   },
   fave: {
     backgroundColor: COLORS.primary,
   },
   notFave: {
     backgroundColor: 'rgb(184, 184, 184)',
+  },
+  textWhite: {
+    color: COLORS.white,
   },
 });
 
