@@ -6,12 +6,10 @@ import {
   ImageBackground,
   TouchableOpacity,
   Dimensions,
-  Image,
 } from 'react-native';
 import { COLORS, HEADING } from '../styles/theme';
 
 const screenWidth = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height;
 
 const UserCard = (props) => {
   const { name, company, isFave, imageURL } = props.userInfo;
@@ -34,7 +32,7 @@ const UserCard = (props) => {
           source={{
             uri: company.imageUrl,
           }}>
-          <View style={styles.parallelogramContainer}>
+          <View style={styles.profilePictureContainer}>
             <ImageBackground
               source={{ uri: imageURL }}
               style={styles.profilePicture}></ImageBackground>
@@ -67,7 +65,7 @@ const styles = StyleSheet.create({
     width: screenWidth,
     marginVertical: 3,
   },
-  parallelogramContainer: {
+  profilePictureContainer: {
     transform: [{ skewX: '-10deg' }],
     left: -20,
     minHeight: 155,
@@ -79,8 +77,8 @@ const styles = StyleSheet.create({
     flex: 1,
     transform: [{ skewX: '10deg' }],
     justifyContent: 'flex-end',
-    resizeMode: 'cover', // or 'stretch'
-    aspectRatio: 1.2,
+    resizeMode: 'cover',
+    aspectRatio: 1.15,
   },
   userInfoContainer: {
     overflow: 'hidden',
