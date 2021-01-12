@@ -2,11 +2,10 @@ const TEST_DATA = [
   {
     id: 1,
     name: 'Leanne Graham',
-    username: 'Bret',
     email: 'Sincere@april.biz',
     isFave: false,
     imageURL:
-      'https://www.hhcenter.org/wp-content/uploads/2017/02/person-placeholder.jpg',
+      'https://t3.ftcdn.net/jpg/01/44/83/50/360_F_144835094_qVg3WPsSEt8VeHPZmxgT5l9Mo6edX1SD.jpg',
     address: {
       street: 'Kulas Light',
       suite: 'Apt. 556',
@@ -21,7 +20,7 @@ const TEST_DATA = [
     website: 'hildegard.org',
     company: {
       imageUrl:
-        'https://theexoticbean.com/wp-content/uploads/2016/02/rosette_pattern_coffee_art.png',
+        'https://infatuation.imgix.net/media/images/guides/the-bar-greatest-hits-list-best-bars-in-sf/banners/1567201728.73.jpg?auto=format&fit=max&h=1200&w=3200',
       name: 'Romaguera-Crona',
       catchPhrase: 'Multi-layered client-server neural-net',
       bs: 'harness real-time e-markets',
@@ -30,11 +29,10 @@ const TEST_DATA = [
   {
     id: 2,
     name: 'Ervin Howell',
-    username: 'Antonette',
     email: 'Shanna@melissa.tv',
     isFave: true,
     imageURL:
-      'https://www.hhcenter.org/wp-content/uploads/2017/02/person-placeholder.jpg',
+      'https://www.ksat.com/resizer/w54svhnp16TLiQGwUPmWzcdYsSc=/900x600/smart/filters:format(jpeg):strip_exif(true):strip_icc(true):no_upscale(true):quality(65)/cloudfront-us-east-1.images.arcpublishing.com/gmg/DJN5YBFF5FHEPDZRM4I5HL6QBE.jpg',
     address: {
       street: 'Victor Plains',
       suite: 'Suite 879',
@@ -49,7 +47,7 @@ const TEST_DATA = [
     website: 'anastasia.net',
     company: {
       imageUrl:
-        'https://theexoticbean.com/wp-content/uploads/2016/02/rosette_pattern_coffee_art.png',
+        'https://lh3.googleusercontent.com/DqORfiCiYpiBwVC8E20bybzDcUPByVcxyun5TjxoBsm1mAqEU44wXF3LPVC4RauTPGS4PN5u=w1080-h608-p-no-v0',
       name: 'Deckow-Crist',
       catchPhrase: 'Proactive didactic contingency',
       bs: 'synergize scalable supply-chains',
@@ -58,11 +56,10 @@ const TEST_DATA = [
   {
     id: 3,
     name: 'Clementine Bauch',
-    username: 'Samantha',
     email: 'Nathan@yesenia.net',
     isFave: true,
     imageURL:
-      'https://www.hhcenter.org/wp-content/uploads/2017/02/person-placeholder.jpg',
+      'https://www.thespiritsbusiness.com/content/http://www.thespiritsbusiness.com/media/2018/03/Jillian-Vose.jpg',
     address: {
       street: 'Douglas Extension',
       suite: 'Suite 847',
@@ -77,7 +74,7 @@ const TEST_DATA = [
     website: 'ramiro.info',
     company: {
       imageUrl:
-        'https://theexoticbean.com/wp-content/uploads/2016/02/rosette_pattern_coffee_art.png',
+        'https://cdn.theculturetrip.com/wp-content/uploads/2016/09/main-bar-at-tir-na-nog.jpg',
       name: 'Romaguera-Jacobson',
       catchPhrase: 'Face to face bifurcated interface',
       bs: 'e-enable strategic applications',
@@ -86,11 +83,10 @@ const TEST_DATA = [
   {
     id: 4,
     name: 'Patricia Lebsack',
-    username: 'Karianne',
     email: 'Julianne.OConner@kory.org',
     isFave: false,
-    imageURL:
-      'https://www.hhcenter.org/wp-content/uploads/2017/02/person-placeholder.jpg',
+    imageURL: 'https://c.stocksy.com/a/dtYA00/z9/2517425.jpg',
+
     address: {
       street: 'Hoeger Mall',
       suite: 'Apt. 692',
@@ -105,7 +101,7 @@ const TEST_DATA = [
     website: 'kale.biz',
     company: {
       imageUrl:
-        'https://theexoticbean.com/wp-content/uploads/2016/02/rosette_pattern_coffee_art.png',
+        'https://www.discoverlosangeles.com/sites/default/files/business/black-market-liquor-bar/h_2000-crm-la-black-market-liquor-bar-99c6fb1e5056a36_99c6ffd5-5056-a36f-23d128f6fc6c91bb.jpg',
       name: 'Robel-Corkery',
       catchPhrase: 'Multi-tiered zero tolerance productivity',
       bs: 'transition cutting-edge web services',
@@ -114,11 +110,10 @@ const TEST_DATA = [
   {
     id: 5,
     name: 'Chelsey Dietrich',
-    username: 'Kamren',
     email: 'Lucio_Hettinger@annie.ca',
     isFave: false,
     imageURL:
-      'https://www.hhcenter.org/wp-content/uploads/2017/02/person-placeholder.jpg',
+      'https://i.ndtvimg.com/i/2018-03/working-woman_650x400_71522063014.jpg',
     address: {
       street: 'Skiles Walks',
       suite: 'Suite 351',
@@ -141,12 +136,11 @@ const TEST_DATA = [
   },
   {
     id: 6,
-    name: 'Mrs. Dennis Schulist',
-    username: 'Leopoldo_Corkery',
+    name: 'Den Schulist',
     email: 'Karley_Dach@jasper.info',
     isFave: false,
     imageURL:
-      'https://www.hhcenter.org/wp-content/uploads/2017/02/person-placeholder.jpg',
+      'https://tribune-reloaded.s3.amazonaws.com/media/images/2132901-workingwoman-1578482365/2132901-workingwoman-1578482365.png',
     address: {
       street: 'Norberto Crossing',
       suite: 'Apt. 950',
@@ -161,7 +155,7 @@ const TEST_DATA = [
     website: 'ola.org',
     company: {
       imageUrl:
-        'https://theexoticbean.com/wp-content/uploads/2016/02/rosette_pattern_coffee_art.png',
+        'https://searchengineland.com/figz/wp-content/seloads/2018/09/writer-writing-ss-1920.jpg',
       name: 'Considine-Lockman',
       catchPhrase: 'Synchronised bottom-line interface',
       bs: 'e-enable innovative applications',
@@ -170,11 +164,10 @@ const TEST_DATA = [
   {
     id: 7,
     name: 'Kurtis Weissnat',
-    username: 'Elwyn.Skiles',
     email: 'Telly.Hoeger@billy.biz',
     isFave: true,
     imageURL:
-      'https://www.hhcenter.org/wp-content/uploads/2017/02/person-placeholder.jpg',
+      'https://image.shutterstock.com/image-photo/young-beautiful-woman-wearing-fashion-260nw-1664221873.jpg',
     address: {
       street: 'Rex Trail',
       suite: 'Suite 280',
@@ -189,7 +182,7 @@ const TEST_DATA = [
     website: 'elvis.io',
     company: {
       imageUrl:
-        'https://theexoticbean.com/wp-content/uploads/2016/02/rosette_pattern_coffee_art.png',
+        'https://expertphotography.com/wp-content/uploads/2020/07/social-media-for-photographers-follow-1.jpg',
       name: 'Johns Group',
       catchPhrase: 'Configurable multimedia task-force',
       bs: 'generate enterprise e-tailers',
@@ -202,7 +195,7 @@ const TEST_DATA = [
     email: 'Sherwood@rosamond.me',
     isFave: false,
     imageURL:
-      'https://www.hhcenter.org/wp-content/uploads/2017/02/person-placeholder.jpg',
+      'https://latimesblogs.latimes.com/.a/6a00d8341c630a53ef0133f40266e8970b-pi',
     address: {
       street: 'Ellsworth Summit',
       suite: 'Suite 729',
@@ -217,7 +210,7 @@ const TEST_DATA = [
     website: 'jacynthe.com',
     company: {
       imageUrl:
-        'https://theexoticbean.com/wp-content/uploads/2016/02/rosette_pattern_coffee_art.png',
+        'https://www.esquireme.com/public/images/2019/03/25/Torno-Subito-Massimo-Bottura-Dubai-w-Hotel-Palm-(2).jpg',
       name: 'Abernathy Group',
       catchPhrase: 'Implemented secondary concept',
       bs: 'e-enable extensible e-tailers',
@@ -226,11 +219,10 @@ const TEST_DATA = [
   {
     id: 9,
     name: 'Glenna Reichert',
-    username: 'Delphine',
     email: 'Chaim_McDermott@dana.io',
     isFave: true,
     imageURL:
-      'https://www.hhcenter.org/wp-content/uploads/2017/02/person-placeholder.jpg',
+      'https://koreyhowellphotography.com/wp-content/uploads/2017/09/AdobeStock_122362963-1028x675.jpg',
     address: {
       street: 'Dayna Park',
       suite: 'Suite 449',
@@ -245,7 +237,7 @@ const TEST_DATA = [
     website: 'conrad.com',
     company: {
       imageUrl:
-        'https://theexoticbean.com/wp-content/uploads/2016/02/rosette_pattern_coffee_art.png',
+        'https://infatuation.s3.amazonaws.com/media/images/guides/coffee-shops-nyc-for-doing-work/NoahDevereaux_CoffeeShops_028_DoubleDutch.JPG',
       name: 'Yost and Sons',
       catchPhrase: 'Switchable contextually-based project',
       bs: 'aggregate real-time technologies',
@@ -254,11 +246,10 @@ const TEST_DATA = [
   {
     id: 10,
     name: 'Clementina DuBuque',
-    username: 'Moriah.Stanton',
     email: 'Rey.Padberg@karina.biz',
     isFave: false,
     imageURL:
-      'https://www.hhcenter.org/wp-content/uploads/2017/02/person-placeholder.jpg',
+      'https://noobpreneur.com/wp-content/uploads/2016/07/women-entrepreneur.jpg',
     address: {
       street: 'Kattie Turnpike',
       suite: 'Suite 198',
@@ -273,7 +264,7 @@ const TEST_DATA = [
     website: 'ambrose.net',
     company: {
       imageUrl:
-        'https://theexoticbean.com/wp-content/uploads/2016/02/rosette_pattern_coffee_art.png',
+        'https://buffer.com/resources/content/images/wp-content/uploads/2018/03/nafinia-putra-59655-unsplash.jpg',
       name: 'Hoeger LLC',
       catchPhrase: 'Centralized empowering task-force',
       bs: 'target end-to-end models',

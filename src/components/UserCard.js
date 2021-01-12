@@ -15,6 +15,7 @@ const screenHeight = Dimensions.get('window').height;
 
 const UserCard = (props) => {
   const { name, company, isFave, imageURL } = props.userInfo;
+
   return (
     <TouchableOpacity
       onPress={() => {
@@ -22,14 +23,16 @@ const UserCard = (props) => {
       }}>
       <View style={styles.userCard}>
         <ImageBackground
-          style={{ width: screenWidth, flexDirection: 'row' }}
+          style={{
+            width: screenWidth,
+            flexDirection: 'row',
+          }}
           imageStyle={{
             resizeMode: 'cover',
             opacity: 0.6,
           }}
           source={{
-            uri:
-              'https://buffer.com/resources/content/images/wp-content/uploads/2018/03/nafinia-putra-59655-unsplash.jpg',
+            uri: company.imageUrl,
           }}>
           <View style={styles.parallelogramContainer}>
             <ImageBackground
@@ -37,7 +40,7 @@ const UserCard = (props) => {
               style={styles.profilePicture}></ImageBackground>
           </View>
           <View style={styles.userInfoContainer}>
-            <Text style={[HEADING.heading1, styles.name, styles.textWhite]}>
+            <Text style={[HEADING.heading2, styles.name, styles.textWhite]}>
               {name}
             </Text>
             <Text style={[styles.location, styles.textWhite]}>
