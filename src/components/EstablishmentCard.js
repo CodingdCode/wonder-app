@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-import { Rating } from 'react-native-elements';
+import Stars from 'react-native-stars';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { COLORS, HEADING } from '../styles/theme';
 
 const EstablishmentCard = (props) => {
@@ -26,17 +27,33 @@ const EstablishmentCard = (props) => {
             {name}
           </Text>
           <TouchableOpacity>
-            <Rating
-              type="custom"
-              readonly
-              startingValue={rating}
-              ratingBackgroundColor="transparent"
-              ratingColor={COLORS.white}
-              tintColor="red"
-              imageSize={20}
-              style={{
-                marginVertical: 5,
-              }}
+            <Stars
+              default={rating}
+              count={5}
+              half={true}
+              starSize={50}
+              disabled
+              fullStar={
+                <Icon
+                  name={'star'}
+                  style={{ color: COLORS.white, marginVertical: 5 }}
+                  size={18}
+                />
+              }
+              emptyStar={
+                <Icon
+                  name={'star-o'}
+                  style={{ color: 'transparent' }}
+                  size={18}
+                />
+              }
+              halfStar={
+                <Icon
+                  name={'star-half'}
+                  style={{ color: COLORS.white, marginVertical: 5 }}
+                  size={18}
+                />
+              }
             />
           </TouchableOpacity>
           <Text style={[styles.textWhite]}>{city}</Text>
