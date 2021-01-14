@@ -14,8 +14,16 @@ const screenHeight = Dimensions.get('window').height;
 
 const UserProfileScreen = ({ route }) => {
   const { name, imageURL, company, isFave } = route.params.userInfo;
+
+  const emptyMarkupText = (
+    <View style={styles.textContainer}>
+      <Text style={styles.textPrimary}>Ooops!</Text>
+      <Text style={styles.textSecondary}>I am not available on this date</Text>
+    </View>
+  );
+
   return (
-    <View style={styles.userCard}>
+    <View style={{ flex: 1 }}>
       <ImageBackground
         style={{
           width: screenWidth,
@@ -56,6 +64,7 @@ const UserProfileScreen = ({ route }) => {
           SCHED HERE
         </Text>
       </View>
+      <View style={{ flex: 1 }}>{emptyMarkupText}</View>
     </View>
   );
 };
@@ -106,13 +115,29 @@ const styles = StyleSheet.create({
   textWhite: {
     color: COLORS.white,
   },
-
   dateContainer: {
     backgroundColor: COLORS.secondary,
     width: screenWidth,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 15,
+  },
+  textContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+    backgroundColor: 'rgb(210,210,210)',
+  },
+  textPrimary: {
+    fontWeight: '900',
+    fontSize: 30,
+  },
+  textSecondary: {
+    letterSpacing: 2,
+    textAlign: 'center',
+    fontSize: 18,
+    maxWidth: screenWidth - 90,
   },
 });
 
