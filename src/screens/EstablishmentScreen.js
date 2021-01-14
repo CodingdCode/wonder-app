@@ -11,6 +11,7 @@ import Stars from 'react-native-stars';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { COLORS, HEADING } from '../styles/theme';
 
+const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 const EstablishmentScreen = (props) => {
@@ -59,6 +60,11 @@ const EstablishmentScreen = (props) => {
           <Text style={[styles.textWhite]}>{isOpen ? 'OPEN' : 'CLOSED'}</Text>
         </View>
       </ImageBackground>
+      <View style={styles.dateContainer}>
+        <Text style={[styles.textWhite, { fontSize: 18, fontWeight: '700' }]}>
+          SCHED HERE
+        </Text>
+      </View>
     </View>
   );
 };
@@ -85,6 +91,13 @@ const styles = StyleSheet.create({
   },
   name: {
     letterSpacing: 1,
+  },
+  dateContainer: {
+    backgroundColor: COLORS.secondary,
+    width: screenWidth,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 15,
   },
 });
 
