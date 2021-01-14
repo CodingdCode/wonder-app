@@ -10,6 +10,7 @@ import {
 import { COLORS, HEADING } from '../styles/theme';
 
 const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 
 const UserProfileScreen = ({ route }) => {
   const { name, imageURL, company, isFave } = route.params.userInfo;
@@ -63,8 +64,7 @@ const styles = StyleSheet.create({
   profilePictureContainer: {
     transform: [{ skewX: '-5deg' }],
     left: -20,
-    minHeight: 200,
-    height: '100%',
+    minHeight: screenHeight / 5,
     width: 180,
     overflow: 'hidden',
   },

@@ -16,7 +16,7 @@ const EstablishmentCard = (props) => {
     <TouchableOpacity
       onPress={() =>
         props.navigation.navigate('EstablishmentScreen', {
-          name: name,
+          data: props.data,
         })
       }>
       <ImageBackground

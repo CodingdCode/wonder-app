@@ -105,7 +105,7 @@ export const searchStackScreens = () => {
             </TouchableOpacity>
           ),
           headerTitle: () => (
-            <Text style={HEADING.heading1}>{props.route.params.name}</Text>
+            <Text style={HEADING.heading1}>{props.route.params.data.name}</Text>
           ),
         })}
       />
