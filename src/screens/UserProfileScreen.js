@@ -13,8 +13,6 @@ const screenWidth = Dimensions.get('window').width;
 
 const UserProfileScreen = ({ route }) => {
   const { name, imageURL, company, isFave } = route.params.userInfo;
-
-  console.log(route.params.userInfo);
   return (
     <View style={styles.userCard}>
       <ImageBackground
