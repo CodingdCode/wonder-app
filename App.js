@@ -30,7 +30,7 @@ const App = () => {
           <RootStack.Screen
             name="Home"
             children={AppTabScreens}
-            options={{ headerShown: false }}
+            options={{ headerShown: false, gestureEnabled: false }}
           />
         </RootStack.Navigator>
       </NavigationContainer>

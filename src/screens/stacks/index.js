@@ -33,6 +33,7 @@ export const homeStackScreens = () => {
     <Stack.Navigator
       screenOptions={{
         headerStyle: { backgroundColor: COLORS.primary },
+        gestureEnabled: false,
       }}>
       <Stack.Screen
         name="App"
@@ -80,6 +81,7 @@ export const searchStackScreens = () => {
     <Stack.Navigator
       screenOptions={{
         headerStyle: { backgroundColor: COLORS.primary },
+        gestureEnabled: false,
       }}>
       <Stack.Screen
         name="Search"
@@ -118,6 +120,7 @@ export const notesStackScreens = () => {
     <Stack.Navigator
       screenOptions={{
         headerStyle: { backgroundColor: COLORS.primary },
+        gestureEnabled: false,
       }}>
       <Stack.Screen
         name="Notes"
@@ -137,6 +140,7 @@ export const profileStackScreens = () => {
     <Stack.Navigator
       screenOptions={{
         headerStyle: { backgroundColor: COLORS.primary },
+        gestureEnabled: false,
       }}>
       <Stack.Screen
         name="Profile"
