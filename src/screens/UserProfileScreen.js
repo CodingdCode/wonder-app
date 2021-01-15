@@ -8,9 +8,85 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { COLORS, HEADING } from '../styles/theme';
+import EventCalendar from 'react-native-events-calendar';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
+
+const events = [
+  {
+    start: '2017-09-07 00:30:00',
+    end: '2017-09-07 01:30:00',
+    title: 'Dr. Mariana Joseph',
+    summary: '3412 Piedmont Rd NE, GA 3032',
+  },
+  {
+    start: '2017-09-07 01:30:00',
+    end: '2017-09-07 02:20:00',
+    title: 'Dr. Mariana Joseph',
+    summary: '3412 Piedmont Rd NE, GA 3032',
+  },
+  {
+    start: '2017-09-07 04:10:00',
+    end: '2017-09-07 04:40:00',
+    title: 'Dr. Mariana Joseph',
+    summary: '3412 Piedmont Rd NE, GA 3032',
+  },
+  {
+    start: '2017-09-07 05:30:00',
+    end: '2017-09-07 07:45:00',
+    title: 'Dr. Mariana Joseph',
+    summary: '3412 Piedmont Rd NE, GA 3032',
+  },
+  {
+    start: '2017-09-07 14:30:00',
+    end: '2017-09-07 16:30:00',
+    title: 'Dr. Mariana Joseph',
+    summary: '3412 Piedmont Rd NE, GA 3032',
+  },
+  {
+    start: '2017-09-08 05:20:00',
+    end: '2017-09-08 08:20:00',
+    title: 'Dr. Mariana Joseph',
+    summary: '3412 Piedmont Rd NE, GA 3032',
+  },
+  {
+    start: '2017-09-08 04:10:00',
+    end: '2017-09-08 04:40:00',
+    title: 'Dr. Mariana Joseph',
+    summary: '3412 Piedmont Rd NE, GA 3032',
+  },
+  {
+    start: '2017-09-08 00:45:00',
+    end: '2017-09-08 01:45:00',
+    title: 'Dr. Mariana Joseph',
+    summary: '3412 Piedmont Rd NE, GA 3032',
+  },
+  {
+    start: '2017-09-08 11:30:00',
+    end: '2017-09-08 12:30:00',
+    title: 'Dr. Mariana Joseph',
+    summary: '3412 Piedmont Rd NE, GA 3032',
+  },
+  {
+    start: '2017-09-09 01:30:00',
+    end: '2017-09-09 02:00:00',
+    title: 'Dr. Mariana Joseph',
+    summary: '3412 Piedmont Rd NE, GA 3032',
+  },
+  {
+    start: '2017-09-09 03:10:00',
+    end: '2017-09-09 03:40:00',
+    title: 'Dr. Mariana Joseph',
+    summary: '3412 Piedmont Rd NE, GA 3032',
+  },
+  {
+    start: '2017-09-09 00:10:00',
+    end: '2017-09-09 01:45:00',
+    title: 'Dr. Mariana Joseph',
+    summary: '3412 Piedmont Rd NE, GA 3032',
+  },
+];
 
 const UserProfileScreen = ({ route }) => {
   const { name, imageURL, company, isFave } = route.params.userInfo;
@@ -59,12 +135,19 @@ const UserProfileScreen = ({ route }) => {
           </TouchableOpacity>
         </View>
       </ImageBackground>
-      <View style={styles.dateContainer}>
+      {/* <View style={styles.dateContainer}>
         <Text style={[styles.textWhite, { fontSize: 18, fontWeight: '700' }]}>
           SCHED HERE
         </Text>
+      </View> */}
+      {/* <View style={{ flex: 1 }}>{emptyMarkupText}</View> */}
+      <View style={{ flex: 1 }}>
+        <EventCalendar
+          events={events}
+          width={screenWidth}
+          initDate={'2017-09-08'}
+        />
       </View>
-      <View style={{ flex: 1 }}>{emptyMarkupText}</View>
     </View>
   );
 };
