@@ -146,6 +146,16 @@ const UserProfileScreen = ({ route }) => {
           events={events}
           width={screenWidth}
           initDate={'2017-09-08'}
+          eventTapped={() => {}}
+          styles={{
+            event: {
+              backgroundColor: COLORS.primary,
+              opacity: 0.7,
+              color: 'red',
+              fontSize: 50,
+              margin: 0,
+            },
+          }}
         />
       </View>
     </View>
