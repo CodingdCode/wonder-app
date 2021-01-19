@@ -13,9 +13,16 @@ import { COLORS } from '../styles/theme';
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
-const UserCardWhite = () => {
+const UserCardWhite = (props) => {
+  const { showTime } = props;
   return (
     <View style={styles.container}>
+      {showTime && (
+        <View style={styles.storeSchedule}>
+          <Text style={styles.date}>8:00 AM</Text>
+          <Text style={styles.date}>5:00 PM</Text>
+        </View>
+      )}
       <View style={styles.imageContainer}>
         <ImageBackground
           style={styles.image}
@@ -50,8 +57,8 @@ const styles = StyleSheet.create({
     borderColor: COLORS.primary,
     borderWidth: 3,
     borderRadius: 150 / 2,
-    width: 90,
-    height: 90,
+    width: 85,
+    height: 85,
     overflow: 'hidden',
     marginRight: 20,
   },
@@ -75,6 +82,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     borderRadius: 100,
     marginVertical: 5,
+  },
+  storeSchedule: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingRight: 15,
+  },
+  date: {
+    color: COLORS.primary,
+    fontSize: 14,
+    fontWeight: '600',
   },
 });
 
