@@ -15,33 +15,46 @@ const screenWidth = Dimensions.get('window').width;
 
 const UserCardWhite = (props) => {
   const { showTime } = props;
+  const userInfoTestData = {
+    name: 'Dominic Walters',
+    imageURL:
+      'https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?size=626&ext=jpg',
+    company: 'New York, New York',
+    isFave: true,
+  };
   return (
-    <View style={styles.container}>
-      {showTime && (
-        <View style={styles.storeSchedule}>
-          <Text style={styles.date}>8:00 AM</Text>
-          <Text style={styles.date}>5:00 PM</Text>
+    <TouchableOpacity
+      onPress={() => {
+        props.navigation.navigate('UserProfile', {
+          userInfo: userInfoTestData,
+        });
+      }}>
+      <View style={styles.container}>
+        {showTime && (
+          <View style={styles.storeSchedule}>
+            <Text style={styles.date}>8:00 AM</Text>
+            <Text style={styles.date}>5:00 PM</Text>
+          </View>
+        )}
+        <View style={styles.imageContainer}>
+          <ImageBackground
+            style={styles.image}
+            source={{
+              uri: userInfoTestData.imageURL,
+            }}
+          />
         </View>
-      )}
-      <View style={styles.imageContainer}>
-        <ImageBackground
-          style={styles.image}
-          source={{
-            uri:
-              'https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?size=626&ext=jpg',
-          }}
-        />
+        <View style={styles.userInfo}>
+          <Text style={styles.userName}>{userInfoTestData.name}</Text>
+          <Text>{userInfoTestData.company}</Text>
+          <TouchableOpacity
+            onPress={() => console.log('HANDLE UNFAVE FROM PROFILE SECTION')}
+            style={styles.button}>
+            <Text>FAVED</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <View style={styles.userInfo}>
-        <Text style={styles.userName}>Dominic Walters</Text>
-        <Text>New York, New York</Text>
-        <TouchableOpacity
-          onPress={() => console.log('HANDLE UNFAVE FROM PROFILE SECTION')}
-          style={styles.button}>
-          <Text>FAVED</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -93,6 +93,29 @@ export const searchStackScreens = () => {
         })}
       />
       <Stack.Screen
+        name="UserProfile"
+        component={UserProfileScreen}
+        options={(props) => {
+          return {
+            headerRight: null,
+            headerLeft: () => (
+              <TouchableOpacity onPress={() => props.navigation.goBack()}>
+                <Ionicons
+                  name="arrow-back-outline"
+                  size={24}
+                  style={{ marginLeft: 10 }}
+                />
+              </TouchableOpacity>
+            ),
+            headerTitle: () => (
+              <Text style={HEADING.heading1}>
+                {props.route.params.userInfo.name}
+              </Text>
+            ),
+          };
+        }}
+      />
+      <Stack.Screen
         name="EstablishmentScreen"
         component={EstablishmentScreen}
         options={(props) => ({
@@ -174,6 +197,29 @@ export const profileStackScreens = () => {
             </TouchableOpacity>
           ),
         })}
+      />
+      <Stack.Screen
+        name="UserProfile"
+        component={UserProfileScreen}
+        options={(props) => {
+          return {
+            headerRight: null,
+            headerLeft: () => (
+              <TouchableOpacity onPress={() => props.navigation.goBack()}>
+                <Ionicons
+                  name="arrow-back-outline"
+                  size={24}
+                  style={{ marginLeft: 10 }}
+                />
+              </TouchableOpacity>
+            ),
+            headerTitle: () => (
+              <Text style={HEADING.heading1}>
+                {props.route.params.userInfo.name}
+              </Text>
+            ),
+          };
+        }}
       />
     </Stack.Navigator>
   );

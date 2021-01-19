@@ -59,10 +59,10 @@ const ProfileScreen = (props) => {
   ];
 
   const faveMarkup = [
-    <UserCardWhite key={1} />,
-    <UserCardWhite key={2} />,
-    <UserCardWhite key={3} />,
-    <UserCardWhite key={4} />,
+    <UserCardWhite key={1} navigation={props.navigation} />,
+    <UserCardWhite key={2} navigation={props.navigation} />,
+    <UserCardWhite key={3} navigation={props.navigation} />,
+    <UserCardWhite key={4} navigation={props.navigation} />,
   ]; //users fave's list go here
 
   const emptyMarkupText = (

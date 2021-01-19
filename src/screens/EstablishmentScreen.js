@@ -96,11 +96,11 @@ const EstablishmentScreen = (props) => {
       </View>
 
       <ScrollView style={{ flex: 1 }}>
-        <EmployeeCard showTime={true} />
-        <EmployeeCard showTime={true} />
-        <EmployeeCard showTime={true} />
-        <EmployeeCard showTime={true} />
-        <EmployeeCard showTime={true} />
+        <EmployeeCard showTime={true} navigation={props.navigation} />
+        <EmployeeCard showTime={true} navigation={props.navigation} />
+        <EmployeeCard showTime={true} navigation={props.navigation} />
+        <EmployeeCard showTime={true} navigation={props.navigation} />
+        <EmployeeCard showTime={true} navigation={props.navigation} />
       </ScrollView>
     </View>
   );
