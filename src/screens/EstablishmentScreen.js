@@ -10,6 +10,8 @@ import {
 import Stars from 'react-native-stars';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { COLORS, HEADING } from '../styles/theme';
+import EmployeeCard from '../components/EmployeeCard';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -65,6 +67,14 @@ const EstablishmentScreen = (props) => {
           SCHED HERE
         </Text>
       </View>
+
+      <ScrollView>
+        <EmployeeCard />
+        <EmployeeCard />
+        <EmployeeCard />
+        <EmployeeCard />
+        <EmployeeCard />
+      </ScrollView>
     </View>
   );
 };
