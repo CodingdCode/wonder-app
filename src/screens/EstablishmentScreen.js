@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Text,
   View,
@@ -12,12 +12,32 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { COLORS, HEADING } from '../styles/theme';
 import EmployeeCard from '../components/EmployeeCard';
 import { ScrollView } from 'react-native-gesture-handler';
+import moment from 'moment';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 const EstablishmentScreen = (props) => {
   const { name, city, isOpen, rating, imageUrl } = props.route.params.data;
+  const [selectedDate, setSelectedDate] = useState(
+    moment().format('MMMM DD, YYYY'),
+  );
+
+  const nextDate = () => {
+    setSelectedDate((prevState) => {
+      return moment(prevState, 'MMMM DD, YYYY')
+        .add(1, 'days')
+        .format('MMMM DD, YYYY');
+    });
+  };
+  const prevDate = () => {
+    setSelectedDate((prevState) => {
+      return moment(prevState, 'MMMM DD, YYYY')
+        .subtract(1, 'days')
+        .format('MMMM DD, YYYY');
+    });
+  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -63,9 +83,16 @@ const EstablishmentScreen = (props) => {
         </View>
       </ImageBackground>
       <View style={styles.dateContainer}>
+        <TouchableOpacity onPress={prevDate}>
+          <SimpleLineIcons name="arrow-left" style={styles.dateArrows} />
+        </TouchableOpacity>
+
         <Text style={[styles.textWhite, { fontSize: 18, fontWeight: '700' }]}>
-          SCHED HERE
+          {selectedDate}
         </Text>
+        <TouchableOpacity onPress={nextDate}>
+          <SimpleLineIcons name="arrow-right" style={styles.dateArrows} />
+        </TouchableOpacity>
       </View>
 
       <ScrollView>
@@ -105,9 +132,14 @@ const styles = StyleSheet.create({
   dateContainer: {
     backgroundColor: COLORS.secondary,
     width: screenWidth,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     padding: 15,
+    flexDirection: 'row',
+  },
+  dateArrows: {
+    color: COLORS.white,
+    fontSize: 20,
   },
 });
 
