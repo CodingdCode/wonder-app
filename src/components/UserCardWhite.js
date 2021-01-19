@@ -19,7 +19,12 @@ const UserCardWhite = (props) => {
     name: 'Dominic Walters',
     imageURL:
       'https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?size=626&ext=jpg',
-    company: 'New York, New York',
+    company: {
+      name: 'Coffee Shop',
+      imageUrl:
+        'https://infatuation.imgix.net/media/images/guides/the-bar-greatest-hits-list-best-bars-in-sf/banners/1567201728.73.jpg?auto=format&fit=max&h=1200&w=3200',
+      address: 'New York, New York',
+    },
     isFave: true,
   };
   return (
@@ -46,7 +51,7 @@ const UserCardWhite = (props) => {
         </View>
         <View style={styles.userInfo}>
           <Text style={styles.userName}>{userInfoTestData.name}</Text>
-          <Text>{userInfoTestData.company}</Text>
+          <Text>{userInfoTestData.company.address}</Text>
           <TouchableOpacity
             onPress={() => console.log('HANDLE UNFAVE FROM PROFILE SECTION')}
             style={styles.button}>

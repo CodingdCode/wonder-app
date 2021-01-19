@@ -10,7 +10,7 @@ import {
 import Stars from 'react-native-stars';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { COLORS, HEADING } from '../styles/theme';
-import EmployeeCard from '../components/UserCardWhite';
+import UserCard from '../components/UserCardWhite';
 import { ScrollView } from 'react-native-gesture-handler';
 import moment from 'moment';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
@@ -96,11 +96,11 @@ const EstablishmentScreen = (props) => {
       </View>
 
       <ScrollView style={{ flex: 1 }}>
-        <EmployeeCard showTime={true} navigation={props.navigation} />
-        <EmployeeCard showTime={true} navigation={props.navigation} />
-        <EmployeeCard showTime={true} navigation={props.navigation} />
-        <EmployeeCard showTime={true} navigation={props.navigation} />
-        <EmployeeCard showTime={true} navigation={props.navigation} />
+        <UserCard showTime={true} navigation={props.navigation} />
+        <UserCard showTime={true} navigation={props.navigation} />
+        <UserCard showTime={true} navigation={props.navigation} />
+        <UserCard showTime={true} navigation={props.navigation} />
+        <UserCard showTime={true} navigation={props.navigation} />
       </ScrollView>
     </View>
   );
