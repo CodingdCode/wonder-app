@@ -39,12 +39,7 @@ export const homeStackScreens = () => {
         name="App"
         component={HomeScreen}
         options={(props) => ({
-          headerRight: () => (
-            <Button
-              onPress={() => signOutUser(props.navigation)()}
-              title="Sign Out"
-            />
-          ),
+          headerRight: null,
           headerLeft: null,
           headerTitle: () => <DropdownHeaderMenu />,
         })}

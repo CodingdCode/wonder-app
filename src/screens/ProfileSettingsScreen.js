@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 import { connect } from 'react-redux';
 import { HEADING } from '../styles/theme';
+import { signOutUser } from '../redux/actions/authenticationActions';
 
 const ProfileSettingsScreen = (props) => {
   useEffect(() => {
@@ -17,6 +18,10 @@ const ProfileSettingsScreen = (props) => {
   return (
     <View style={styles.center}>
       <Text>PROFILE SETTINGS HERE</Text>
+      <Button
+        onPress={() => signOutUser(props.navigation)()}
+        title="Sign Out"
+      />
     </View>
   );
 };
