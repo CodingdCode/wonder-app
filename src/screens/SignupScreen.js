@@ -1,12 +1,5 @@
 import React, { useState } from 'react';
-import {
-  StyleSheet,
-  View,
-  TextInput,
-  Text,
-  Button,
-  Dimensions,
-} from 'react-native';
+import { StyleSheet, View, TextInput, Text, Dimensions } from 'react-native';
 import { registerUser } from '../redux/actions/authenticationActions';
 import { connect } from 'react-redux';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -14,6 +7,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { COLORS } from '../styles/theme';
 
 const screenHeight = Dimensions.get('window').height;
+const screenWidth = Dimensions.get('window').width;
 
 const SignupScreen = (props) => {
   const { navigation, dispatch } = props;
@@ -86,11 +80,9 @@ const SignupScreen = (props) => {
           autoCapitalize={false}
         />
 
-        <Button
-          onPress={handleSubmit}
-          buttonStyle={styles.loginButton}
-          title="Create Account"
-        />
+        <TouchableOpacity onPress={handleSubmit} style={styles.signupButton}>
+          <Text style={styles.textWhite}>Create Account</Text>
+        </TouchableOpacity>
       </View>
       <TouchableOpacity
         onPress={() => navigation.pop()}
@@ -137,13 +129,15 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     padding: 8,
   },
-  loginButton: {
-    width: 200,
+  signupButton: {
     marginBottom: 16,
-    backgroundColor: '#30EA8A',
+    backgroundColor: 'transparent',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
     borderWidth: 1,
-    borderRadius: 10,
+    borderRadius: screenWidth / 2,
     borderColor: 'white',
+    marginVertical: 20,
   },
   switchButton: {
     width: 200,
@@ -151,6 +145,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     borderColor: 'white',
+  },
+  textWhite: {
+    color: COLORS.white,
   },
 });
 
