@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   TextInput,
   Button,
+  Dimensions,
 } from 'react-native';
 import { loginUser } from '../redux/actions/authenticationActions';
 import { connect } from 'react-redux';
@@ -14,6 +15,9 @@ import {
   GoogleSignin,
   GoogleSigninButton,
 } from '@react-native-community/google-signin';
+
+const screenHeight = Dimensions.get('window').height;
+const screenWidth = Dimensions.get('window').width;
 
 const IndexScreen = (props) => {
   const [email, setEmail] = useState('');
@@ -35,8 +39,8 @@ const IndexScreen = (props) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.textStyle}>Welcome Barista!</Text>
-      <Text>
+      <Text style={styles.textStyle}>Welcome!</Text>
+      <Text style={styles.subText}>
         We know only certain baristas can make your perfect cup of coffee, so
         sign up, follow your favorites, and know when to go!
       </Text>
@@ -59,8 +63,8 @@ const IndexScreen = (props) => {
         autoCapitalize={'none'}
       />
 
-      <TouchableOpacity onPress={handleLogin}>
-        <Text>Login</Text>
+      <TouchableOpacity onPress={handleLogin} style={styles.transparentButton}>
+        <Text style={styles.textWhite}>Login</Text>
       </TouchableOpacity>
       {/* <GoogleSigninButton
         style={{ width: 192, height: 48 }}
@@ -72,8 +76,9 @@ const IndexScreen = (props) => {
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('signup');
-        }}>
-        <Text>Sign up</Text>
+        }}
+        style={styles.transparentButton}>
+        <Text style={styles.textWhite}>Sign up</Text>
       </TouchableOpacity>
     </View>
   );
@@ -85,20 +90,21 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
   },
   textStyle: {
-    fontSize: 30,
+    fontSize: 36,
     fontWeight: 'bold',
   },
   header: {
     marginBottom: 60,
   },
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.primary,
-    justifyContent: 'center',
-    alignItems: 'center',
+  subText: {
+    maxWidth: '85%',
+    textAlign: 'center',
+    marginTop: 20,
+    marginBottom: 40,
+    lineHeight: 20,
+    letterSpacing: 0.5,
   },
   validationText: {
     marginTop: 8,
@@ -116,13 +122,17 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     padding: 8,
   },
-  loginButton: {
-    width: 200,
-    marginBottom: 16,
-    backgroundColor: COLORS.primary,
+  transparentButton: {
+    backgroundColor: 'transparent',
+    width: screenWidth / 3,
     borderWidth: 1,
-    borderRadius: 10,
-    borderColor: COLORS.white,
+    borderRadius: screenWidth / 2,
+    borderColor: 'white',
+    marginVertical: 7,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
   },
   switchButton: {
     width: 200,
@@ -130,6 +140,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     borderColor: COLORS.white,
+  },
+  textWhite: {
+    // color: COLORS.secondary,
   },
 });
 

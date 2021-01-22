@@ -44,21 +44,21 @@ const SignupScreen = (props) => {
           value={newAccountInfo.firstName || ''}
           onChangeText={(newValue) => handleTextChange('firstName', newValue)}
           placeholder="First name"
-          autoCapitalize={false}
+          autoCapitalize={'none'}
         />
         <TextInput
           style={styles.formInput}
           value={newAccountInfo.lastName || ''}
           onChangeText={(newValue) => handleTextChange('lastName', newValue)}
           placeholder="Last name"
-          autoCapitalize={false}
+          autoCapitalize={'none'}
         />
         <TextInput
           style={styles.formInput}
           value={newAccountInfo.email || ''}
           onChangeText={(newValue) => handleTextChange('email', newValue)}
           placeholder="Email"
-          autoCapitalize={false}
+          autoCapitalize={'none'}
         />
 
         <TextInput
@@ -67,7 +67,7 @@ const SignupScreen = (props) => {
           value={newAccountInfo.password || ''}
           onChangeText={(newValue) => handleTextChange('password', newValue)}
           placeholder="Password"
-          autoCapitalize={false}
+          autoCapitalize={'none'}
         />
         <TextInput
           style={styles.formInput}
@@ -77,7 +77,7 @@ const SignupScreen = (props) => {
             handleTextChange('confirmPassword', newValue)
           }
           placeholder="Confirm Password"
-          autoCapitalize={false}
+          autoCapitalize={'none'}
         />
 
         <TouchableOpacity onPress={handleSubmit} style={styles.signupButton}>
@@ -130,7 +130,6 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   signupButton: {
-    marginBottom: 16,
     backgroundColor: 'transparent',
     paddingVertical: 10,
     paddingHorizontal: 20,
@@ -147,7 +146,7 @@ const styles = StyleSheet.create({
     borderColor: 'white',
   },
   textWhite: {
-    color: COLORS.white,
+    // color: COLORS.secondary,
   },
 });
 
