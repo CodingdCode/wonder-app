@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, Text, Button } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  TextInput,
+  Text,
+  Button,
+  Dimensions,
+} from 'react-native';
 import { registerUser } from '../redux/actions/authenticationActions';
 import { connect } from 'react-redux';
-import {
-  GoogleSignin,
-  GoogleSigninButton,
-} from '@react-native-community/google-signin';
-// import AuthForm from '../pages/AuthForm'
-import { login, signUp, updateAuth } from '../services/ApiConfig';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { COLORS } from '../styles/theme';
+
+const screenHeight = Dimensions.get('window').height;
+
 const SignupScreen = (props) => {
   const { navigation, dispatch } = props;
   const [newAccountInfo, setNewAccountInfo] = useState({});
@@ -26,98 +33,77 @@ const SignupScreen = (props) => {
   const handleTextChange = (name, value) => {
     setNewAccountInfo((prevState) => ({ ...prevState, [name]: value }));
   };
-
-  // componentDidMount() {
-  //   updateAuth(this.onAuthStateChanged)
-  // }
-
-  // onAuthStateChanged = (user) => {
-  //   if (user !== null) {
-  //     // console.log(user);
-  //     this.props.navigation.navigate("App")//, {client:user});
-  //   }
-  // }
-
-  // switchAuthMode = () => {
-  //   this.setState(prevState => ({
-  //     authMode: prevState.authMode === 'login' ? 'signup' : 'login'
-  //   }));
-  // }
-
   return (
-    // <AuthForm
-    //   login={login}
-    //   signup={signUp}
-    //   authMode={this.state.authMode}
-    //   switchAuthMode={this.switchAuthMode}
-    // />
     <View style={styles.container}>
-      <Text h2 style={styles.header}>
-        SIGNUP
-      </Text>
-      {/* {props.authMode === 'signup' ? fullNameInput : null} */}
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          flex: 1,
+        }}>
+        <Text h2 style={styles.header}>
+          SIGNUP
+        </Text>
 
-      <TextInput
-        style={styles.formInput}
-        value={newAccountInfo.firstName || ''}
-        onChangeText={(newValue) => handleTextChange('firstName', newValue)}
-        placeholder="First name"
-        // autoCapitalize={false}
-      />
-      <TextInput
-        style={styles.formInput}
-        value={newAccountInfo.lastName || ''}
-        onChangeText={(newValue) => handleTextChange('lastName', newValue)}
-        placeholder="Last name"
-        // autoCapitalize={false}
-      />
-      <TextInput
-        style={styles.formInput}
-        value={newAccountInfo.email || ''}
-        onChangeText={(newValue) => handleTextChange('email', newValue)}
-        placeholder="Email"
-        // autoCapitalize={false}
-      />
+        <TextInput
+          style={styles.formInput}
+          value={newAccountInfo.firstName || ''}
+          onChangeText={(newValue) => handleTextChange('firstName', newValue)}
+          placeholder="First name"
+          autoCapitalize={false}
+        />
+        <TextInput
+          style={styles.formInput}
+          value={newAccountInfo.lastName || ''}
+          onChangeText={(newValue) => handleTextChange('lastName', newValue)}
+          placeholder="Last name"
+          autoCapitalize={false}
+        />
+        <TextInput
+          style={styles.formInput}
+          value={newAccountInfo.email || ''}
+          onChangeText={(newValue) => handleTextChange('email', newValue)}
+          placeholder="Email"
+          autoCapitalize={false}
+        />
 
-      {/* <Text style={styles.validationText}> {props.errors.email}</Text> */}
-      <TextInput
-        style={styles.formInput}
-        secureTextEntry
-        value={newAccountInfo.password || ''}
-        onChangeText={(newValue) => handleTextChange('password', newValue)}
-        placeholder="Password"
-        autoCapitalize={false}
-      />
-      <TextInput
-        style={styles.formInput}
-        secureTextEntry
-        value={newAccountInfo.confirmPassword || ''}
-        onChangeText={(newValue) =>
-          handleTextChange('confirmPassword', newValue)
-        }
-        placeholder="Confirm Password"
-        autoCapitalize={false}
-      />
+        <TextInput
+          style={styles.formInput}
+          secureTextEntry
+          value={newAccountInfo.password || ''}
+          onChangeText={(newValue) => handleTextChange('password', newValue)}
+          placeholder="Password"
+          autoCapitalize={false}
+        />
+        <TextInput
+          style={styles.formInput}
+          secureTextEntry
+          value={newAccountInfo.confirmPassword || ''}
+          onChangeText={(newValue) =>
+            handleTextChange('confirmPassword', newValue)
+          }
+          placeholder="Confirm Password"
+          autoCapitalize={false}
+        />
 
-      {/* <Button 
-                    // onPress={() => setsecureText(!secureText)} 
-                    title="toggle"
-                    buttonStyle={styles.loginButton}
-                /> */}
-      {/* <Text style={styles.validationText}> {props.errors.password}</Text> */}
-      <Button
-        onPress={handleSubmit}
-        buttonStyle={styles.loginButton}
-        title="Create Account"
-        // title={props.authMode === 'login' ? 'Login' : 'Create Account'}
-      />
-
-      <Button
-        color="black"
+        <Button
+          onPress={handleSubmit}
+          buttonStyle={styles.loginButton}
+          title="Create Account"
+        />
+      </View>
+      <TouchableOpacity
         onPress={() => navigation.pop()}
         title="<- BACK"
-        // title={props.authMode === 'login' ? 'Create an Account' : 'Already a member?'}
-      />
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: COLORS.black,
+        }}>
+        <Icon name="arrow-back-outline" size={24} />
+        <Text style={{ fontSize: 16, paddingHorizontal: 10 }}>BACK</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -131,8 +117,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#30EA8A',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
+    paddingVertical: screenHeight / 15,
   },
   validationText: {
     marginTop: 8,
