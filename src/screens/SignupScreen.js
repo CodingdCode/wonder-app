@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { COLORS } from '../styles/theme';
+import { Input } from 'react-native-elements';
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
@@ -39,46 +40,62 @@ const SignupScreen = (props) => {
           SIGNUP
         </Text>
 
-        <TextInput
-          style={styles.formInput}
-          value={newAccountInfo.firstName || ''}
-          onChangeText={(newValue) => handleTextChange('firstName', newValue)}
-          placeholder="First name"
-          autoCapitalize={'none'}
-        />
-        <TextInput
-          style={styles.formInput}
-          value={newAccountInfo.lastName || ''}
-          onChangeText={(newValue) => handleTextChange('lastName', newValue)}
-          placeholder="Last name"
-          autoCapitalize={'none'}
-        />
-        <TextInput
-          style={styles.formInput}
-          value={newAccountInfo.email || ''}
-          onChangeText={(newValue) => handleTextChange('email', newValue)}
-          placeholder="Email"
-          autoCapitalize={'none'}
-        />
+        <View
+          style={{
+            width: screenWidth - 60,
+            textAlign: 'center',
+          }}>
+          <Input
+            style={styles.formInput}
+            value={newAccountInfo.firstName || ''}
+            onChangeText={(newValue) => handleTextChange('firstName', newValue)}
+            placeholder="First name"
+            autoCapitalize={'none'}
+            errorStyle={{ color: 'red' }}
+            errorMessage={errors}
+          />
+          <Input
+            style={styles.formInput}
+            value={newAccountInfo.lastName || ''}
+            onChangeText={(newValue) => handleTextChange('lastName', newValue)}
+            placeholder="Last name"
+            autoCapitalize={'none'}
+            errorStyle={{ color: 'red' }}
+            errorMessage={errors}
+          />
+          <Input
+            style={styles.formInput}
+            value={newAccountInfo.email || ''}
+            onChangeText={(newValue) => handleTextChange('email', newValue)}
+            placeholder="Email"
+            autoCapitalize={'none'}
+            errorStyle={{ color: 'red' }}
+            errorMessage={errors}
+          />
 
-        <TextInput
-          style={styles.formInput}
-          secureTextEntry
-          value={newAccountInfo.password || ''}
-          onChangeText={(newValue) => handleTextChange('password', newValue)}
-          placeholder="Password"
-          autoCapitalize={'none'}
-        />
-        <TextInput
-          style={styles.formInput}
-          secureTextEntry
-          value={newAccountInfo.confirmPassword || ''}
-          onChangeText={(newValue) =>
-            handleTextChange('confirmPassword', newValue)
-          }
-          placeholder="Confirm Password"
-          autoCapitalize={'none'}
-        />
+          <Input
+            style={styles.formInput}
+            secureTextEntry
+            value={newAccountInfo.password || ''}
+            onChangeText={(newValue) => setPassword(newValue)}
+            placeholder="Password"
+            autoCapitalize={'none'}
+            errorStyle={{ color: 'red' }}
+            errorMessage={errors}
+          />
+          <Input
+            style={styles.formInput}
+            secureTextEntry
+            value={newAccountInfo.confirmPassword || ''}
+            onChangeText={(newValue) =>
+              handleTextChange('confirmPassword', newValue)
+            }
+            placeholder="Confirm Password"
+            autoCapitalize={'none'}
+            errorStyle={{ color: 'red' }}
+            errorMessage={errors}
+          />
+        </View>
 
         <TouchableOpacity onPress={handleSubmit} style={styles.signupButton}>
           <Text style={styles.textWhite}>Create Account</Text>
@@ -120,14 +137,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   formInput: {
-    width: 300,
-    height: 50,
-    fontSize: 25,
-    borderColor: '#fff',
-    fontWeight: '800',
-    borderWidth: 1,
-    marginBottom: 16,
-    padding: 8,
+    fontSize: 18,
+    fontWeight: '600',
+    paddingHorizontal: 15,
   },
   signupButton: {
     backgroundColor: 'transparent',

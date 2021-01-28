@@ -4,12 +4,11 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  TextInput,
-  Button,
   Dimensions,
 } from 'react-native';
 import { loginUser } from '../redux/actions/authenticationActions';
 import { connect } from 'react-redux';
+import { Input } from 'react-native-elements';
 import { COLORS } from '../styles/theme';
 import {
   GoogleSignin,
@@ -45,23 +44,26 @@ const IndexScreen = (props) => {
         sign up, follow your favorites, and know when to go!
       </Text>
 
-      <TextInput
-        style={styles.formInput}
-        value={email}
-        onChangeText={(newValue) => setEmail(newValue)}
-        placeholder="Email"
-        autoCapitalize={'none'}
-      />
+      <View style={{ width: '80%', textAlign: 'center' }}>
+        <Input
+          style={styles.formInput}
+          value={email}
+          onChangeText={(newValue) => setEmail(newValue)}
+          placeholder="Email"
+          autoCapitalize={'none'}
+          errorStyle={{ color: 'red' }}
+          errorMessage={errors}
+        />
 
-      {/* <Text style={styles.validationText}> {props.errors.email}</Text> */}
-      <TextInput
-        style={styles.formInput}
-        secureTextEntry
-        value={password}
-        onChangeText={(newValue) => setPassword(newValue)}
-        placeholder="Password"
-        autoCapitalize={'none'}
-      />
+        <Input
+          style={styles.formInput}
+          secureTextEntry
+          value={password}
+          onChangeText={(newValue) => setPassword(newValue)}
+          placeholder="Password"
+          autoCapitalize={'none'}
+        />
+      </View>
 
       <TouchableOpacity onPress={handleLogin} style={styles.transparentButton}>
         <Text style={styles.textWhite}>Login</Text>
@@ -113,14 +115,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   formInput: {
-    width: 300,
-    height: 50,
-    fontSize: 25,
-    borderColor: COLORS.white,
-    fontWeight: '800',
-    borderWidth: 1,
-    marginBottom: 16,
-    padding: 8,
+    fontSize: 18,
+    fontWeight: '600',
+    paddingHorizontal: 15,
   },
   transparentButton: {
     backgroundColor: 'transparent',
@@ -140,9 +137,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     borderColor: COLORS.white,
-  },
-  textWhite: {
-    // color: COLORS.secondary,
   },
 });
 
