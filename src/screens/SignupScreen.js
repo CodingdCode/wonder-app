@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, Text, Button } from 'react-native';
+import { StyleSheet, View, TextInput, Text, Dimensions } from 'react-native';
 import { registerUser } from '../redux/actions/authenticationActions';
 import { connect } from 'react-redux';
-import {
-  GoogleSignin,
-  GoogleSigninButton,
-} from '@react-native-community/google-signin';
-// import AuthForm from '../pages/AuthForm'
-import { login, signUp, updateAuth } from '../services/ApiConfig';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { COLORS } from '../styles/theme';
+import { Input } from 'react-native-elements';
+
+const screenHeight = Dimensions.get('window').height;
+const screenWidth = Dimensions.get('window').width;
+
 const SignupScreen = (props) => {
   const { navigation, dispatch } = props;
   const [newAccountInfo, setNewAccountInfo] = useState({});
@@ -26,98 +28,91 @@ const SignupScreen = (props) => {
   const handleTextChange = (name, value) => {
     setNewAccountInfo((prevState) => ({ ...prevState, [name]: value }));
   };
-
-  // componentDidMount() {
-  //   updateAuth(this.onAuthStateChanged)
-  // }
-
-  // onAuthStateChanged = (user) => {
-  //   if (user !== null) {
-  //     // console.log(user);
-  //     this.props.navigation.navigate("App")//, {client:user});
-  //   }
-  // }
-
-  // switchAuthMode = () => {
-  //   this.setState(prevState => ({
-  //     authMode: prevState.authMode === 'login' ? 'signup' : 'login'
-  //   }));
-  // }
-
   return (
-    // <AuthForm
-    //   login={login}
-    //   signup={signUp}
-    //   authMode={this.state.authMode}
-    //   switchAuthMode={this.switchAuthMode}
-    // />
     <View style={styles.container}>
-      <Text h2 style={styles.header}>
-        SIGNUP
-      </Text>
-      {/* {props.authMode === 'signup' ? fullNameInput : null} */}
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          flex: 1,
+        }}>
+        <Text h2 style={styles.header}>
+          SIGNUP
+        </Text>
 
-      <TextInput
-        style={styles.formInput}
-        value={newAccountInfo.firstName || ''}
-        onChangeText={(newValue) => handleTextChange('firstName', newValue)}
-        placeholder="First name"
-        // autoCapitalize={false}
-      />
-      <TextInput
-        style={styles.formInput}
-        value={newAccountInfo.lastName || ''}
-        onChangeText={(newValue) => handleTextChange('lastName', newValue)}
-        placeholder="Last name"
-        // autoCapitalize={false}
-      />
-      <TextInput
-        style={styles.formInput}
-        value={newAccountInfo.email || ''}
-        onChangeText={(newValue) => handleTextChange('email', newValue)}
-        placeholder="Email"
-        autoCapitalize={false}
-      />
+        <View
+          style={{
+            width: screenWidth - 60,
+            textAlign: 'center',
+          }}>
+          <Input
+            style={styles.formInput}
+            value={newAccountInfo.firstName || ''}
+            onChangeText={(newValue) => handleTextChange('firstName', newValue)}
+            placeholder="First name"
+            autoCapitalize={'none'}
+            errorStyle={{ color: 'red' }}
+            errorMessage={errors}
+          />
+          <Input
+            style={styles.formInput}
+            value={newAccountInfo.lastName || ''}
+            onChangeText={(newValue) => handleTextChange('lastName', newValue)}
+            placeholder="Last name"
+            autoCapitalize={'none'}
+            errorStyle={{ color: 'red' }}
+            errorMessage={errors}
+          />
+          <Input
+            style={styles.formInput}
+            value={newAccountInfo.email || ''}
+            onChangeText={(newValue) => handleTextChange('email', newValue)}
+            placeholder="Email"
+            autoCapitalize={'none'}
+            errorStyle={{ color: 'red' }}
+            errorMessage={errors}
+          />
 
-      {/* <Text style={styles.validationText}> {props.errors.email}</Text> */}
-      <TextInput
-        style={styles.formInput}
-        secureTextEntry
-        value={newAccountInfo.password || ''}
-        onChangeText={(newValue) => handleTextChange('password', newValue)}
-        placeholder="Password"
-        autoCapitalize={false}
-      />
-      <TextInput
-        style={styles.formInput}
-        secureTextEntry
-        value={newAccountInfo.confirmPassword || ''}
-        onChangeText={(newValue) =>
-          handleTextChange('confirmPassword', newValue)
-        }
-        placeholder="Confirm Password"
-        autoCapitalize={false}
-      />
+          <Input
+            style={styles.formInput}
+            secureTextEntry
+            value={newAccountInfo.password || ''}
+            onChangeText={(newValue) => setPassword(newValue)}
+            placeholder="Password"
+            autoCapitalize={'none'}
+            errorStyle={{ color: 'red' }}
+            errorMessage={errors}
+          />
+          <Input
+            style={styles.formInput}
+            secureTextEntry
+            value={newAccountInfo.confirmPassword || ''}
+            onChangeText={(newValue) =>
+              handleTextChange('confirmPassword', newValue)
+            }
+            placeholder="Confirm Password"
+            autoCapitalize={'none'}
+            errorStyle={{ color: 'red' }}
+            errorMessage={errors}
+          />
+        </View>
 
-      {/* <Button 
-                    // onPress={() => setsecureText(!secureText)} 
-                    title="toggle"
-                    buttonStyle={styles.loginButton}
-                /> */}
-      {/* <Text style={styles.validationText}> {props.errors.password}</Text> */}
-      <Button
-        onPress={handleSubmit}
-        buttonStyle={styles.loginButton}
-        title="Create Account"
-        // title={props.authMode === 'login' ? 'Login' : 'Create Account'}
-      />
-
-      <Button
-        color="black"
+        <TouchableOpacity onPress={handleSubmit} style={styles.signupButton}>
+          <Text style={styles.textWhite}>Create Account</Text>
+        </TouchableOpacity>
+      </View>
+      <TouchableOpacity
         onPress={() => navigation.pop()}
         title="<- BACK"
-        // title={props.authMode === 'login' ? 'Create an Account' : 'Already a member?'}
-      />
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: COLORS.black,
+        }}>
+        <Icon name="arrow-back-outline" size={24} />
+        <Text style={{ fontSize: 16, paddingHorizontal: 10 }}>BACK</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -131,8 +126,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#30EA8A',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
+    paddingVertical: screenHeight / 15,
   },
   validationText: {
     marginTop: 8,
@@ -141,22 +137,18 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   formInput: {
-    width: 300,
-    height: 50,
-    fontSize: 25,
-    borderColor: '#fff',
-    fontWeight: '800',
-    borderWidth: 1,
-    marginBottom: 16,
-    padding: 8,
+    fontSize: 18,
+    fontWeight: '600',
+    paddingHorizontal: 15,
   },
-  loginButton: {
-    width: 200,
-    marginBottom: 16,
-    backgroundColor: '#30EA8A',
+  signupButton: {
+    backgroundColor: 'transparent',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
     borderWidth: 1,
-    borderRadius: 10,
+    borderRadius: screenWidth / 2,
     borderColor: 'white',
+    marginVertical: 20,
   },
   switchButton: {
     width: 200,
@@ -164,6 +156,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     borderColor: 'white',
+  },
+  textWhite: {
+    // color: COLORS.secondary,
   },
 });
 

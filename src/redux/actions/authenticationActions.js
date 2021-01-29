@@ -14,9 +14,9 @@ export const loginUser = (navigation, data) => async (dispatch) => {
   try {
     const userInfo = await login(data);
     dispatch({ type: LOGIN_USER, payload: userInfo });
-    navigation.navigate('App');
+    navigation.navigate('Home');
   } catch (err) {
-    console.log({ err });
+    alert(err.message);
   }
 };
 

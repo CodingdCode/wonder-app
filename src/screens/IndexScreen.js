@@ -4,16 +4,19 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  TextInput,
-  Button,
+  Dimensions,
 } from 'react-native';
 import { loginUser } from '../redux/actions/authenticationActions';
 import { connect } from 'react-redux';
-import { PRIMARY_COLOR } from '../styles/constants';
+import { Input } from 'react-native-elements';
+import { COLORS } from '../styles/theme';
 import {
   GoogleSignin,
   GoogleSigninButton,
 } from '@react-native-community/google-signin';
+
+const screenHeight = Dimensions.get('window').height;
+const screenWidth = Dimensions.get('window').width;
 
 const IndexScreen = (props) => {
   const [email, setEmail] = useState('');
@@ -35,45 +38,49 @@ const IndexScreen = (props) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.textStyle}>Welcome Barista!</Text>
-      <Text>
+      <Text style={styles.textStyle}>Welcome!</Text>
+      <Text style={styles.subText}>
         We know only certain baristas can make your perfect cup of coffee, so
         sign up, follow your favorites, and know when to go!
       </Text>
 
-      <TextInput
-        style={styles.formInput}
-        value={email}
-        onChangeText={(newValue) => setEmail(newValue)}
-        placeholder="Email"
-        autoCapitalize={'none'}
-      />
+      <View style={{ width: '80%', textAlign: 'center' }}>
+        <Input
+          style={styles.formInput}
+          value={email}
+          onChangeText={(newValue) => setEmail(newValue)}
+          placeholder="Email"
+          autoCapitalize={'none'}
+          errorStyle={{ color: 'red' }}
+          errorMessage={errors}
+        />
 
-      {/* <Text style={styles.validationText}> {props.errors.email}</Text> */}
-      <TextInput
-        style={styles.formInput}
-        secureTextEntry
-        value={password}
-        onChangeText={(newValue) => setPassword(newValue)}
-        placeholder="Password"
-        autoCapitalize={'none'}
-      />
+        <Input
+          style={styles.formInput}
+          secureTextEntry
+          value={password}
+          onChangeText={(newValue) => setPassword(newValue)}
+          placeholder="Password"
+          autoCapitalize={'none'}
+        />
+      </View>
 
-      <TouchableOpacity onPress={handleLogin}>
-        <Text>Login</Text>
+      <TouchableOpacity onPress={handleLogin} style={styles.transparentButton}>
+        <Text style={styles.textWhite}>Login</Text>
       </TouchableOpacity>
-      <GoogleSigninButton
+      {/* <GoogleSigninButton
         style={{ width: 192, height: 48 }}
         size={GoogleSigninButton.Size.Wide}
         color={GoogleSigninButton.Color.Dark}
         onPress={() => onGoogleButtonPress()}
         // disabled={this.state.isSigninInProgress}
-      />
+      /> */}
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('signup');
-        }}>
-        <Text>Sign up</Text>
+        }}
+        style={styles.transparentButton}>
+        <Text style={styles.textWhite}>Sign up</Text>
       </TouchableOpacity>
     </View>
   );
@@ -81,24 +88,25 @@ const IndexScreen = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: PRIMARY_COLOR,
+    backgroundColor: COLORS.primary,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
   },
   textStyle: {
-    fontSize: 30,
+    fontSize: 36,
     fontWeight: 'bold',
   },
   header: {
     marginBottom: 60,
   },
-  container: {
-    flex: 1,
-    backgroundColor: PRIMARY_COLOR,
-    justifyContent: 'center',
-    alignItems: 'center',
+  subText: {
+    maxWidth: '85%',
+    textAlign: 'center',
+    marginTop: 20,
+    marginBottom: 40,
+    lineHeight: 20,
+    letterSpacing: 0.5,
   },
   validationText: {
     marginTop: 8,
@@ -107,29 +115,28 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   formInput: {
-    width: 300,
-    height: 50,
-    fontSize: 25,
-    borderColor: '#fff',
-    fontWeight: '800',
-    borderWidth: 1,
-    marginBottom: 16,
-    padding: 8,
+    fontSize: 18,
+    fontWeight: '600',
+    paddingHorizontal: 15,
   },
-  loginButton: {
-    width: 200,
-    marginBottom: 16,
-    backgroundColor: PRIMARY_COLOR,
+  transparentButton: {
+    backgroundColor: 'transparent',
+    width: screenWidth / 3,
     borderWidth: 1,
-    borderRadius: 10,
+    borderRadius: screenWidth / 2,
     borderColor: 'white',
+    marginVertical: 7,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
   },
   switchButton: {
     width: 200,
-    backgroundColor: PRIMARY_COLOR,
+    backgroundColor: COLORS.primary,
     borderWidth: 1,
     borderRadius: 10,
-    borderColor: 'white',
+    borderColor: COLORS.white,
   },
 });
 

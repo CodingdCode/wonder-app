@@ -11,8 +11,9 @@ export const login = async ({ email, password }) => {
       .then((userData) => userData);
     return userInfo;
   } catch (err) {
-    alert("Are you a member? Something doesn't seem to add up");
-    return err;
+    throw Error("Are you a member? Something doesn't seem to add up");
+    // alert("Are you a member? Something doesn't seem to add up");
+    // return err;
   }
 };
 
