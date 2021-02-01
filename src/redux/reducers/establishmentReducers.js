@@ -22,7 +22,7 @@ const TEST_DATA = [
     name: 'Barbershop',
     city: 'East Clintonbury',
     isOpen: false,
-    rating: 2.4,
+    rating: 3.4,
     imageUrl:
       'https://parkerbarber.com/wp-content/uploads/2017/10/parker-barber-blog.png',
   },
