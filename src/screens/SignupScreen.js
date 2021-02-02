@@ -77,7 +77,7 @@ const SignupScreen = (props) => {
             style={styles.formInput}
             secureTextEntry
             value={newAccountInfo.password || ''}
-            onChangeText={(newValue) => setPassword(newValue)}
+            onChangeText={(newValue) => handleTextChange('password', newValue)}
             placeholder="Password"
             autoCapitalize={'none'}
             errorStyle={{ color: 'red' }}
