@@ -21,7 +21,7 @@
 		58C29301C1DEF6B3FEAECC1D /* libPods-whichdayz-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B919A32F4DAA515D8015B5B /* libPods-whichdayz-tvOSTests.a */; };
 		8315ED81253F8B2200E5EC99 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8315ED80253F8B2200E5EC99 /* File.swift */; };
 		8315ED82253F8B2200E5EC99 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8315ED80253F8B2200E5EC99 /* File.swift */; };
-		831EDF1C2551DA4C0069B6EE /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 831EDF1B2551DA4C0069B6EE /* main.jsbundle */; };
+		8328D19125CA58E10030FFBB /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 8328D19025CA58E10030FFBB /* main.jsbundle */; };
 		8361C3B9253408FC00C29E68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8361C3B8253408FC00C29E68 /* GoogleService-Info.plist */; };
 		8361C3BA253408FC00C29E68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8361C3B8253408FC00C29E68 /* GoogleService-Info.plist */; };
 		83C0B3172523996E00BA7748 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -86,6 +86,7 @@
 		8315ED5F253F579400E5EC99 /* libYogaKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libYogaKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8315ED80253F8B2200E5EC99 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		831EDF1B2551DA4C0069B6EE /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; name = main.jsbundle; path = /Users/markgalang/WhichDayz/ios/main.jsbundle; sourceTree = "<absolute>"; };
+		8328D19025CA58E10030FFBB /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		8361C3B8253408FC00C29E68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8364D296252E4C76001F1AAB /* libRNScreens.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNScreens.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		83DAA2C525410973003219B6 /* whichdayz-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "whichdayz-Bridging-Header.h"; path = "/Users/markgalang/WhichDayz/ios/../../../chris/Documents/Projects/wonder-app/ios/Pods/whichdayz-Bridging-Header.h"; sourceTree = "<absolute>"; };
@@ -216,6 +217,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				8328D19025CA58E10030FFBB /* main.jsbundle */,
 				83DAA2C625410975003219B6 /* whichdayzTests-Bridging-Header.h */,
 				83DAA2C525410973003219B6 /* whichdayz-Bridging-Header.h */,
 				8315ED80253F8B2200E5EC99 /* File.swift */,
@@ -410,10 +412,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8328D19125CA58E10030FFBB /* main.jsbundle in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				8361C3B9253408FC00C29E68 /* GoogleService-Info.plist in Resources */,
-				831EDF1C2551DA4C0069B6EE /* main.jsbundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -842,7 +844,7 @@
 				DEVELOPMENT_TEAM = 63A77M3Z94;
 				INFOPLIST_FILE = wonderFront/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1.9;
+				MARKETING_VERSION = 1.2.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -868,7 +870,7 @@
 				DEVELOPMENT_TEAM = 63A77M3Z94;
 				INFOPLIST_FILE = wonderFront/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1.9;
+				MARKETING_VERSION = 1.2.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
