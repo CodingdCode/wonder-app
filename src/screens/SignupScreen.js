@@ -19,7 +19,8 @@ const SignupScreen = (props) => {
     const newUser = {
       email: newAccountInfo.email,
       password: newAccountInfo.password,
-      fullName: `${newAccountInfo.firstName} ${newAccountInfo.lastName}`,
+      firstName: `${newAccountInfo.firstName}`, 
+      lastName: `${newAccountInfo.lastName}`
     };
     dispatch(registerUser(navigation, newAccountInfo));
     setNewAccountInfo({});
