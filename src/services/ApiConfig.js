@@ -3,9 +3,11 @@ import '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import { NavigationEvents } from 'react-navigation';
 
+const userCollection=firestore().collection("users");
+
 export const login = async ({ email, password }) => {
   try {
-    const userInfo = await firebase
+    await firebase()
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((userData) => userData);
@@ -17,24 +19,32 @@ export const login = async ({ email, password }) => {
   }
 };
 
-export const signUp = async ({ email, password, fullName }) => {
-  console.log('sign up great success', email, fullName);
-  const userCred = await firebase
+export const signUp = async ({ email, password, firstName, lastName }) => {
+  
+  await firebase
     .auth()
     .createUserWithEmailAndPassword(email, password);
-  firestore()
-    .collection('users')
-    .add({
-      email: `${email}`,
+  
+  const write=await userCollection.add({
+    email: `${email}`,
+    firstName: `${firstName}`,
+    lastName: `${lastName}`
+  })
+  .then((resp) => {
+    console.log('User added!');
+    const newDoc=userCollection.doc(`${resp.id}`);
+    
+    newDoc.get().then(documentSnapshot => {
+  
+      if (documentSnapshot.exists) {
+        return documentSnapshot.data();
+      }
     })
-    .then(() => {
-      console.log('User added!');
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
-  // return userCred;
 };
 
 export const signUpUser = async ({ email, password, firstName, lastName }) => {
