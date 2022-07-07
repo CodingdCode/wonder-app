@@ -22,7 +22,7 @@
     "axios": "^0.21.0",
     "bluebird": "^3.7.2",
     "formik": "^2.2.5",
-    "moment": "^2.29.1",
+    "moment": "^2.29.4",
     "react": "17.0.1",
     "react-native": "0.63.3",
     "react-native-calendars": "^1.403.0",
